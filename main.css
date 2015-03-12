@@ -48,6 +48,7 @@ body {
 	z-index:100;
 }
 .nav a {
+	color: #552603;
 	transition-property: all;
 	transition-duration: 0.2s;
 	transition-timing-function: linear;
@@ -56,8 +57,21 @@ body {
 .nav>li>a:focus,
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	background: transparent;
-	box-shadow:.01em .01em 2em .01em #303030 inset;
-	color: black;
+	box-shadow:.01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+}
+.menu-top .nav a {
+	color: #deb085;
+	transition-property: all;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+}
+.menu-top .nav>li>a:hover,
+.menu-top .nav>li>a:focus,
+.menu-top .nav .open>a, .menu-top .nav .open>a:focus, .menu-top .nav .open>a:hover {
+	background: transparent;
+	box-shadow:.01em .01em 2em .01em #f6f0e9 inset;
+	color: #966941;
 }
 .row {
 	margin:0 0.625em;
