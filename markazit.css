@@ -1,0 +1,9 @@
+.background1, .background2 {
+	display: none;
+}
+.carousel-control:hover {
+	opacity: 0.5;
+}
+.row>div>img {
+	cursor: pointer;
+}

@@ -1,0 +1,147 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="jquery-1.11.2.min.js"></script>
+<script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="gallery.css">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+	var galleryPage = 1;
+	var allPages = 2;
+	function updateMenu() {
+		if(window.innerWidth / 16 > 47.9375) {
+			if($(this).scrollTop() > $("#topImage").height() - $("#menu").height()) {
+				$("#menu").removeClass("menu-default");
+				$("#menu").addClass("menu-top");
+			} else if($(this).scrollTop() < $("#topImage").height()) {
+				$("#menu").removeClass("menu-top");
+				$("#menu").addClass("menu-default");
+			}
+		} else {
+			$("#menu").removeClass("menu-top");
+			$("#menu").addClass("menu-default");
+		}
+	}
+	
+	$(window).scroll(function() {
+		updateMenu();
+	});
+	$(window).resize(function() {
+		updateMenu();
+	});
+	
+	$(function() {
+		$('#chartDd').on('show.bs.dropdown', function(e){
+			$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+		});
+		$('#chartDd').on('hide.bs.dropdown', function(e){
+			$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+		});
+		
+		$('.pager a[href*=#]').on('click', function(event){     
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
+		});
+		$(".previous").click(function() {
+			if(galleryPage > 1) {
+				updateGallery(galleryPage - 1);
+				galleryPage--;
+			}
+		});
+		$(".next").click(function() {
+			if(galleryPage < allPages) {
+				updateGallery(galleryPage + 1);
+				galleryPage++;
+			}
+		});
+		
+		updateGallery(galleryPage);
+	});
+	
+	function updateGallery(page) {
+		$(".row").remove();
+		var pager = $("#galleryPager");
+		var row = $(document.createElement("div"));
+		row.addClass("row");
+		for(var i = 1; i < 20; i++) {
+			var col = $(document.createElement("div"));
+			col.addClass("col-sm-4");
+			var img = $(document.createElement("img"));
+			img.addClass("img-responsive");
+			img.attr("src", page == 1 ? "ring.jpg" : "ring2.jpg");
+			var span1 = $(document.createElement("span"));
+			span1.addClass("center-block");
+			span1.css("width", "100%");
+			span1.css("text-align", "center");
+			span1.text("name");
+			var span2 = $(document.createElement("span"));
+			span2.addClass("center-block");
+			span2.css("width", "100%");
+			span2.css("text-align", "center");
+			span2.text("price");
+			col.append(img);
+			col.append(span1);
+			col.append(span2);
+			row.append(col);
+			if((i > 1 && i % 3 === 0) || i === 19) {
+				row.insertBefore(pager);
+				row = $(document.createElement("div"));
+				row.addClass("row");
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<div class="background1"></div>
+<div class="background2"></div>
+<div class="container" style="position:relative;">
+	<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
+	<nav class="navbar navbar-default menu-default" id="menu">
+	  <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+		  <ul class="nav nav-pills nav-justified">
+			<li><a href="markazit.html"><h4>НАЧАЛО</h4></a></li>
+			<li id="chartDd"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>КОЛЕКЦИЯ</h4></a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">ПРЪСТЕНИ</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ГРИВНИ</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><h4>СЪВЕТИ</h4></a></li>
+			<li><a href="#"><h4>ЗА НАС</h4></a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</div>
+<div id="galleryGrid" class="container gallery">
+  <ul id="galleryPager" class="pager">
+    <li class="previous"><a href="#galleryGrid">Previous</a></li>
+    <li>1/10</li>
+    <li class="next"><a href="#galleryGrid">Next</a></li>
+  </ul>
+  <footer class="footer">
+	<div class="container">
+		<p>Footer</p>
+	</div>
+  </footer>
+</div>
+</body>
+</html>
