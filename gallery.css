@@ -1,6 +1,6 @@
 .gallery {
 	background-color: white;
-	padding:3%;
+	padding:3% 3% 0 3%;
 }
 .row div:hover {
 	cursor: pointer;
