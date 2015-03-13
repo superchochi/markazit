@@ -80,7 +80,7 @@ body {
 }
 .row div {
 	margin:1.5em 0 0 0;
-	transition-property: background;
+	transition-property: all;
 	transition-duration: 0.3s;
 	transition-timing-function: linear;
 }

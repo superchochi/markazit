@@ -1,8 +1,9 @@
 .gallery {
-	background-color: antiquewhite;
+	background-color: white;
 	padding:3%;
 }
 .row div:hover {
 	cursor: pointer;
-	background-color: lightgrey;
+	/*background-color: lightgrey;*/
+	transform: scale(1.2);
 }
