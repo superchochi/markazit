@@ -47,18 +47,11 @@ body {
 	width:inherit;
 	z-index:100;
 }
-.nav a {
+.menu-default .nav a {
 	color: #552603;
 	transition-property: all;
 	transition-duration: 0.2s;
 	transition-timing-function: linear;
-}
-.nav>li>a:hover,
-.nav>li>a:focus,
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	background: transparent;
-	box-shadow:.01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
 }
 .menu-top .nav a {
 	color: #deb085;
@@ -66,9 +59,17 @@ body {
 	transition-duration: 0.2s;
 	transition-timing-function: linear;
 }
-.menu-top .nav>li>a:hover,
-.menu-top .nav>li>a:focus,
-.menu-top .nav .open>a, .menu-top .nav .open>a:focus, .menu-top .nav .open>a:hover {
+.menu-default .nav>li a:hover,
+.menu-default .nav .open a:hover,
+.menu-default .nav>li a:focus, .menu-default .nav .open a:focus {
+	background: transparent;
+	box-shadow:.01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+}
+.menu-top .nav>li a:hover,
+.menu-top .nav .open a:hover,
+.menu-default .nav .dropdown-menu a:hover,
+.menu-top .nav>li a:focus, .menu-top .nav .open a:focus, .menu-default .nav .dropdown-menu a:focus {
 	background: transparent;
 	box-shadow:.01em .01em 2em .01em #f6f0e9 inset;
 	color: #966941;
@@ -86,8 +87,20 @@ body {
 .footer {
 	margin-top: 3em;
 }
-.footer .container {
-	width: inherit;
+.footer .navbar {
+	margin: 0;
+}
+.footer .nav>li a:hover, .footer .nav>li a:focus {
+	background: transparent;
+	box-shadow:.01em .01em 2em .01em #f6f0e9 inset;
+}
+.menu-default li.active>a {
+	color: #ffeac8;
+	background: transparent;
+}
+.menu-top li.active>a {
+	color: #966941;
+	background: transparent;
 }
 @media (max-width: 47.9375em) {
 	.menu-default {
