@@ -7,3 +7,29 @@
 	/*background-color: lightgrey;*/
 	transform: scale(1.2);
 }
+.gallery-menu-top {
+	position:fixed;
+	top:61px;
+	max-width:inherit;
+	width:inherit;
+	z-index:100;
+}
+@media (max-width: 47.9375em) {
+	#galleryMenu ul.nav, #galleryMenu ul.nav>li, #galleryMenu ul.nav>li>a {
+		display: inline-block;
+	}
+	#galleryMenu ul.navbar-right {
+		float: right;
+	}
+	#galleryMenu ul.navbar-left {
+		float: left;
+	}
+	#galleryMenu .dropdown-menu {
+		position: absolute;
+	}
+	.gallery-menu-top {
+		position: relative;
+		top:0;
+		z-index:1;
+	}
+}

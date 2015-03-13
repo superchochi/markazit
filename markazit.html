@@ -9,49 +9,9 @@
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="markazit.css">
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
 <script>
-	function updateMenu() {
-		if(window.innerWidth / 16 > 47.9375) {
-			if($(this).scrollTop() > $("#topImage").height() - $("#menu").height()) {
-				$("#menu").removeClass("menu-default");
-				$("#menu").addClass("menu-top");
-			} else if($(this).scrollTop() < $("#topImage").height()) {
-				$("#menu").removeClass("menu-top");
-				$("#menu").addClass("menu-default");
-			}
-		} else {
-			$("#menu").removeClass("menu-top");
-			$("#menu").addClass("menu-default");
-		}
-	}
-	
-	$(window).scroll(function() {
-		updateMenu();
-	});
-	$(window).resize(function() {
-		updateMenu();
-	});
-	
 	$(function() {
-		$(window).on("resize", function() {
-			var w = (window.innerWidth - $("#topImage").width()) / 2;
-			$(".background1").css("width", w);
-			$(".background2").css("width", w)
-		});
-		$('#menu').on('hide.bs.collapse', function () {
-		  $("#menu").css("background", "");
-		});
-		$('#menu').on('show.bs.collapse', function () {
-		  $("#menu").css("background", "#a77649");
-		});
-		
-		$('#chartDd').on('show.bs.dropdown', function(e){
-			$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
-		});
-		$('#chartDd').on('hide.bs.dropdown', function(e){
-			$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-		});
-		
 		$(".row img").hover(function() {
 			$(this).fadeTo(200, 0);
 		}, function() {
@@ -95,7 +55,7 @@
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 		  <ul class="nav nav-pills nav-justified">
 			<li class="active"><a href="markazit.html"><h4>НАЧАЛО</h4></a></li>
-			<li id="chartDd"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>КОЛЕКЦИЯ</h4></a>
+			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>КОЛЕКЦИЯ</h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">ПРЪСТЕНИ</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ГРИВНИ</a></li>
@@ -167,6 +127,8 @@
 		<img class="img-responsive" src="Rings/OFF.png" />
     </div>
   </div>
+</div>
+<div class="container">
   <footer class="footer">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
