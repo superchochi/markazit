@@ -8,5 +8,5 @@
 	cursor: pointer;
 }
 .row>div:hover {
-	box-shadow: 0px 0px 60px 10px rgb(202, 202, 202);
+	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 }

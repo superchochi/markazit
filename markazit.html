@@ -21,10 +21,15 @@
 		//$("#myModal").modal("show");
 		//setTimeout(function() {
 			//$("#myModal").modal("hide");
-			var w = (window.innerWidth - $("#topImage").width()) / 2;
+			var w = (window.innerWidth - $("#mainContainer").width()) / 2;
 			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
 			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
 		//}, 2000);
+		$(window).resize(function() {
+			var w = (window.innerWidth - $("#mainContainer").width()) / 2;
+			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
+			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
+		});
 		
 		$(".carousel-control").hover(function() {
 			$(this).animate({opacity:0.9}, 200);
@@ -37,7 +42,7 @@
 <body>
 <div class="background1"></div>
 <div class="background2"></div>
-<div class="container" style="position:relative;">
+<div id="mainBanner" class="container" style="position:relative;">
 	<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
 	<nav class="navbar navbar-default menu-default" id="menu">
 	  <div class="container-fluid">
@@ -110,7 +115,7 @@
     </a>
   </div>
 </div>
-<div class="container">
+<div id="mainContainer" class="container last">
   <div class="row">
     <div class="col-sm-6" title="Bracelets" style="background: url('Bracelets/ON.png') no-repeat center; background-size: contain;">
 		<img class="img-responsive" src="Bracelets/OFF.png" />
@@ -128,7 +133,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div id="footerContainer" class="container">
   <footer class="footer">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">

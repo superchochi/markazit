@@ -17,7 +17,7 @@
 	$(function() {
 		$('.pager a[href*=#]').on('click', function(event){     
 			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
+			$('html,body').animate({scrollTop:$(this.hash).offset().top - $("#galleryMenu").height()}, 1000);
 		});
 		$(".previous").click(function() {
 			if(galleryPage > 1) {
@@ -57,7 +57,7 @@
 		row.addClass("row");
 		for(var i = 1; i < 20; i++) {
 			var col = $(document.createElement("div"));
-			col.addClass("col-sm-4");
+			col.addClass("col-sm-3");
 			var img = $(document.createElement("img"));
 			img.addClass("img-responsive");
 			img.attr("src", page == 1 ? "ring.jpg" : "ring2.jpg");
@@ -75,7 +75,7 @@
 			col.append(span1);
 			col.append(span2);
 			row.append(col);
-			if((i > 1 && i % 3 === 0) || i === 19) {
+			if((i > 1 && i % 4 === 0) || i === 19) {
 				row.insertBefore(pager);
 				row = $(document.createElement("div"));
 				row.addClass("row");
@@ -87,7 +87,7 @@
 <body>
 <div class="background1"></div>
 <div class="background2"></div>
-<div class="container" style="position:relative;">
+<div id="mainBanner" class="container" style="position:relative;">
 	<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
 	<nav class="navbar navbar-default menu-default" id="menu">
 	  <div class="container-fluid">
@@ -147,14 +147,14 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 </div>
-<div id="galleryGrid" class="container gallery">
+<div id="galleryGrid" class="container gallery last">
   <ul id="galleryPager" class="pager">
     <li class="previous"><a href="#galleryGrid">Previous</a></li>
     <li>1/10</li>
     <li class="next"><a href="#galleryGrid">Next</a></li>
   </ul>
 </div>
-<div class="container">
+<div id="footerContainer" class="container">
   <footer class="footer">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">

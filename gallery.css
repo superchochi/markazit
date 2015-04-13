@@ -6,7 +6,7 @@
 	cursor: pointer;
 	/*background-color: lightgrey;*/
 	transform: scale(1.2);
-	box-shadow: 0px 0px 60px 10px rgb(202, 202, 202);
+	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 	z-index: 100;
 }
 .gallery-menu-top {
@@ -14,7 +14,7 @@
 	top:61px;
 	max-width:inherit;
 	width:inherit;
-	z-index:99;
+	z-index:101;
 }
 @media (max-width: 47.9375em) {
 	#galleryMenu ul.nav, #galleryMenu ul.nav>li, #galleryMenu ul.nav>li>a {
