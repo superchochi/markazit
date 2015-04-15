@@ -7,6 +7,10 @@
 .row>div>img {
 	cursor: pointer;
 }
-.row>div:hover {
+.shadowBox {
+	max-width: 480;
+	margin: auto !important;
+}
+.shadowBox:hover {
 	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 }
