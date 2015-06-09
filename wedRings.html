@@ -51,8 +51,7 @@ h4 {
 	display:none;
 	min-width:640px;
 	max-width:700px;
-	padding:25px;
-	padding-top:50px;
+	padding:25px
 }
 
 #popup .logo{
@@ -61,7 +60,7 @@ h4 {
 }
 
 #popup,.bMulti{
-	min-height:400px
+	min-height:250px
 }
 
 .b-close {
@@ -157,26 +156,10 @@ input[type=checkbox], input[type=radio] {
 		updateGallery(galleryPage);
 		
 		$(window).load(function(){
-			$('.icon-small').css({'color': '#333', 'background-color': 'transparent'});
-			
-			$('.icon-large').bind('click', function(e){
-				e.preventDefault();
-				$('.icon-small').css({'color': '', 'background-color': ''});
-				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-6');				
-			});
-			
-			$('.icon-small').bind('click', function(e){
-				e.preventDefault();
-				$(this).css({'color': '#333', 'background-color': 'transparent'});
-				$('.icon-lagre').css({'color': '', 'background-color': ''});
-				$('.col-sm-6').removeClass('col-sm-6').addClass('col-sm-3');				
-			})
-			
 			$('.col-sm-3').bind('click', function(e){
 				e.preventDefault();				
 				$('#popup').bPopup().css('top', $(this).css("top") - 600 + 'px');
 			})
-			
 			/*$('#radio1').bind('click', function(e){			
 				$(this).attr("checked", "checked")
 				var $images = $('.col-sm-3 img');
@@ -192,20 +175,15 @@ input[type=checkbox], input[type=radio] {
 					
 					i++;
 				}
-					
-				//.attr('src', 'ring.jpg');
-			}) */
-			
+			})
 			$('#radio2').bind('click', function(e){			
 				$(this).attr("checked", "checked")
-				$('.col-sm-3 img').attr('src', 'ring.jpg')
-				$('.col-sm-6 img').attr('src', 'ring.jpg');
+				$('.col-sm-3 img').attr('src', 'ring.jpg');
 			})
 			$('#radio3').bind('click', function(e){			
 				$(this).attr("checked", "checked")
 				$('.col-sm-3 img').attr('src', 'mens-gold-with-diamong-collection-1.jpg');
-				$('.col-sm-6 img').attr('src', 'mens-gold-with-diamong-collection-1.jpg');
-			})
+			})*/
 		})
 		
 		$(window).scroll(function() {
@@ -234,7 +212,7 @@ input[type=checkbox], input[type=radio] {
 			col.addClass("col-sm-3");
 			var img = $(document.createElement("img"));
 			img.addClass("img-responsive");
-			img.attr("src", page == 1 ? "ring.jpg" : "ring2.jpg");
+			img.attr("src", page == 1 ? "Categories/Halki.jpg" : "Halki.jpg");
 			/*var span1 = $(document.createElement("span"));
 			span1.addClass("center-block");
 			span1.css("width", "100%");
@@ -280,7 +258,7 @@ input[type=checkbox], input[type=radio] {
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 		  <ul class="nav nav-pills nav-justified">
 			<li><a href="markazit.html"><h4>Начало</h4></a></li>
-			<li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция <span class="glyphicon glyphicon-chevron-down" style="margin-left: 10px; vertical-align: text-bottom;"></span></h4></a>
+			<li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция</h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
@@ -321,8 +299,8 @@ input[type=checkbox], input[type=radio] {
 			</li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
-			<li><a href="#" class="icon-small"><span class="glyphicon glyphicon-th"></a></li>
-			<li><a href="#" class="icon-large"><span class="glyphicon glyphicon-th-large "></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-th-large"></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-th"></a></li>
 		  </ul>
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -331,15 +309,15 @@ input[type=checkbox], input[type=radio] {
 <div style="font-family: 'Forum', cursive;" id="popup">
         <span class="button b-close"><span>X</span></span>
 		<div style="float: left; width: 50%;">
-			<img class="img-responsive" src="ring.jpg" >
+			<img class="img-responsive" src="Categories/Diamond.jpg" >
 		</div>
 		<div style="float: right; width: 50%;">
 			<span style="font-size: 1.5em;">Кат. №<span>0000</span></span></br>
 			<span class="" style="width: 100%; text-align: center; font-size: 1.9em; ">Цена: <span style="font-size: 1.1em">00.0</span><span style="font-size: 1.1em"> лв.</span></span>
 			<hr></hr>
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
+			<img class="img-responsive" src="Categories/Diamond.jpg" style="width: 31%; display: inline-block;">
+			<img class="img-responsive" src="Categories/Diamond.jpg" style="width: 31%; display: inline-block;">
+			<img class="img-responsive" src="Categories/Diamond.jpg" style="width: 31%; display: inline-block;">
 			<hr></hr>		
 			<span class="" style="">Тегло: </span><span>Data from DB</span></br>
 			<span class="" style="">Параметри: </span><span>Data from DB</span>		
@@ -348,12 +326,12 @@ input[type=checkbox], input[type=radio] {
 	
 <div id="galleryGrid" class="container gallery last">
 	<div id="filter">
-		<!-- <div>
+		<div>
 		<input type="radio" name="radio" id="radio1" class="radio" checked/>
 		<label for="radio1">Всички</label>
-		</div> -->
+		</div>
 		<div>
-			<input type="radio" name="radio" id="radio2" class="radio" checked/>
+			<input type="radio" name="radio" id="radio2" class="radio"/>
 			<label for="radio2">Дамски</label>
 		</div>
 		<div>	

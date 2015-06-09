@@ -1,6 +1,6 @@
 $(function() {
 	$(window).on("resize", function() {
-		var w = (window.innerWidth - $("#topImage").width()) / 2;
+		var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
 		$(".background1").css("width", w);
 		$(".background2").css("width", w)
 	});
@@ -24,13 +24,16 @@ function updateMenu() {
 		if($(this).scrollTop() > $("#topImage").height() - $("#menu").height()) {
 			$("#menu").removeClass("menu-default");
 			$("#menu").addClass("menu-top");
+			$("#logo").css({"opacity":"1", "visibility": "visible", "margin-left": "5%"});
 		} else if($(this).scrollTop() < $("#topImage").height()) {
 			$("#menu").removeClass("menu-top");
 			$("#menu").addClass("menu-default");
+			$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "0"});
 		}
 	} else {
 		$("#menu").removeClass("menu-top");
 		$("#menu").addClass("menu-default");
+		$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "0"});
 	}
 }
 

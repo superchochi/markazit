@@ -4,10 +4,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="jquery-1.11.2.min.js"></script>
 <script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="markazit.css">
+
+<link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+<style>
+.b-close {
+	border-radius: 18px;
+	font: bold 131% sans-serif;
+	padding: 0 9px 4px;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	left: 714px;
+	top: -13px;
+	z-index: 100;
+}
+.b-close:hover {
+	background-color: #1e1e1e;
+}
+
+h4 {
+	font-size: 22px;
+	white-space: nowrap;
+	text-transform: uppercase;
+	outline: none;
+}
+a, a:focus {
+	outline: none;
+}
+
+.navbar {
+  min-height: 66px;
+}
+menu-default.nav>li>a {
+  padding: 1px 15px;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	box-shadow: .01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+	background-color: rgba(87, 59, 31, 0.6);
+}
+
+.nav .close>a, .nav .close>a:focus, .nav .close>a:hover {
+	box-shadow: .01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+	background-color: rgba(87, 59, 31, 0.6);
+}
+
+.open>.dropdown-menu {
+  background-color: rgba(138, 90, 51, 1);
+  border: 0;
+  /*margin: 0;*/
+    top: 97%;
+}
+
+.dropdown-menu {
+	background-color: rgba(138, 90, 51, 1);
+	border: 0;
+	top: 97%;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+  color: #ffeac8;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+	h4{
+		font-size: 17px;
+	}
+}
+</style>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="main.js"></script>
 <script>
@@ -21,14 +96,122 @@
 		//$("#myModal").modal("show");
 		//setTimeout(function() {
 			//$("#myModal").modal("hide");
-			var w = (window.innerWidth - $("#mainContainer").width()) / 2;
+			var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
 			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
 			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
 		//}, 2000);
+		
+		var windowWidth = window.innerWidth;
+		var $bracelets = $("div[title=\"Bracelets\"]");
+		var $diamonds = $("div[title=\"Diamonds\"]");
+		var $w_rings = $("div[title=\"Wedding rings\"]");
+		var $rings = $("div[title=\"Rings\"]");
+		var $crosses = $("div[title=\"Crosses\"]");
+		var $earrings = $("div[title=\"Earrings\"]");
+		var $necklaces = $("div[title=\"Necklaces\"]");
+		var $pendants = $("div[title=\"Pendants\"]");
+		
+		//var timesPlayed = 0;
+		
+		$( document ).ready( function(){
+			document.getElementById("intro").playbackRate = 2.5;
+			$(".videoContainer").each(function(){
+				$(this).css({
+					'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
+					'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
+					})
+			});
+		})
+		
+		$(window).load(function(){	
+			windowWidth = window.innerWidth
+			if(windowWidth >=768) {
+				$bracelets.addClass("l left_img_bracelet bracelet_bg_pos");
+				$diamonds.addClass("r right_img_diamonds diamonds_bg_pos");
+				$w_rings.addClass("l left_img_w_rings w_rings_bg_pos");
+				$rings.addClass("r right_img_rings rings_bg_pos");
+				$crosses.addClass("l left_img_crosses crosses_bg_pos");
+				$earrings.addClass("r right_img_earrings earrings_bg_pos");
+				$necklaces.addClass("l left_img_necklaces necklaces_bg_pos");
+				$pendants.addClass("r right_img_pendants pendants_bg_pos");
+			}
+			else {
+				$bracelets.addClass("left_img_bracelet");
+				$diamonds.addClass("right_img_diamonds");
+				$w_rings.addClass("left_img_w_rings");
+				$rings.addClass("right_img_rings");
+				$crosses.addClass("left_img_crosses");
+				$earrings.addClass("right_img_earrings");
+				$necklaces.addClass("left_img_necklaces");
+				$pendants.addClass("right_img_pendants");
+			}
+						
+			
+		
+			if(sessionStorage.length == 0){
+				$(".videoContainer").css('opacity', '1');
+				$("video").play;
+				$(".b-close").on('click', function(){
+					$("video").trigger('ended');
+				})
+				$('body').dimBackground({
+					darkness : 0.8            // 0: no dimming, 1: completely black
+				}, function() {
+					$("video").on("ended", function(){
+						$(this).fadeOut("slow");
+						$(".b-close").fadeOut("slow")
+						$.undim();
+						sessionStorage.setItem("timesPlayed", "1");
+					});
+				});
+			}
+			else{
+				$("video").hide();
+				$(".b-close").hide();
+			}
+		
+		});
 		$(window).resize(function() {
-			var w = (window.innerWidth - $("#mainContainer").width()) / 2;
+			var w = ((window.innerWidth - $("#mainContainer").width()) / 2)-15;
 			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
-			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
+			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);			
+			var $left = $(".l");
+			var $right = $(".r");
+			windowWidth = window.innerWidth;
+			if(windowWidth <=768) {
+				$bracelets.removeClass("l bracelet_bg_pos");
+				$diamonds.removeClass("r diamonds_bg_pos");
+				$w_rings.removeClass("l w_rings_bg_pos");
+				$rings.removeClass("r rings_bg_pos");
+				$crosses.removeClass("l crosses_bg_pos");
+				$earrings.removeClass("r earrings_bg_pos");
+				$necklaces.removeClass("l necklaces_bg_pos");
+				$pendants.removeClass("r pendants_bg_pos");
+			}
+			else {
+				$bracelets.addClass("l bracelet_bg_pos");
+				$diamonds.addClass("r diamonds_bg_pos");
+				$w_rings.addClass("l w_rings_bg_pos");
+				$rings.addClass("r rings_bg_pos");
+				$crosses.addClass("l crosses_bg_pos");
+				$earrings.addClass("r earrings_bg_pos");
+				$necklaces.addClass("l necklaces_bg_pos");
+				$pendants.addClass("r pendants_bg_pos");
+			}
+		});
+		
+		$(window).scroll(function(){
+			var docElement = $(document)[0].documentElement;
+			var winElement = $(window)[0];
+			
+			var subtract = docElement.scrollHeight - winElement.innerHeight;
+			if((subtract == winElement.pageYOffset) || (subtract == winElement.pageYOffset - 1)){
+				$("#footerContainer").slideDown(300);
+				//alert("bottom");
+			}
+			else {
+				$("#footerContainer").slideUp(300);
+			}
 		});
 		
 		$(".carousel-control").hover(function() {
@@ -36,6 +219,7 @@
 		}, function() {
 			$(this).animate({opacity:0.5}, 200);
 		});
+	
 	});
 </script>
 </head>
@@ -43,9 +227,18 @@
 <div class="background1"></div>
 <div class="background2"></div>
 <div id="mainBanner" class="container" style="position:relative;">
+	<div class="videoContainer" style="opacity: 0;">
+		<span class="button b-close"><span>X</span></span>
+		<video id="intro" width="720" height="406" autoplay>
+		  <source src="ELEMENTS/intro.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+	
 	<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
 	<nav class="navbar navbar-default menu-default" id="menu">
-	  <div class="container-fluid">
+	<img class="img-responsive" src="logo.png" id="logo" />
+	  <div class="container-fluid mobileMenu">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 		  <button id="btnCollapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
@@ -59,16 +252,22 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 		  <ul class="nav nav-pills nav-justified">
-			<li class="active"><a href="markazit.html"><h4>НАЧАЛО</h4></a></li>
-			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>КОЛЕКЦИЯ</h4></a>
+			<li class="active"><a href="markazit.html"><h4>Начало</h4></a></li>
+			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция</h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">ПРЪСТЕНИ</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ГРИВНИ</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="bracelets.html">Гривни</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="wedRings.html">Халки</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">КОЛИЕТА</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="pendants.html">Висулки</a></li>
 				</ul>
 			</li>
-			<li><a href="#"><h4>СЪВЕТИ</h4></a></li>
-			<li><a href="#"><h4>ЗА НАС</h4></a></li>
+			<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
+			<li><a href="#"><h4>Поръчки</h4></a></li>
+			<li><a href="#"><h4>Съвети</h4></a></li>
+			<li><a href="#"><h4>За нас</h4></a></li>
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -117,33 +316,61 @@
 </div>
 <div id="mainContainer" class="container last">
   <div class="row">
-    <div class="col-sm-6" title="Bracelets" style="background: url('Bracelets/ON.png') no-repeat center; background-size: contain;">
-		<div class="shadowBox"><img class="img-responsive" src="Bracelets/OFF.png" /></div>
+    <div class="col-sm-6" title="Bracelets" style="">
+		<a href="bracelets.html"><div class="shadowBox"><img class="img-responsive" src="Bracelets/OFF.png" /></div></a>
 	</div>
-    <div class="col-sm-6" title="Engagement rings" style="background: url('engRing/ON.png') no-repeat center; background-size: contain;">
-		<div class="shadowBox"><img class="img-responsive" src="engRing/OFF.png" /></div>
+    <div class="col-sm-6" title="Diamonds" style="">
+		<a href="diamonds.html"><div class="shadowBox"><img class="img-responsive" src="Diamonds/OFF.png" /></div></a>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6" title="Wedding rings" style="background: url('wedRings/ON.png') no-repeat center; background-size: contain;">
-		<div class="shadowBox"><img class="img-responsive" src="wedRings/OFF.png" /></div>
+    <div class="col-sm-6" title="Wedding rings" style="">
+		<a href="wedRings.html"><div class="shadowBox"><img class="img-responsive" src="wedRings/OFF.png" /></div></a>
     </div>
-    <div class="col-sm-6" title="Rings" style="background: url('Rings/ON.png') no-repeat center; background-size: contain;">
-		<div class="shadowBox"><img class="img-responsive" src="Rings/OFF.png" /></div>
+    <div class="col-sm-6" title="Rings" style="">
+		<a href="gallery.html"><div class="shadowBox"><img class="img-responsive" src="Rings/OFF.png" /></div></a>
     </div>
+  </div>
+  <div class="row">
+     <div class="col-sm-6" title="Pendants" style="">
+		<a href="pendants.html"><div class="shadowBox"><img class="img-responsive" src="Pendants/OFF.png" /></div></a>
+    </div>
+    <div class="col-sm-6" title="Earrings" style="">
+		<div class="shadowBox"><img class="img-responsive" src="Earrings/OFF.png" /></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" title="Necklaces" style="">
+		<div class="shadowBox"><img class="img-responsive" src="Necklaces/OFF.png" /></div>
+    </div>   
+	<!-- <div class="col-sm-6" title="Crosses" style="">
+		<div class="shadowBox"><img class="img-responsive" src="Crosses/OFF.png" /></div>
+    </div> -->
   </div>
 </div>
 <div id="footerContainer" class="container">
   <footer class="footer">
 	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-		<div>
-		  <ul class="nav nav-pills nav-justified">
+	  <div id="navbar" class="container-fluid">
+		<div class="bottomMenu" style="">
+		  <!-- <ul class="nav nav-pills nav-justified">
 			<li><a href="#"><h5>За нас</h5></a></li>
 			<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>
 			<li><a href="#"><h5>Често задавани въпроси</h5></a></li>
 			<li><a href="#"><h5>Контакти</h5></a></li>
+		  </ul> -->
+		  <ul class="nav bottom">
+			<li><a href="#"><span>За нас</span></a></li>
+			<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
+			<li><a href="#"><span>Често задавани въпроси</span></a></li>
+			<li><a href="#"><span>Контакти</span></a></li>
 		  </ul>
+		  <div class="socials">
+			<a href="#"><div class="mail"></div></a>
+			<a href="#"><div class="phone"></div></a>
+			<a href="#"><div class="facebook"></div></a>
+			<a href="#"><div class="googlePlus"></div></a>
+		  </div>
 		</div>
 	  </div>
 	</nav>

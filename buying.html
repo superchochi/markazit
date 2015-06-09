@@ -1,0 +1,530 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="jquery-1.11.2.min.js"></script>
+<script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="markazit.css">
+
+
+<link rel="stylesheet" href="chart.css">
+
+<link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+<style>
+.background1, .background2 {
+	display: block;
+}
+h4 {
+	font-size: 22px;
+	white-space: nowrap;
+	text-transform: uppercase;
+	outline: none;
+}
+a, a:focus {
+	outline: none;
+}
+
+.navbar {
+  min-height: 66px;
+}
+menu-default.nav>li>a {
+  padding: 1px 15px;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	box-shadow: .01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+	background-color: rgba(87, 59, 31, 0.6);
+}
+
+.nav .close>a, .nav .close>a:focus, .nav .close>a:hover {
+	box-shadow: .01em .01em 2em .01em #825631 inset;
+	color: #ffeac8;
+	background-color: rgba(87, 59, 31, 0.6);
+}
+
+.open>.dropdown-menu {
+  background-color: rgba(138, 90, 51, 1);
+  border: 0;
+  /*margin: 0;*/
+    top: 97%;
+}
+
+.dropdown-menu {
+	background-color: rgba(138, 90, 51, 1);
+	border: 0;
+	top: 97%;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+  color: #ffeac8;
+  text-decoration: none;
+}
+.container{
+	color: #8B5E3C;
+}
+h1{
+	display: inline-block;
+	font-size: 3.6em;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+h1, h1>span{
+	text-transform: uppercase;
+}
+h1>span{
+	font-size: 0.65em;
+}
+.row div .karats_wrapper{
+	 /* width: 73%; */
+    float: left;
+    margin: 0;
+}
+.row div .karats_container{
+	display: inline-block;
+	margin: 11px 8px;
+	width: 65px;
+	height: 65px;
+	text-align: center;
+	background-color: #fff;
+	/*border: 3px solid #8B5E3C;*/
+	border-radius: 8px;	
+	cursor: pointer;
+}
+.row div .karats_container:hover{
+	background-color: #8B5E3C;
+}
+.row div .karats_container_small{
+	font-size: 0.6em;
+	vertical-align: top;
+}
+.karats{
+	font-size: 3.0em;
+	color: #8B5E3C;	
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 3px solid #8B5E3C;
+	border-radius: 8px;
+	transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;.
+	-o-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+}
+.karats_small{
+	padding: 10px 0px;
+}
+.karats:hover{
+	color: #fff;
+}
+.big_price{
+	font-size: 10em;
+	padding-left: 13%;
+}
+.small_price{
+	font-size: 3em;
+	position: relative;
+	bottom: 30%;
+	border-bottom: 2px solid #fff;
+}
+.text{
+	display: inline-block;
+	position: relative;
+	font-size: 2em;
+	bottom: 125px;
+	left: 180px;
+}
+.asterisk{
+	font-size: 1.7em;
+	line-height: 0;
+}
+#price_box, #age_box {	
+	display: inline-block;	
+	margin-top: 18px;
+	color: #fff;
+}
+#price_box{
+	background: url('ELEMENTS/box.png') center center;
+	width: 282px;
+	height: 235px;
+}
+#age_box{
+	background: url('ELEMENTS/18.png') center center;
+	width: 261px;
+	height: 217px;
+	margin: 0;
+	margin-bottom: 10px;
+}
+.chart {
+  width: 100%;
+  text-align: center;
+}
+.chart p {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #bdc3c7;
+}
+canvas{
+	transition: all .3s ease;
+}
+.buying_header{
+	font-size: 1.5em;
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	line-height: 25px;
+}
+.eighteen{
+	font-size: 1.1em;
+  text-align: right;
+  line-height: 1;
+  vertical-align: middle;
+  margin-top: 10%;
+  display: block;
+  width: 120%;
+}
+@media (max-width: 991px) {
+	h4{
+		font-size: 17px;
+	}
+}
+</style>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+<script>
+	$(function() {
+			/*var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
+			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
+			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
+		
+		$(window).resize(function() {
+			var w = ((window.innerWidth - $("#mainContainer").width()) / 2)-15;
+			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
+			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);		
+		}); */
+		
+		$(window).scroll(function(){
+			var docElement = $(document)[0].documentElement;
+			var winElement = $(window)[0];
+			
+			if((docElement.scrollHeight - winElement.innerHeight) == winElement.pageYOffset){
+				$("#footerContainer").slideDown(300);
+				//alert("bottom");
+			}
+			else {
+				$("#footerContainer").slideUp(300);
+			}
+		});	
+		
+		$("#btn_panel li a")[0].focus();
+		
+		var color9K = ["#F2B705","#0092B9","#666"];
+		var data9K = [37.5, 42.5, 20];
+		var label9K = ["Злато","Сребро","Други"];
+		
+		var color10K = ["#F2B705","#0092B9","#D97904"];
+		var data10K = [41.7, 52, 6.3];
+		var label10K = ["Злато","Сребро","Мед"];
+		
+		var color14K = ["#F2B705","#0092B9","#D97904"];
+		var data14K = [58.4, 30, 11.70];
+		var label14K = ["Злато","Сребро","Мед"];
+		
+		var color18K = ["#F2B705","#0092B9","#D97904"];
+		var data18K = [75, 15, 10];
+		var label18K = ["Злато","Сребро","Мед"];
+		
+		var color22K = ["#F2B705","#0092B9","#D97904", "#BC3603"];
+		var data22K = [91.7, 5, 2, 1.3];
+		var label22K = ["Злато","Сребро","Мед","Цинк"];
+		
+		var karats = {
+			"K9": [
+				color9K,
+				data9K,
+				label9K
+			],
+			"K10": [
+				color10K,
+				data10K,
+				label10K
+			],"K14": [
+				color14K,
+				data14K,
+				label14K
+			],
+			"K18": [
+				color18K,
+				data18K,
+				label18K
+			],
+			"K22": [
+				color22K,
+				data22K,
+				label22K
+			]
+		}
+		
+		$('#btn_panel ul li a').bind('click', function(e){
+			e.preventDefault();
+			var text = $(this).data();
+			$(this).focus();
+			var karat = karats[text.karat];			
+			setTimeout(function(){
+				$('canvas').css('opacity', '0');
+				plotData(karat[0], karat[1], karat[2]);
+			}, 100)	
+			setTimeout(function(){
+				$('canvas').css('opacity', '1');
+			}, 200)	
+			
+		});
+		
+
+		function getTotal(myData){
+		  var myTotal = 0;
+		  for (var j = 0; j < myData.length; j++) {
+			myTotal += (typeof myData[j] == 'number') ? myData[j] : 0;
+		  }
+		  return myTotal;
+		}
+
+		function plotData(myColor, myData, myLabel) {
+		  var canvas;
+		  var ctx;
+		  var lastend = 0;
+		  var myTotal = getTotal(myData);
+		  var doc;
+		  canvas = document.getElementById("canvas");
+		  var x = (canvas.width)/2;
+		  var y = (canvas.height)/2;
+		  var r = 150;
+		  
+		  ctx = canvas.getContext("2d");
+		  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		  for (var i = 0; i < myData.length; i++) {
+			ctx.fillStyle = myColor[i];
+			ctx.beginPath();
+			ctx.moveTo(x,y);
+			ctx.arc(x,y,r,lastend,lastend+(Math.PI*2*(myData[i]/myTotal)),false);
+			ctx.lineTo(x,y);
+			ctx.fill();
+			
+			// Now the pointers
+			ctx.beginPath();
+			var start = [];
+			var end = [];
+			var last = 0;
+			var flip = 0;
+			var textOffset = 0;
+			var precentage = (myData[i]/myTotal)*100;
+			start = getPoint(x,y,r-20,(lastend+(Math.PI*2*(myData[i]/myTotal))/2));
+			end = getPoint(x,y,r+20,(lastend+(Math.PI*2*(myData[i]/myTotal))/2));
+			if(start[0] <= x)
+			{
+			  flip = -1;
+			  textOffset = -110;
+			}
+			else
+			{
+			  flip = 1;
+			  textOffset = 10;
+			}
+			ctx.moveTo(start[0],start[1]);
+			ctx.lineTo(end[0],end[1]);
+			ctx.lineTo(end[0]+120*flip,end[1]);
+			ctx.strokeStyle = "#bdc3c7";
+			ctx.lineWidth   = 2;
+			ctx.stroke();
+			// The labels
+			ctx.font="17px Arial";
+			ctx.fillText(myLabel[i]+" "+precentage.toFixed(2)+"%",end[0]+textOffset,end[1]-4); 
+			// Increment Loop
+			lastend += Math.PI*2*(myData[i]/myTotal);
+			
+		  }
+		}
+		// Find that magical point
+		function getPoint(c1,c2,radius,angle) {
+		  return [c1+Math.cos(angle)*radius,c2+Math.sin(angle)*radius];
+		}
+		// The drawing
+		plotData(color9K, data9K, label9K);
+	
+	});
+</script>
+</head>
+<body>
+<div class="background1"></div>
+<div class="background2"></div>
+<div id="mainBanner" class="container" style="position:relative;">
+	<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
+	<nav class="navbar navbar-default menu-default" id="menu">
+	<img class="img-responsive" src="logo.png" id="logo" />
+	  <div class="container-fluid mobileMenu">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button id="btnCollapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+		  <ul class="nav nav-pills nav-justified">
+			<li><a href="markazit.html"><h4>Начало</h4></a></li>
+			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция</h4></a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="bracelets.html">Гривни</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="wedRings.html">Халки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">КОЛИЕТА</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="pendants.html">Висулки</a></li>
+				</ul>
+			</li>
+			<li class="active"><a href="#"><h4>Изкупуване</h4></a></li>
+			<li><a href="#"><h4>Поръчки</h4></a></li>
+			<li><a href="#"><h4>Съвети</h4></a></li>
+			<li><a href="#"><h4>За нас</h4></a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</div>
+<div id="mainContainer" class="container last">
+	<div class="row">
+		<div class="col-sm-12">		
+			<img src="ELEMENTS/Scrap.png" width="211" height="140" /><h1>Изкупуване</br><span>на златни накити</span></h1>
+		</div>  
+	</div>
+  <div class="row">
+    <div class="col-sm-4">		
+		<!-- Gold Price Script - GOLDPRICEOZ.COM -->
+<!-- <div style="width:198px; border:1px solid #e7e7e7;height:auto;background-color:#ffffff;font-family:Arial;"><div style="background-color:#825631;height:24px;width:100%; margin:0 auto;font-size:18px; font-weight:bold;text-align:center; padding-top:0px;"><a href="http://www.goldpriceoz.com/" target="_blank" style="color:#ffeac8;text-decoration:none;">Gold Price</a></div><script type="text/javascript" src="http://www.goldpriceoz.com/goldwidget.php?l=en&m=000000&g=ffffff&c=2d6ab4&i=ffffff&l=ffeac8&o=e6f2fa"></script></div> -->
+<!-- End of Gold Price Script -->
+
+<!-- Gold Price Script - GOLDPRICEOZ.COM -->
+<div style="width:198px; border:1px solid #f8deb6;height:auto;background-color:#f8deb6;font-family:Arial; display: inline-block;"><div style="background-color:#732908;height:24px;width:100%; margin:0 auto;font-size:18px; font-weight:bold;text-align:center; padding-top:0px;"><a href="http://www.goldpriceoz.com/" target="_blank" style="color:#f8deb6;text-decoration:none;">Gold Price</a></div><script type="text/javascript" src="http://www.goldpriceoz.com/goldwidget.php?l=en&m=000000&g=f8deb6&c=732908&i=f8deb6&l=732908&o=f8deb6"></script></div>
+<!-- End of Gold Price Script -->
+
+	<svg style="vertical-align: bottom; margin-left: 50px;" version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 width="19.25px" height="232px" viewBox="0 0 19.25 232" enable-background="new 0 0 19.25 232" xml:space="preserve">
+	<polyline fill="none" stroke="#A97C50" stroke-width="4" stroke-miterlimit="10" points="3,0 3,103 15,115 2.5,127.5 2.5,232 "/>
+	</svg>
+	<div><p><span class="asterisk">*</span>цените се променят в зависимост от дневните котировки на благородния метал</p></div>
+	</div>
+	<div class="col-sm-4" style="margin-top: 40px; padding-left: 0; padding-right: 0;">		
+		<span style="font-size: 1.4em;">Избор на карати:</span></br>
+		<div class="karats_wrapper" style="">
+			<div class="karats_container"><span class="karats">8</span></div><div class="karats_container"><span class="karats">14</span></div><div class="karats_container"><span class="karats">18</span></div></br>
+			<div class="karats_container karats_container_small"><span class="karats karats_small">21.6</span></div><div class="karats_container"><span class="karats">22</span></div><div class="karats_container"><span class="karats">24</span></div>
+		</div>
+		<svg style="position: relative; top: -25px; margin-left: 30px; " version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 width="19.25px" height="232px" viewBox="0 0 19.25 232" enable-background="new 0 0 19.25 232" xml:space="preserve">
+			<polyline fill="none" stroke="#A97C50" stroke-width="4" stroke-miterlimit="10" points="3,0 3,103 15,115 2.5,127.5 2.5,232 "/>
+		</svg>		
+	</div> 
+	<div class="col-sm-4">
+		<div id="price_box"><span class="big_price">36</span><span class="small_price">.60</span><span class="text">лв/гр.</span></div>	
+	</div>
+  </div>
+  <div class="row">
+	<div class="col-sm-12">
+		<svg style="width: 100%;" version="1.1" id="Line3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="854px" height="22.5px" viewBox="0 0 854 22.5" enable-background="new 0 0 854 22.5" xml:space="preserve">
+		<polyline fill="none" stroke="#A97C50" stroke-width="4" stroke-miterlimit="10" points="0,3 414,3 429,18 444,3 854,3 "/>
+		</svg>
+		<div class="chart">
+		  <p>Процентно съотношение на елементите в каратите:</p>
+		  <canvas id="canvas" width="600" height="400">
+			Вашият браузър не поддържа този елемент. Моля използвайте по-нов браузър.
+		  </canvas>		  
+		</div>
+		<div id="btn_panel">
+			<ul>
+				<li><a href="#" data-karat="K9"><span>9</span><span>K</span></a></li>
+				<li><a href="#" data-karat="K10"><span>10</span><span>K</span></a></li>
+				<li><a href="#" data-karat="K14"><span>14</span><span>K</span></a></li>
+				<li><a href="#" data-karat="K18"><span>18</span><span>K</span></a></li>
+				<li><a href="#" data-karat="K22"><span>22</span><span>K</span></a></li>
+			</ul>
+		</div>
+	</div>
+  </div>
+  <div class="row">
+	<div class="col-sm-12">
+		<svg style="width: 100%;" version="1.1" id="Line3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="854px" height="22.5px" viewBox="0 0 854 22.5" enable-background="new 0 0 854 22.5" xml:space="preserve">
+		<polyline fill="none" stroke="#A97C50" stroke-width="4" stroke-miterlimit="10" points="0,3 414,3 429,18 444,3 854,3 "/>
+		</svg>
+		<p class="buying_header">За нас е важно да знаете целия процес, при който се изкупуват Вашите златни бижута.</p>
+	</div>
+  </div>
+  <div class="row">
+	<div class="col-sm-6">		
+		<p class="eighteen">
+			За да бъдем законосъобразни,</br> при изкупуване на материал,</br> трябва да имате навършени 18</br> години и при продажба от ваша</br> страна да представите </br>документ за самоличност.
+		</p>
+	</div> 
+	<div class="col-sm-6" style="text-align: right; padding-right: 45px;">
+		<svg style="position: relative; margin-right: 5%; " version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 width="19.25px" height="232px" viewBox="0 0 19.25 232" enable-background="new 0 0 19.25 232" xml:space="preserve">
+			<polyline fill="none" stroke="#A97C50" stroke-width="4" stroke-miterlimit="10" points="3,0 3,103 15,115 2.5,127.5 2.5,232 "/>
+		</svg>
+		<div id="age_box"><!-- <span>18</span> --></div>	
+	</div>
+  </div>
+</div>
+<div id="footerContainer" class="container">
+  <footer class="footer">
+	<nav class="navbar navbar-default">
+	  <div id="navbar" class="container-fluid">
+		<div class="bottomMenu" style="">
+		  <!-- <ul class="nav nav-pills nav-justified">
+			<li><a href="#"><h5>За нас</h5></a></li>
+			<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>
+			<li><a href="#"><h5>Често задавани въпроси</h5></a></li>
+			<li><a href="#"><h5>Контакти</h5></a></li>
+		  </ul> -->
+		  <ul class="nav bottom">
+			<li><a href="#"><span>За нас</span></a></li>
+			<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
+			<li><a href="#"><span>Често задавани въпроси</span></a></li>
+			<li><a href="#"><span>Контакти</span></a></li>
+		  </ul>
+		  <div class="socials">
+			<a href="#"><div class="mail"></div></a>
+			<a href="#"><div class="phone"></div></a>
+			<a href="#"><div class="facebook"></div></a>
+			<a href="#"><div class="googlePlus"></div></a>
+		  </div>
+		</div>
+	  </div>
+	</nav>
+  </footer>
+</div>
+<!--div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="background-color: black;">
+		<div align="center" class="embed-responsive embed-responsive-16by9">
+			<video autoplay class="embed-responsive-item">
+				<source src="video.mp4" type="video/mp4">
+			</video>
+		</div>
+    </div>
+  </div>
+</div-->
+</body>
+</html>
