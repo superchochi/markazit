@@ -2,155 +2,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="jquery-1.11.2.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
 <script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="gallery.css">
-
-<link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/gallery.css">
+<!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
+<link rel="stylesheet" href="css/forum.fonts.css">
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="jquery.bpopup.js"></script>
-<script src="main.js"></script>
-<style>
-h4 {
-	font-size: 22px;
-	white-space: nowrap;
-	text-transform: uppercase;
-	outline: none;
-}
-.active_type{
-	text-decoration: underline;
-}
-#types li {
-	display: inline-block;
-	padding: 1% 2%;
-	text-transform: uppercase;
-	transition: all 0.2s linear;
-}
-#types li:hover {
-	background-color: #999;
-}
-#types li a{	
-	color: #552603;	
-	text-decoration: none;
-	transition: all 0.2s linear;
-}
-#types li a:hover{	
-	color: #fff;
-}
-#popup {
-	display: none;
-}
-#popup,#popup2,.bMulti{
-	background-color:#fff;
-	border-radius:10px 10px 10px 10px;
-	box-shadow:0 0 25px 5px #999;
-	color:#111;
-	display:none;
-	min-width:640px;
-	max-width:700px;
-	padding:25px;
-	padding-top:50px;
-}
-
-#popup .logo{
-	color:#2b91af;
-	font:bold 325% 'Petrona',sans
-}
-
-#popup,.bMulti{
-	min-height:400px
-}
-
-.b-close {
-	border-radius: 7px;
-	font: bold 131% sans-serif;
-	padding: 0 6px 2px;
-	background-color: #2b91af;
-	color: #fff;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	position: absolute;
-	right: -7px;
-	top: -7px;
-}
-.b-close:hover {
-	background-color: #1e1e1e;
-}
-
-a, a:focus {
-	outline: none;
-}
-
-.navbar {
-  min-height: 66px;
-}
-menu-default.nav>li>a {
-  padding: 1px 15px;
-}
-
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.nav .close>a, .nav .close>a:focus, .nav .close>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.open>.dropdown-menu {
-  background-color: rgba(138, 90, 51, 1);
-  border: 0;
-  /*margin: 0;*/
-    top: 97%;
-}
-
-.dropdown-menu {
-	background-color: rgba(138, 90, 51, 1);
-	border: 0;
-	top: 97%;
-}
-
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-  color: #ffeac8;
-  text-decoration: none;
-}
-
-input[type=checkbox], input[type=radio] {
-  margin: -15px 0 0;
-}
-
-@media (max-width: 991px) {
-	h4{
-		font-size: 17px;
-	}
-}
-</style>
+<script src="js/jquery.bpopup.js"></script>
+<script src="js/main.js"></script>
+<script src="js/db.js"></script>
 <script>
+	var category = 1;
 	var galleryPage = 1;
-	var allPages = 2;
+	var allPages = Math.ceil(getCount(category) / 20);
+	var view = "col-sm-3";
+	
+	function getUrlParam(param) {
+		if (window.document.URL.indexOf("?") > 0) {
+		  var end = window.document.URL.indexOf("#");
+		  if (end === -1) {
+			end = window.document.URL.length;
+		  }
+		  var params = window.document.URL.substring(window.document.URL.indexOf("?") + 1, end).split("&");
+		  for (var i = 0; i < params.length; i++) {
+			if (params[i].indexOf("=") > 0) {
+			  var spl = params[i].split("=");
+			  if (spl[0] === param) {
+				return spl[1];
+			  }
+			}
+		  }
+		}
+		return "";
+	}
+	
+	function loadGallery() {
+		var category = getUrlParam("category");
+		if(!category) category = "rings";
+		switch(category) {
+			case "rings":
+				this.category = 1;
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Мъжки");
+				$("#radio2div").show();
+				$("#radio2div label").text("Женски");
+				break;
+			case "diamonds":
+				this.category = 1;
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Всички");
+				$("#radio2div").show();
+				$("#radio2div label").text("Мъжки");
+				$("#radio3div").show();
+				$("#radio3div label").text("Женски");
+				break;
+			case "bracelets":
+				this.category = 1;
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Всички");
+				$("#radio2div").show();
+				$("#radio2div label").text("Мъжки");
+				$("#radio3div").show();
+				$("#radio3div label").text("Женски");
+				break;
+			case "wedRings":
+				this.category = 1;
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Всички");
+				$("#radio2div").show();
+				$("#radio2div label").text("Мъжки");
+				$("#radio3div").show();
+				$("#radio3div label").text("Женски");
+				break;
+			case "pendants":
+				this.category = 1;
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Всички");
+				$("#radio2div").show();
+				$("#radio2div label").text("Кръстчета");
+				$("#radio3div").show();
+				$("#radio3div label").text("Богородици");
+				$("#radio4div").show();
+				$("#radio4div label").text("Зодии");
+				$("#radio5div").show();
+				$("#radio5div label").text("Букви");
+				$("#radio6div").show();
+				$("#radio6div label").text("Детски");
+				break;
+			default: 
+				this.category = 1;
+				window.location.replace("gallery.html?category=rings");
+		}
+	}
 
 	$(function() {
+		loadGallery();
 		$('.pager a[href*=#]').on('click', function(event){     
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top - $("#galleryMenu").height()}, 1000);
 		});
 		$(".previous").click(function() {
 			if(galleryPage > 1) {
-				updateGallery(galleryPage - 1);
 				galleryPage--;
+				updateGallery(galleryPage);
 			}
 		});
 		$(".next").click(function() {
 			if(galleryPage < allPages) {
-				updateGallery(galleryPage + 1);
 				galleryPage++;
+				updateGallery(galleryPage);
 			}
 		});
 		
@@ -162,51 +130,28 @@ input[type=checkbox], input[type=radio] {
 			$('.icon-large').bind('click', function(e){
 				e.preventDefault();
 				$('.icon-small').css({'color': '', 'background-color': ''});
-				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-6');				
+				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-6');
+				view = "col-sm-6";
 			});
-			
 			$('.icon-small').bind('click', function(e){
 				e.preventDefault();
 				$(this).css({'color': '#333', 'background-color': 'transparent'});
 				$('.icon-lagre').css({'color': '', 'background-color': ''});
-				$('.col-sm-6').removeClass('col-sm-6').addClass('col-sm-3');				
-			})
+				$('.col-sm-6').removeClass('col-sm-6').addClass('col-sm-3');
+				view = "col-sm-3";				
+			});
 			
-			$('.col-sm-3').bind('click', function(e){
-				e.preventDefault();				
-				$('#popup').bPopup().css('top', $(this).css("top") - 600 + 'px');
-			})
-			
-			/*$('#radio1').bind('click', function(e){			
-				$(this).attr("checked", "checked")
-				var $images = $('.col-sm-3 img');
-				var imagesLentgh = $images.length;
-				for	(var i=0; i<= imagesLentgh; i++ ){
-					imgSource = $images[i].src;
-					if(imgSource.indexOf('mens-gold-with-diamong-collection-1.jpg') != -1 ){
-						$images[i].src = 'ring.jpg';
-					}
-					else{
-						$images[i].src = 'mens-gold-with-diamong-collection-1.jpg';
-					}
-					
-					i++;
-				}
-					
-				//.attr('src', 'ring.jpg');
-			}) */
-			
-			$('#radio2').bind('click', function(e){			
-				$(this).attr("checked", "checked")
-				$('.col-sm-3 img').attr('src', 'ring.jpg')
-				$('.col-sm-6 img').attr('src', 'ring.jpg');
-			})
-			$('#radio3').bind('click', function(e){			
-				$(this).attr("checked", "checked")
-				$('.col-sm-3 img').attr('src', 'mens-gold-with-diamong-collection-1.jpg');
-				$('.col-sm-6 img').attr('src', 'mens-gold-with-diamong-collection-1.jpg');
-			})
-		})
+			$("#filter input:radio").bind('click', function(e){
+				$("#filter input:radio[checked=checked]").each(function() {
+					$(this).attr("checked", false);
+				});
+				$(this).attr("checked", true);
+				//category = 1;
+				//allPages = Math.ceil(getCount(category) / 20);
+				//galleryPage = 1;
+				//updateGallery(galleryPage);
+			});
+		});
 		
 		$(window).scroll(function() {
 			if($("#menu").css("position") === "fixed") {
@@ -227,34 +172,8 @@ input[type=checkbox], input[type=radio] {
 	function updateGallery(page) {
 		$(".row").remove();
 		var pager = $("#galleryPager");
-		var row = $(document.createElement("div"));
-		row.addClass("row");
-		for(var i = 1; i < 20; i++) {
-			var col = $(document.createElement("div"));
-			col.addClass("col-sm-3");
-			var img = $(document.createElement("img"));
-			img.addClass("img-responsive");
-			img.attr("src", page == 1 ? "ring.jpg" : "ring2.jpg");
-			/*var span1 = $(document.createElement("span"));
-			span1.addClass("center-block");
-			span1.css("width", "100%");
-			span1.css("text-align", "center");
-			span1.text("Име");*/
-			var span2 = $(document.createElement("span"));
-			span2.addClass("center-block");
-			span2.css("width", "100%");
-			span2.css("text-align", "center");
-			span2.text("Цена");
-			col.append(img);
-			//col.append(span1);
-			col.append(span2);
-			row.append(col);
-			if((i > 1 && i % 4 === 0) || i === 19) {
-				row.insertBefore(pager);
-				row = $(document.createElement("div"));
-				row.addClass("row");
-			}
-		}
+		getItems(category, 20, (page-1) * 20, pager, view);
+		$("#pages").text(galleryPage + "/" + allPages);
 	}
 </script>
 </head>
@@ -282,16 +201,16 @@ input[type=checkbox], input[type=radio] {
 			<li><a href="markazit.html"><h4>Начало</h4></a></li>
 			<li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция <span class="glyphicon glyphicon-chevron-down" style="margin-left: 10px; vertical-align: text-bottom;"></span></h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="bracelets.html">Гривни</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="wedRings.html">Халки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=rings">Пръстени</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=diamonds">Диаманти</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=bracelets">Гривни</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=wedRings">Халки</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">КОЛИЕТА</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="pendants.html">Висулки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=pendants">Висулки</a></li>
 				</ul>
 			</li>
-			<li><a href="#"><h4>Изкупуване</h4></a></li>
+			<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
 			<li><a href="#"><h4>Поръчки</h4></a></li>
 			<li><a href="#"><h4>Съвети</h4></a></li>
 			<li><a href="#"><h4>За нас</h4></a></li>
@@ -331,39 +250,47 @@ input[type=checkbox], input[type=radio] {
 <div style="font-family: 'Forum', cursive;" id="popup">
         <span class="button b-close"><span>X</span></span>
 		<div style="float: left; width: 50%;">
-			<img class="img-responsive" src="ring.jpg" >
+			<img id="mainImg" class="img-responsive" src="" >
 		</div>
 		<div style="float: right; width: 50%;">
-			<span style="font-size: 1.5em;">Кат. №<span>0000</span></span></br>
-			<span class="" style="width: 100%; text-align: center; font-size: 1.9em; ">Цена: <span style="font-size: 1.1em">00.0</span><span style="font-size: 1.1em"> лв.</span></span>
+			<span style="font-size: 1.5em;">Кат. №<span id="catalogNum"></span></span></br>
+			<span class="" style="width: 100%; text-align: center; font-size: 1.9em; ">Цена: <span id="price" style="font-size: 1.1em"></span><span style="font-size: 1.1em"> лв.</span></span>
 			<hr></hr>
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
-			<img class="img-responsive" src="ring.jpg" style="width: 31%; display: inline-block;">
+			<img id="secondImg" class="img-responsive" src="" style="width: 31%; display: inline-block;">
+			<img id="thirdImg" class="img-responsive" src="" style="width: 31%; display: inline-block;">
+			<img id="fourthImg" class="img-responsive" src="" style="width: 31%; display: inline-block;">
 			<hr></hr>		
-			<span class="" style="">Тегло: </span><span>Data from DB</span></br>
-			<span class="" style="">Параметри: </span><span>Data from DB</span>		
+			<span class="" style="">Тегло: </span><span id="weight"></span></br>
+			<span class="" style="">Параметри: </span><span id="params"></span>		
 		</div>
 </div>
 	
 <div id="galleryGrid" class="container gallery last">
 	<div id="filter">
-		<!-- <div>
-		<input type="radio" name="radio" id="radio1" class="radio" checked/>
-		<label for="radio1">Всички</label>
-		</div> -->
-		<div>
-			<input type="radio" name="radio" id="radio2" class="radio" checked/>
-			<label for="radio2">Дамски</label>
+		<div id="radio1div" style="display:none;">
+			<input type="radio" name="radio" id="radio1" class="radio"/>
+			<label for="radio1"></label>
 		</div>
-		<div>	
+		<div id="radio2div" style="display:none;">
+			<input type="radio" name="radio" id="radio2" class="radio"/>
+			<label for="radio2"></label>
+		</div>
+		<div id="radio3div" style="display:none;">	
 			<input type="radio" name="radio" id="radio3" class="radio"/>
-			<label for="radio3">Мъжки</label>
-		</div>
-		<!-- <div>	
+			<label for="radio3"></label>
+		</div></br>
+		<div id="radio4div" style="display:none;">	
 			<input type="radio" name="radio" id="radio4" class="radio"/>
-			<label for="radio4">Fourth Option</label>
-		</div> -->
+			<label for="radio4"></label>
+		</div>
+		<div id="radio5div" style="display:none;">	
+			<input type="radio" name="radio" id="radio5" class="radio"/>
+			<label for="radio5"></label>
+		</div>
+		<div id="radio6div" style="display:none;">	
+			<input type="radio" name="radio" id="radio6" class="radio"/>
+			<label for="radio6"></label>
+		</div>
 	</div>
 	
 <!-- <ul id="types">
@@ -371,7 +298,7 @@ input[type=checkbox], input[type=radio] {
 </ul> -->
   <ul id="galleryPager" class="pager">
     <li class="previous"><a href="#galleryGrid">Previous</a></li>
-    <li>1/10</li>
+    <li id="pages"></li>
     <li class="next"><a href="#galleryGrid">Next</a></li>
   </ul>
 </div>

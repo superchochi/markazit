@@ -1,4 +1,4 @@
-$(function() {
+﻿$(function() {
 	$(window).on("resize", function() {
 		var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
 		$(".background1").css("width", w);

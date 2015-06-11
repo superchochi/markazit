@@ -2,15 +2,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="jquery-1.11.2.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
 <script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script>
+<!--script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script-->
+<script src="js/jquery.dim-background.min.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="markazit.css">
-
-<link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/markazit.css">
+<!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
+<link rel="stylesheet" href="css/forum.fonts.css">
 <style>
 .b-close {
 	border-radius: 18px;
@@ -84,7 +85,7 @@ menu-default.nav>li>a {
 }
 </style>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 <script>
 	$(function() {
 		$(".row img").hover(function() {
@@ -255,13 +256,13 @@ menu-default.nav>li>a {
 			<li class="active"><a href="markazit.html"><h4>Начало</h4></a></li>
 			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция</h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="bracelets.html">Гривни</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="wedRings.html">Халки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=rings">Пръстени</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=diamonds">Диаманти</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=bracelets">Гривни</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=wedRings">Халки</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">КОЛИЕТА</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="pendants.html">Висулки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=pendants">Висулки</a></li>
 				</ul>
 			</li>
 			<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
@@ -317,31 +318,31 @@ menu-default.nav>li>a {
 <div id="mainContainer" class="container last">
   <div class="row">
     <div class="col-sm-6" title="Bracelets" style="">
-		<a href="bracelets.html"><div class="shadowBox"><img class="img-responsive" src="Bracelets/OFF.png" /></div></a>
+		<a href="gallery.html?category=bracelets"><div class="shadowBox"><img class="img-responsive" src="Bracelets/OFF.png" /></div></a>
 	</div>
     <div class="col-sm-6" title="Diamonds" style="">
-		<a href="diamonds.html"><div class="shadowBox"><img class="img-responsive" src="Diamonds/OFF.png" /></div></a>
+		<a href="gallery.html?category=diamonds"><div class="shadowBox"><img class="img-responsive" src="Diamonds/OFF.png" /></div></a>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6" title="Wedding rings" style="">
-		<a href="wedRings.html"><div class="shadowBox"><img class="img-responsive" src="wedRings/OFF.png" /></div></a>
+		<a href="gallery.html?category=wedRings"><div class="shadowBox"><img class="img-responsive" src="wedRings/OFF.png" /></div></a>
     </div>
     <div class="col-sm-6" title="Rings" style="">
-		<a href="gallery.html"><div class="shadowBox"><img class="img-responsive" src="Rings/OFF.png" /></div></a>
+		<a href="gallery.html?category=rings"><div class="shadowBox"><img class="img-responsive" src="Rings/OFF.png" /></div></a>
     </div>
   </div>
   <div class="row">
      <div class="col-sm-6" title="Pendants" style="">
-		<a href="pendants.html"><div class="shadowBox"><img class="img-responsive" src="Pendants/OFF.png" /></div></a>
+		<a href="gallery.html?category=pendants"><div class="shadowBox"><img class="img-responsive" src="Pendants/OFF.png" /></div></a>
     </div>
     <div class="col-sm-6" title="Earrings" style="">
-		<div class="shadowBox"><img class="img-responsive" src="Earrings/OFF.png" /></div>
+		<a href="gallery.html?category=earrings"><div class="shadowBox"><img class="img-responsive" src="Earrings/OFF.png" /></div></a>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6" title="Necklaces" style="">
-		<div class="shadowBox"><img class="img-responsive" src="Necklaces/OFF.png" /></div>
+		<a href="gallery.html?category=necklaces"><div class="shadowBox"><img class="img-responsive" src="Necklaces/OFF.png" /></div></a>
     </div>   
 	<!-- <div class="col-sm-6" title="Crosses" style="">
 		<div class="shadowBox"><img class="img-responsive" src="Crosses/OFF.png" /></div>

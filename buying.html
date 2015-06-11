@@ -2,18 +2,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="jquery-1.11.2.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
 <script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script>
+<!--script type="text/javascript" src="http://andywer.github.io/jquery-dim-background/jquery.dim-background.min.js"></script-->
+<script src="js/jquery.dim-background.min.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="markazit.css">
-
-
-<link rel="stylesheet" href="chart.css">
-
-<link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/markazit.css">
+<link rel="stylesheet" href="css/chart.css">
+<!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
+<link rel="stylesheet" href="css/forum.fonts.css">
 <style>
 .background1, .background2 {
 	display: block;
@@ -196,7 +195,7 @@ canvas{
 }
 </style>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 <script>
 	$(function() {
 			/*var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
@@ -385,13 +384,13 @@ canvas{
 			<li><a href="markazit.html"><h4>Начало</h4></a></li>
 			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4>Колекция</h4></a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width:100%;">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html">Пръстени</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="diamonds.html">Диаманти</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="bracelets.html">Гривни</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="wedRings.html">Халки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=rings">Пръстени</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=diamonds">Диаманти</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=bracelets">Гривни</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=wedRings">Халки</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ОБЕЦИ</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">КОЛИЕТА</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="pendants.html">Висулки</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="gallery.html?category=pendants">Висулки</a></li>
 				</ul>
 			</li>
 			<li class="active"><a href="#"><h4>Изкупуване</h4></a></li>

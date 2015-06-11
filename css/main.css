@@ -7,7 +7,7 @@ body {
 	left:0;
 	width:50%;
 	height:100%;
-	background: URL('box_background.png');
+	background: URL('../box_background.png');
 	z-index:-1;
 	opacity:0.8;
 }
@@ -16,7 +16,7 @@ body {
 	right:0;
 	width:50%;
 	height:100%;
-	background: URL('box_background.png');
+	background: URL('../box_background.png');
 	z-index:-1;
 	opacity:0.8;
 }
@@ -61,7 +61,7 @@ body {
 	max-width:inherit;
 	width:inherit;
 	z-index:102;
-	background: URL('small_baner.png');
+	background: URL('../small_baner.png');
 	background-repeat: no-repeat;	
 	/* background-size: contain; */
 	 -webkit-transition-property: all;
@@ -103,7 +103,7 @@ body {
 }
 
 .left_img_bracelet{
-	background: url('Bracelets/ON.png') no-repeat center;
+	background: url('../Bracelets/ON.png') no-repeat center;
 	background-size: contain;
 }
 .bracelet_bg_pos{	
@@ -111,7 +111,7 @@ body {
 	background-position :-1px;
 }
 .right_img_diamonds{
-	background: url('Diamonds/ON.png') no-repeat center; 
+	background: url('../Diamonds/ON.png') no-repeat center; 
 	background-size: contain;
 }
 .diamonds_bg_pos{
@@ -119,7 +119,7 @@ body {
 	padding-right: 7px;
 }
 .left_img_w_rings {
-	background: url('wedRings/ON.png') no-repeat center;
+	background: url('../wedRings/ON.png') no-repeat center;
 	background-size: contain;
 }
 .w_rings_bg_pos{
@@ -127,7 +127,7 @@ body {
 	background-position :1px;
 }
 .right_img_rings{
-	background: url('Rings/ON.png') no-repeat center; 
+	background: url('../Rings/ON.png') no-repeat center; 
 	background-size: contain;
 }
 .rings_bg_pos{
@@ -135,7 +135,7 @@ body {
 	background-position :8px;
 }
 .left_img_crosses{
-	background: url('Crosses/ON.png') no-repeat center;
+	background: url('../Crosses/ON.png') no-repeat center;
 	background-size: contain;
 }
 .crosses_bg_pos{	
@@ -143,7 +143,7 @@ body {
 	background-position :-1px;
 }
 .right_img_earrings{
-	background: url('Earrings/ON.png') no-repeat center; 
+	background: url('../Earrings/ON.png') no-repeat center; 
 	background-size: contain;
 }
 .earrings_bg_pos{
@@ -151,7 +151,7 @@ body {
 	background-position :7px;
 }
 .left_img_necklaces{
-	background: url('Necklaces/ON.png') no-repeat center;
+	background: url('../Necklaces/ON.png') no-repeat center;
 	background-size: contain;
 }
 .necklaces_bg_pos{	
@@ -159,7 +159,7 @@ body {
 	background-position :1px;
 }
 .right_img_pendants{
-	background: url('Pendants/ON.png') no-repeat center; 
+	background: url('../Pendants/ON.png') no-repeat center; 
 	background-size: contain;
 }
 .pendants_bg_pos{
@@ -189,7 +189,7 @@ body {
 }
 .footer .navbar {
 	margin: 0;
-	background: url('ELEMENTS/baner.png')
+	background: url('../ELEMENTS/baner.png')
 }
 .footer .nav>li a:hover, .footer .nav>li a:focus {
 	background: transparent;
@@ -258,28 +258,28 @@ body {
 	-ms-transition: all 0.3s ease;
 }
 .mail{
-	background: url('ELEMENTS/social/mail/mail OFF.png') no-repeat;	
+	background: url('../ELEMENTS/social/mail/mail OFF.png') no-repeat;	
 }
 .mail:hover{
-	background: url('ELEMENTS/social/mail/mail ON.png') no-repeat;
+	background: url('../ELEMENTS/social/mail/mail ON.png') no-repeat;
 }
 .phone{
-	background: url('ELEMENTS/social/phone/phone OFF.png') no-repeat;
+	background: url('../ELEMENTS/social/phone/phone OFF.png') no-repeat;
 }
 .phone:hover{
-	background: url('ELEMENTS/social/phone/phone ON.png') no-repeat;
+	background: url('../ELEMENTS/social/phone/phone ON.png') no-repeat;
 }
 .facebook{
-	background: url('ELEMENTS/social/facebook/Facebook OFF.png') no-repeat;
+	background: url('../ELEMENTS/social/facebook/Facebook OFF.png') no-repeat;
 }
 .facebook:hover{
-	background: url('ELEMENTS/social/facebook/Facebook ON.png') no-repeat;
+	background: url('../ELEMENTS/social/facebook/Facebook ON.png') no-repeat;
 }
 .googlePlus{
-	background: url('ELEMENTS/social/G+/G+ OFF.png') no-repeat;
+	background: url('../ELEMENTS/social/G+/G+ OFF.png') no-repeat;
 }
 .googlePlus:hover{
-	background: url('ELEMENTS/social/G+/G+ ON.png') no-repeat;
+	background: url('../ELEMENTS/social/G+/G+ ON.png') no-repeat;
 }
 
 /* ul li a {
@@ -370,7 +370,7 @@ ul.bottom li a {
 		padding-top: 50px;
 	}
 	.mobileMenu{
-		background: url('ELEMENTS/baner.png');
+		background: url('../ELEMENTS/baner.png');
 	}
 	.menu-default{
 		  height: initial;
