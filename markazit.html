@@ -94,13 +94,9 @@ menu-default.nav>li>a {
 			$(this).fadeTo(200, 1);
 		});
 		
-		//$("#myModal").modal("show");
-		//setTimeout(function() {
-			//$("#myModal").modal("hide");
-			var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
-			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
-			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
-		//}, 2000);
+		var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
+		$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
+		$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
 		
 		var windowWidth = window.innerWidth;
 		var $bracelets = $("div[title=\"Bracelets\"]");
@@ -114,18 +110,16 @@ menu-default.nav>li>a {
 		
 		//var timesPlayed = 0;
 		
-		$( document ).ready( function(){
-			document.getElementById("intro").playbackRate = 2.5;
-			$(".videoContainer").each(function(){
-				$(this).css({
-					'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
-					'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
-					})
+		$("#intro").playbackRate = 2.5;
+		$(".videoContainer").each(function(){
+			$(this).css({
+				'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
+				'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
 			});
-		})
+		});
 		
 		$(window).load(function(){	
-			windowWidth = window.innerWidth
+			windowWidth = window.innerWidth;
 			if(windowWidth >=768) {
 				$bracelets.addClass("l left_img_bracelet bracelet_bg_pos");
 				$diamonds.addClass("r right_img_diamonds diamonds_bg_pos");
@@ -146,27 +140,25 @@ menu-default.nav>li>a {
 				$necklaces.addClass("left_img_necklaces");
 				$pendants.addClass("right_img_pendants");
 			}
-						
 			
-		
-			if(sessionStorage.length == 0){
+			if(!isMobile.any() && sessionStorage.length == 0){
 				$(".videoContainer").css('opacity', '1');
-				$("video").play;
+				$("#intro").get(0).play();
 				$(".b-close").on('click', function(){
 					$("video").trigger('ended');
-				})
+				});
 				$('body').dimBackground({
 					darkness : 0.8            // 0: no dimming, 1: completely black
 				}, function() {
 					$("video").on("ended", function(){
 						$(this).fadeOut("slow");
-						$(".b-close").fadeOut("slow")
+						$(".b-close").fadeOut("slow");
 						$.undim();
 						sessionStorage.setItem("timesPlayed", "1");
 					});
 				});
 			}
-			else{
+			else {
 				$("video").hide();
 				$(".b-close").hide();
 			}
