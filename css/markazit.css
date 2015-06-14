@@ -1,16 +1,20 @@
 .background1, .background2 {
 	display: none;
 }
+
 .carousel-control:hover {
 	opacity: 0.5;
 }
+
 .row>div>img {
 	cursor: pointer;
 }
+
 .shadowBox {
 	max-width: 480;
 	margin: auto !important;
 }
+
 .shadowBox:hover {
 	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 }

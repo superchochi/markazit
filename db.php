@@ -11,19 +11,18 @@ function openDBConnection() {
 	}
 	return $link;
 }
-
 function getItems() {
 	$category = $_GET ["category"];
-	$limit = $_GET["limit"];
-	$offset = $_GET["offset"];
-	if(!is_numeric ($category) || !is_numeric ($limit) || !is_numeric ($offset)) {
-		die("Missing parameter!");
+	$limit = $_GET ["limit"];
+	$offset = $_GET ["offset"];
+	if (! is_numeric ( $category ) || ! is_numeric ( $limit ) || ! is_numeric ( $offset )) {
+		die ( "Missing parameter!" );
 	}
-	$link = openDBConnection();
+	$link = openDBConnection ();
 	/*
-		columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
-	*/
-	$query = sprintf("select id, param1, price, path from items where category=%d limit %d offset %d", mysql_real_escape_string($category), mysql_real_escape_string($limit), mysql_real_escape_string($offset));
+	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
+	 */
+	$query = sprintf ( "select id, param1, price, path from items where category=%d limit %d offset %d", mysql_real_escape_string ( $category ), mysql_real_escape_string ( $limit ), mysql_real_escape_string ( $offset ) );
 	$result = mysql_query ( $query, $link );
 	$arr = array ();
 	$i = 0;
@@ -37,22 +36,21 @@ function getItems() {
 		$arr [$i] = $tmp;
 		$i ++;
 	}
-	header('Content-type: application/json');
+	header ( 'Content-type: application/json' );
 	echo json_encode ( $arr );
 	mysql_free_result ( $result );
 	mysql_close ( $link );
 }
-
 function getItem() {
 	$id = $_GET ["id"];
-	if(!is_numeric ($id)) {
-		die("Missing parameter!");
+	if (! is_numeric ( $id )) {
+		die ( "Missing parameter!" );
 	}
-	$link = openDBConnection();
+	$link = openDBConnection ();
 	/*
-		columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
-	*/
-	$query = sprintf("select weight, price, path, param1, param2, param3, param4 from items where id=%d", mysql_real_escape_string($id));
+	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
+	 */
+	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4 from items where id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$arr = array (
@@ -62,44 +60,43 @@ function getItem() {
 			$row [3],
 			$row [4],
 			$row [5],
-			$row [6]
+			$row [6] 
 	);
-	header('Content-type: application/json');
+	header ( 'Content-type: application/json' );
 	echo json_encode ( $arr );
 	mysql_free_result ( $result );
 	mysql_close ( $link );
 }
-
 function getCount() {
 	$category = $_GET ["category"];
-	if(!is_numeric ($category)) {
-		die("Missing parameter!");
+	if (! is_numeric ( $category )) {
+		die ( "Missing parameter!" );
 	}
-	$link = openDBConnection();
-	$query = sprintf("select count(*) from items where category=%d", mysql_real_escape_string($category));
+	$link = openDBConnection ();
+	$query = sprintf ( "select count(*) from items where category=%d", mysql_real_escape_string ( $category ) );
 	$result = mysql_query ( $query, $link );
-	$count = mysql_result($result, 0);
+	$count = mysql_result ( $result, 0 );
 	echo $count;
 	mysql_free_result ( $result );
 	mysql_close ( $link );
 }
 
-$function = $_GET["function"];
-if(!$function) {
-	die("Function not specified!");
+$function = $_GET ["function"];
+if (! $function) {
+	die ( "Function not specified!" );
 }
-switch($function) {
-	case "getItems":
-		getItems();
+switch ($function) {
+	case "getItems" :
+		getItems ();
 		break;
-	case "getCount":
-		getCount();
+	case "getCount" :
+		getCount ();
 		break;
-	case "getItem":
-		getItem();
+	case "getItem" :
+		getItem ();
 		break;
-	default: 
-		die("Unknown function ".$function);
+	default :
+		die ( "Unknown function " . $function );
 }
 
 ?>

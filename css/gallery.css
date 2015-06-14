@@ -1,7 +1,8 @@
 .gallery {
 	background-color: white;
-	padding:1% 3% 0 3%;
+	padding: 1% 3% 0 3%;
 }
+
 .row div:hover {
 	cursor: pointer;
 	/*background-color: lightgrey;*/
@@ -9,28 +10,31 @@
 	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 	z-index: 100;
 }
+
 .gallery-menu-top {
-	position:fixed;
+	position: fixed;
 	top: 65px;
-	max-width:inherit;
-	width:inherit;
-	z-index:101;
+	max-width: inherit;
+	width: inherit;
+	z-index: 101;
 }
-.active_icon{
+
+.active_icon {
 	color: #333;
 	background-color: transparent;
 }
 
-#filter{
+#filter {
 	display: block;
 	/* width: 100%; */
 	height: 50px;
 	margin: 0 9%;
 }
+
 label {
-  width: 200px;
-  border-radius: 3px;
-  border: 1px solid #D1D3D4
+	width: 200px;
+	border-radius: 3px;
+	border: 1px solid #D1D3D4
 }
 
 /* hide input */
@@ -46,7 +50,7 @@ input.radio:empty ~ label {
 	line-height: 2.5em;
 	text-indent: 3.25em;
 	/* margin-top: 2em; */
-	  margin: 0 16px;
+	margin: 0 16px;
 	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -67,19 +71,19 @@ input.radio:empty ~ label:before {
 }
 
 /* toggle hover */
-input.radio:hover:not(:checked) ~ label:before {
-	content:'\2714';
+input.radio:hover:not (:checked ) ~ label:before {
+	content: '\2714';
 	text-indent: .9em;
 	color: #C2C2C2;
 }
 
-input.radio:hover:not(:checked) ~ label {
+input.radio:hover:not (:checked ) ~ label {
 	color: #888;
 }
 
 /* toggle on */
 input.radio:checked ~ label:before {
-	content:'\2714';
+	content: '\2714';
 	text-indent: .9em;
 	color: #fff;
 	background-color: #754E2C;
@@ -94,7 +98,7 @@ input.radio:focus ~ label:before {
 	box-shadow: 0 0 0 3px #999;
 }
 
-@media (max-width: 47.9375em) {
+@media ( max-width : 47.9375em) {
 	#galleryMenu ul.nav, #galleryMenu ul.nav>li, #galleryMenu ul.nav>li>a {
 		display: inline-block;
 	}
@@ -109,8 +113,8 @@ input.radio:focus ~ label:before {
 	}
 	.gallery-menu-top {
 		position: relative;
-		top:0;
-		z-index:1;
+		top: 0;
+		z-index: 1;
 	}
 }
 
@@ -120,47 +124,54 @@ h4 {
 	text-transform: uppercase;
 	outline: none;
 }
-.active_type{
+
+.active_type {
 	text-decoration: underline;
 }
+
 #types li {
 	display: inline-block;
 	padding: 1% 2%;
 	text-transform: uppercase;
 	transition: all 0.2s linear;
 }
+
 #types li:hover {
 	background-color: #999;
 }
-#types li a{	
-	color: #552603;	
+
+#types li a {
+	color: #552603;
 	text-decoration: none;
 	transition: all 0.2s linear;
 }
-#types li a:hover{	
+
+#types li a:hover {
 	color: #fff;
 }
+
 #popup {
 	display: none;
 }
-#popup,#popup2,.bMulti{
-	background-color:#fff;
-	border-radius:10px 10px 10px 10px;
-	box-shadow:0 0 25px 5px #999;
-	color:#111;
-	display:none;
-	min-width:640px;
-	max-width:700px;
-	padding:25px
+
+#popup, #popup2, .bMulti {
+	background-color: #fff;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 0 25px 5px #999;
+	color: #111;
+	display: none;
+	min-width: 640px;
+	max-width: 700px;
+	padding: 25px
 }
 
-#popup .logo{
-	color:#2b91af;
-	font:bold 325% 'Petrona',sans
+#popup .logo {
+	color: #2b91af;
+	font: bold 325% 'Petrona', sans
 }
 
-#popup,.bMulti{
-	min-height:250px
+#popup, .bMulti {
+	min-height: 250px
 }
 
 .b-close {
@@ -176,6 +187,7 @@ h4 {
 	right: -7px;
 	top: -7px;
 }
+
 .b-close:hover {
 	background-color: #1e1e1e;
 }
@@ -185,10 +197,11 @@ a, a:focus {
 }
 
 .navbar {
-  min-height: 66px;
+	min-height: 66px;
 }
+
 menu-default.nav>li>a {
-  padding: 1px 15px;
+	padding: 1px 15px;
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
@@ -204,10 +217,10 @@ menu-default.nav>li>a {
 }
 
 .open>.dropdown-menu {
-  background-color: rgba(138, 90, 51, 1);
-  border: 0;
-  /*margin: 0;*/
-    top: 97%;
+	background-color: rgba(138, 90, 51, 1);
+	border: 0;
+	/*margin: 0;*/
+	top: 97%;
 }
 
 .dropdown-menu {
@@ -217,16 +230,16 @@ menu-default.nav>li>a {
 }
 
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-  color: #ffeac8;
-  text-decoration: none;
+	color: #ffeac8;
+	text-decoration: none;
 }
 
 input[type=checkbox], input[type=radio] {
-  margin: -15px 0 0;
+	margin: -15px 0 0;
 }
 
-@media (max-width: 991px) {
-	h4{
+@media ( max-width : 991px) {
+	h4 {
 		font-size: 17px;
 	}
 }
