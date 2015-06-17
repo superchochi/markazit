@@ -81,7 +81,7 @@ function getItem(id) {
 			var param3 = data[5];
 			var param4 = data[6];
 			if(path) {
-				$("#popup #mainImg").attr("src", path.trim());
+				$("#popup #mainImg").attr("src", "../" + path.trim());
 			}
 			$("#popup #catalogNum").text(this.id);
 			if(price) {
