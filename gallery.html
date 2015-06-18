@@ -15,9 +15,9 @@
 <script src="js/main.js"></script>
 <script src="js/db.js"></script>
 <script>
-	var category = 1;
+	var categories = [];
 	var galleryPage = 1;
-	var allPages = Math.ceil(getCount(category) / 20);
+	var allPages = 1;
 	var view = "col-sm-3";
 	
 	function getUrlParam(param) {
@@ -44,63 +44,95 @@
 		if(!category) category = "rings";
 		switch(category) {
 			case "rings":
-				this.category = 1;
-				$("#radio1div").show();
+				this.categories = [2];
+				$(".categoryTitle").text("Пръстени");
+				$("#radio1div").show();				
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Мъжки");
+				$("#radio1div label").text("Дамски");
+				$("#radio1").attr("categories", "2");
 				$("#radio2div").show();
-				$("#radio2div label").text("Женски");
+				$("#radio2div label").text("Мъжки");
+				$("#radio2").attr("categories", "3");
 				break;
 			case "diamonds":
-				this.category = 1;
-				$("#radio1div").show();
-				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Всички");
-				$("#radio2div").show();
-				$("#radio2div label").text("Мъжки");
-				$("#radio3div").show();
-				$("#radio3div label").text("Женски");
+				this.categories = [14, 18, 19, 21, 26, 27];
+				$(".categoryTitle").text("Диаманти");
 				break;
 			case "bracelets":
-				this.category = 1;
+				this.categories = [4, 25, 28];
+				$(".categoryTitle").text("Гривни");
 				$("#radio1div").show();
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Всички");
+				$("#radio1div label").text("Дамски");
+				$("#radio1").attr("categories", "4,25,28");
 				$("#radio2div").show();
 				$("#radio2div label").text("Мъжки");
+				$("#radio2").attr("categories", "5");
 				$("#radio3div").show();
-				$("#radio3div label").text("Женски");
+				$("#radio3div label").text("Детски");
+				$("#radio3").attr("categories", "22");
 				break;
 			case "wedRings":
-				this.category = 1;
-				$("#radio1div").show();
+				this.categories = [9];
+				$(".categoryTitle").text("Халки");
+				break;
+			/*case "earrings":
+				this.categories = [1];
+				$(".categoryTitle").text("Обеци");
+				$("#radio1div").show();				
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Всички");
+				$("#radio1div label").text("Дамски");
 				$("#radio2div").show();
-				$("#radio2div label").text("Мъжки");
-				$("#radio3div").show();
-				$("#radio3div label").text("Женски");
+				$("#radio2div label").text("Детски");
+				break;*/
+			case "necklaces":
+				this.categories = [6];
+				$(".categoryTitle").text("Колиета");
+				break;
+			case "chains":
+				this.categories = [8];
+				$(".categoryTitle").text("Синджири");
 				break;
 			case "pendants":
-				this.category = 1;
-				$("#radio1div").show();
+				this.categories = [31];
+				$(".categoryTitle").text("Висулки");
+				$("#radio1div").show()
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Всички");
+				$("#radio1div label").text("Кръстчета");
+				$("#radio1").attr("categories", "31");
 				$("#radio2div").show();
-				$("#radio2div label").text("Кръстчета");
+				$("#radio2div label").text("Богородици");
+				$("#radio2").attr("categories", "32");
 				$("#radio3div").show();
-				$("#radio3div label").text("Богородици");
+				$("#radio3div label").text("Зодии");
+				$("#radio3").attr("categories", "33");
 				$("#radio4div").show();
-				$("#radio4div label").text("Зодии");
-				$("#radio5div").show();
-				$("#radio5div label").text("Букви");
-				$("#radio6div").show();
-				$("#radio6div label").text("Детски");
+				$("#radio4div label").text("Букви");
+				$("#radio4").attr("categories", "34");
+				//$("#radio5div").show();
+				//$("#radio5div label").text("Други");
+				//$("#radio5").attr("categories", "2");
 				break;
+			/*case "accessories":
+				this.categories = [1];
+				$(".categoryTitle").text("Аксесоари");
+				$("#radio1div").show();				
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Златни аксесоари");
+				$("#radio2div").show();
+				$("#radio2div label").text("Златни часовници");
+				$("#radio3div").show();
+				$("#radio3div label").text("Стомана и диаманти");
+				break;*/
+			case "leather_and_silicone":
+				this.categories = [11, 12];
+				$(".categoryTitle").text("Кожа и силикон");				
+				break;					
 			default: 
-				this.category = 1;
+				this.categories = [2];
 				window.location.replace("gallery.html?category=rings");
 		}
+		allPages = Math.ceil(getCount(categories) / 20);
 	}
 
 	$(function() {
@@ -146,10 +178,10 @@
 					$(this).attr("checked", false);
 				});
 				$(this).attr("checked", true);
-				//category = 1;
-				//allPages = Math.ceil(getCount(category) / 20);
-				//galleryPage = 1;
-				//updateGallery(galleryPage);
+				categories = $(this).attr("categories").split(',');
+				allPages = Math.ceil(getCount(categories) / 20);
+				galleryPage = 1;
+				updateGallery(galleryPage);
 			});
 		});
 		
@@ -172,7 +204,14 @@
 	function updateGallery(page) {
 		$(".row").remove();
 		var pager = $("#galleryPager");
-		getItems(category, 20, (page-1) * 20, pager, view);
+		var str = "";
+		for(i = 0; i < categories.length; i++) {
+			str += categories[i];
+			if(i < categories.length - 1) {
+				str += ",";
+			}
+		}
+		getItems(str, 20, (page-1) * 20, pager, view);
 		$("#pages").text(galleryPage + "/" + allPages);
 	}
 </script>
@@ -216,16 +255,23 @@
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=wedRings">Халки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">ОБЕЦИ</a></li>
+									href="gallery.html?category=earrings">Обеци</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">КОЛИЕТА</a></li>
+									href="gallery.html?category=necklaces">Колиета</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=chains">Синджири</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=pendants">Висулки</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=accessories">Аксесоари</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=leather_and_silicone">Кожа и
+										силикон</a></li>
 							</ul></li>
 						<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
-						<li><a href="#"><h4>Поръчки</h4></a></li>
-						<li><a href="#"><h4>Съвети</h4></a></li>
-						<li><a href="#"><h4>За нас</h4></a></li>
+						<li><a href="orders.html"><h4>Поръчки</h4></a></li>
+						<li><a href="advices.html"><h4>Съвети</h4></a></li>
+						<li><a href="about.html"><h4>За нас</h4></a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -245,10 +291,10 @@
 				<li><a href="#" style="font-size: 1.4em;">Мъжки</a></li>
 			  </ul>
 			</li> -->
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li class="sort dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Сортирай<span
 							class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
+						<ul class="sort dropdown-menu" role="menu">
 							<li><a href="#" style="font-size: 1.4em;">цена <span
 									class="glyphicon glyphicon-menu-up"></a></li>
 							<li><a href="#" style="font-size: 1.4em;">цена <span
@@ -293,6 +339,7 @@
 
 	<div id="galleryGrid" class="container gallery last">
 		<div id="filter">
+			<span class="categoryTitle"></span>
 			<div id="radio1div" style="display: none;">
 				<input type="radio" name="radio" id="radio1" class="radio" /> <label
 					for="radio1"></label>
@@ -301,7 +348,7 @@
 				<input type="radio" name="radio" id="radio2" class="radio" /> <label
 					for="radio2"></label>
 			</div>
-			<div id="radio3div" style="display: none;">
+			<div id="radio3div" style="display: none; margin-bottom: 2.4em">
 				<input type="radio" name="radio" id="radio3" class="radio" /> <label
 					for="radio3"></label>
 			</div>
@@ -318,7 +365,7 @@
 				<input type="radio" name="radio" id="radio6" class="radio" /> <label
 					for="radio6"></label>
 			</div>
-		</div>
+		</div><br/>
 
 		<!-- <ul id="types">
     <li class="active_type"><a href="#">Бяло</a></li><li class=""><a href="#">Жълто</a></li><li class=""><a href="#">Комбинирано</a></li>
@@ -335,7 +382,7 @@
 				<div class="container-fluid">
 					<div>
 						<ul class="nav nav-pills nav-justified">
-							<li><a href="#"><h5>За нас</h5></a></li>
+							<li><a href="about.html"><h5>За нас</h5></a></li>
 							<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>
 							<li><a href="#"><h5>Често задавани въпроси</h5></a></li>
 							<li><a href="#"><h5>Контакти</h5></a></li>

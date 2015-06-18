@@ -27,7 +27,8 @@
 #filter {
 	display: block;
 	/* width: 100%; */
-	height: 50px;
+	/* height: 50px; */
+	height: 3.1em;
 	margin: 0 9%;
 }
 
@@ -150,6 +151,26 @@ h4 {
 	color: #fff;
 }
 
+.categoryTitle {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 2em;
+	line-height: 0.7em;
+	position: relative;
+	bottom: 0.5em;
+}
+
+#galleryPager {
+	clear: both;
+	vertical-align: middle;
+}
+
+#pages {
+	top: 7px;
+	position: relative;
+}
+
 #popup {
 	display: none;
 }
@@ -161,6 +182,7 @@ h4 {
 	color: #111;
 	display: none;
 	min-width: 640px;
+	/* 	min-width: 43em; */
 	max-width: 700px;
 	padding: 25px
 }
@@ -171,7 +193,8 @@ h4 {
 }
 
 #popup, .bMulti {
-	min-height: 250px
+	min-height: 25em;
+	/* min-height: 250px; */
 }
 
 .b-close {
@@ -229,8 +252,19 @@ menu-default.nav>li>a {
 	top: 97%;
 }
 
+.sort.dropdown-menu {
+	background-color: rgba(255, 255, 255, 1);
+	border: 0;
+	top: 97%;
+}
+
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
 	color: #ffeac8;
+	text-decoration: none;
+}
+
+.sort.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	color: #754E2C;
 	text-decoration: none;
 }
 

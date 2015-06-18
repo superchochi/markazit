@@ -12,17 +12,17 @@ function openDBConnection() {
 	return $link;
 }
 function getItems() {
-	$category = $_GET ["category"];
+	$categories = $_GET ["categories"];
 	$limit = $_GET ["limit"];
 	$offset = $_GET ["offset"];
-	if (! is_numeric ( $category ) || ! is_numeric ( $limit ) || ! is_numeric ( $offset )) {
+	if (! $categories || ! is_numeric ( $limit ) || ! is_numeric ( $offset )) {
 		die ( "Missing parameter!" );
 	}
 	$link = openDBConnection ();
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select id, param1, price, path from items where category=%d limit %d offset %d", mysql_real_escape_string ( $category ), mysql_real_escape_string ( $limit ), mysql_real_escape_string ( $offset ) );
+	$query = sprintf ( "select id, param1, price, path from items where category in(%s) limit %d offset %d", mysql_real_escape_string ( $categories ), mysql_real_escape_string ( $limit ), mysql_real_escape_string ( $offset ) );
 	$result = mysql_query ( $query, $link );
 	$arr = array ();
 	$i = 0;
@@ -68,12 +68,12 @@ function getItem() {
 	mysql_close ( $link );
 }
 function getCount() {
-	$category = $_GET ["category"];
-	if (! is_numeric ( $category )) {
+	$categories = $_GET ["categories"];
+	if (! $categories) {
 		die ( "Missing parameter!" );
 	}
 	$link = openDBConnection ();
-	$query = sprintf ( "select count(*) from items where category=%d", mysql_real_escape_string ( $category ) );
+	$query = sprintf ( "select count(*) from items where category in (%s)", mysql_real_escape_string ( $categories ) );
 	$result = mysql_query ( $query, $link );
 	$count = mysql_result ( $result, 0 );
 	echo $count;
@@ -98,5 +98,14 @@ switch ($function) {
 	default :
 		die ( "Unknown function " . $function );
 }
+
+/*
+ * function createCategoriesFilter($categories) {
+ * $str = "";
+ * for($i = 0; $i < count ( $categories ); $i ++) {
+ * $str += ($categories[$i] + ",");
+ * }
+ * }
+ */
 
 ?>

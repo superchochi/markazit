@@ -1,0 +1,12 @@
+.row div.clearHover:hover {
+	transform: scale(1);
+	box-shadow: none;
+	cursor: default;
+}
+
+p {
+	font-size: 1.4em;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0 auto;
+}

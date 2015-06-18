@@ -939,6 +939,13 @@ div {
 	opacity: .5;
 }
 
+#btn_panel li a.active_btn {
+	color: #c33702;
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	opacity: 1;
+}
 /* #btn_panel li:last-child a{color:#c33702; -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); opacity:1;} */
 #btn_panel li:hover a {
 	color: #c33702;

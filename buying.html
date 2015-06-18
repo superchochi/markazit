@@ -10,380 +10,14 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/markazit.css">
-<link rel="stylesheet" href="css/chart.css">
+<link rel="stylesheet" href="css/buying.css">
 <!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" href="css/forum.fonts.css">
-<style>
-.background1, .background2 {
-	display: block;
-}
 
-h4 {
-	font-size: 22px;
-	white-space: nowrap;
-	text-transform: uppercase;
-	outline: none;
-}
-
-a, a:focus {
-	outline: none;
-}
-
-.navbar {
-	min-height: 66px;
-}
-
-menu-default.nav>li>a {
-	padding: 1px 15px;
-}
-
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.nav .close>a, .nav .close>a:focus, .nav .close>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.open>.dropdown-menu {
-	background-color: rgba(138, 90, 51, 1);
-	border: 0;
-	/*margin: 0;*/
-	top: 97%;
-}
-
-.dropdown-menu {
-	background-color: rgba(138, 90, 51, 1);
-	border: 0;
-	top: 97%;
-}
-
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-	color: #ffeac8;
-	text-decoration: none;
-}
-
-.container {
-	color: #8B5E3C;
-}
-
-h1 {
-	display: inline-block;
-	font-size: 3.6em;
-	margin: 0;
-	padding: 0;
-	vertical-align: middle;
-}
-
-h1, h1>span {
-	text-transform: uppercase;
-}
-
-h1>span {
-	font-size: 0.65em;
-}
-
-.row div .karats_wrapper {
-	/* width: 73%; */
-	float: left;
-	margin: 0;
-}
-
-.row div .karats_container {
-	display: inline-block;
-	margin: 11px 8px;
-	width: 65px;
-	height: 65px;
-	text-align: center;
-	background-color: #fff;
-	/*border: 3px solid #8B5E3C;*/
-	border-radius: 8px;
-	cursor: pointer;
-}
-
-.row div .karats_container:hover {
-	background-color: #8B5E3C;
-}
-
-.row div .karats_container_small {
-	font-size: 0.6em;
-	vertical-align: top;
-}
-
-.karats {
-	font-size: 3.0em;
-	color: #8B5E3C;
-	display: block;
-	width: 100%;
-	height: 100%;
-	border: 3px solid #8B5E3C;
-	border-radius: 8px;
-	transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease; .
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-}
-
-.karats_small {
-	padding: 10px 0px;
-}
-
-.karats:hover {
-	color: #fff;
-}
-
-.big_price {
-	font-size: 10em;
-	padding-left: 13%;
-}
-
-.small_price {
-	font-size: 3em;
-	position: relative;
-	bottom: 30%;
-	border-bottom: 2px solid #fff;
-}
-
-.text {
-	display: inline-block;
-	position: relative;
-	font-size: 2em;
-	bottom: 125px;
-	left: 180px;
-}
-
-.asterisk {
-	font-size: 1.7em;
-	line-height: 0;
-}
-
-#price_box, #age_box {
-	display: inline-block;
-	margin-top: 18px;
-	color: #fff;
-}
-
-#price_box {
-	background: url('ELEMENTS/box.png') center center;
-	width: 282px;
-	height: 235px;
-}
-
-#age_box {
-	background: url('ELEMENTS/18.png') center center;
-	width: 261px;
-	height: 217px;
-	margin: 0;
-	margin-bottom: 10px;
-}
-
-.chart {
-	width: 100%;
-	text-align: center;
-}
-
-.chart p {
-	text-align: center;
-	font-family: "Arial", sans-serif;
-	font-size: 16px;
-	color: #bdc3c7;
-}
-
-canvas {
-	transition: all .3s ease;
-}
-
-.buying_header {
-	font-size: 1.5em;
-	display: block;
-	width: 50%;
-	margin: 0 auto;
-	line-height: 25px;
-}
-
-.eighteen {
-	font-size: 1.1em;
-	text-align: right;
-	line-height: 1;
-	vertical-align: middle;
-	margin-top: 10%;
-	display: block;
-	width: 120%;
-}
-
-@media ( max-width : 991px) {
-	h4 {
-		font-size: 17px;
-	}
-}
-</style>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script>
-	$(function() {
-			/*var w = ((window.innerWidth - $("#mainContainer").width()) / 2) - 15;
-			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
-			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
-		
-		$(window).resize(function() {
-			var w = ((window.innerWidth - $("#mainContainer").width()) / 2)-15;
-			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
-			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);		
-		}); */
-		
-		$(window).scroll(function(){
-			var docElement = $(document)[0].documentElement;
-			var winElement = $(window)[0];
-			
-			if((docElement.scrollHeight - winElement.innerHeight) == winElement.pageYOffset){
-				$("#footerContainer").slideDown(300);
-				//alert("bottom");
-			}
-			else {
-				$("#footerContainer").slideUp(300);
-			}
-		});	
-		
-		$("#btn_panel li a")[0].focus();
-		
-		var color9K = ["#F2B705","#0092B9","#666"];
-		var data9K = [37.5, 42.5, 20];
-		var label9K = ["Злато","Сребро","Други"];
-		
-		var color10K = ["#F2B705","#0092B9","#D97904"];
-		var data10K = [41.7, 52, 6.3];
-		var label10K = ["Злато","Сребро","Мед"];
-		
-		var color14K = ["#F2B705","#0092B9","#D97904"];
-		var data14K = [58.4, 30, 11.70];
-		var label14K = ["Злато","Сребро","Мед"];
-		
-		var color18K = ["#F2B705","#0092B9","#D97904"];
-		var data18K = [75, 15, 10];
-		var label18K = ["Злато","Сребро","Мед"];
-		
-		var color22K = ["#F2B705","#0092B9","#D97904", "#BC3603"];
-		var data22K = [91.7, 5, 2, 1.3];
-		var label22K = ["Злато","Сребро","Мед","Цинк"];
-		
-		var karats = {
-			"K9": [
-				color9K,
-				data9K,
-				label9K
-			],
-			"K10": [
-				color10K,
-				data10K,
-				label10K
-			],"K14": [
-				color14K,
-				data14K,
-				label14K
-			],
-			"K18": [
-				color18K,
-				data18K,
-				label18K
-			],
-			"K22": [
-				color22K,
-				data22K,
-				label22K
-			]
-		}
-		
-		$('#btn_panel ul li a').bind('click', function(e){
-			e.preventDefault();
-			var text = $(this).data();
-			$(this).focus();
-			var karat = karats[text.karat];			
-			setTimeout(function(){
-				$('canvas').css('opacity', '0');
-				plotData(karat[0], karat[1], karat[2]);
-			}, 100);
-			setTimeout(function(){
-				$('canvas').css('opacity', '1');
-			}, 200);
-		});
-		
+<script src="js/chart.js"></script>
 
-		function getTotal(myData){
-		  var myTotal = 0;
-		  for (var j = 0; j < myData.length; j++) {
-			myTotal += (typeof myData[j] == 'number') ? myData[j] : 0;
-		  }
-		  return myTotal;
-		}
-
-		function plotData(myColor, myData, myLabel) {
-		  var canvas;
-		  var ctx;
-		  var lastend = 0;
-		  var myTotal = getTotal(myData);
-		  var doc;
-		  canvas = document.getElementById("canvas");
-		  var x = (canvas.width)/2;
-		  var y = (canvas.height)/2;
-		  var r = 150;
-		  
-		  ctx = canvas.getContext("2d");
-		  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-		  for (var i = 0; i < myData.length; i++) {
-			ctx.fillStyle = myColor[i];
-			ctx.beginPath();
-			ctx.moveTo(x,y);
-			ctx.arc(x,y,r,lastend,lastend+(Math.PI*2*(myData[i]/myTotal)),false);
-			ctx.lineTo(x,y);
-			ctx.fill();
-			
-			// Now the pointers
-			ctx.beginPath();
-			var start = [];
-			var end = [];
-			var last = 0;
-			var flip = 0;
-			var textOffset = 0;
-			var precentage = (myData[i]/myTotal)*100;
-			start = getPoint(x,y,r-20,(lastend+(Math.PI*2*(myData[i]/myTotal))/2));
-			end = getPoint(x,y,r+20,(lastend+(Math.PI*2*(myData[i]/myTotal))/2));
-			if(start[0] <= x)
-			{
-			  flip = -1;
-			  textOffset = -110;
-			}
-			else
-			{
-			  flip = 1;
-			  textOffset = 10;
-			}
-			ctx.moveTo(start[0],start[1]);
-			ctx.lineTo(end[0],end[1]);
-			ctx.lineTo(end[0]+120*flip,end[1]);
-			ctx.strokeStyle = "#bdc3c7";
-			ctx.lineWidth   = 2;
-			ctx.stroke();
-			// The labels
-			ctx.font="17px Arial";
-			ctx.fillText(myLabel[i]+" "+precentage.toFixed(2)+"%",end[0]+textOffset,end[1]-4); 
-			// Increment Loop
-			lastend += Math.PI*2*(myData[i]/myTotal);
-			
-		  }
-		}
-		// Find that magical point
-		function getPoint(c1,c2,radius,angle) {
-		  return [c1+Math.cos(angle)*radius,c2+Math.sin(angle)*radius];
-		}
-		// The drawing
-		plotData(color9K, data9K, label9K);
-	});
-</script>
 </head>
 <body>
 	<div class="background1"></div>
@@ -410,7 +44,10 @@ canvas {
 					<ul class="nav nav-pills nav-justified">
 						<li><a href="markazit.html"><h4>Начало</h4></a></li>
 						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><h4>Колекция</h4></a>
+							data-toggle="dropdown"><h4>
+									Колекция <span class="glyphicon glyphicon-chevron-down"
+										style="margin-left: 10px; vertical-align: text-bottom;"></span>
+								</h4></a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
 								style="width: 100%;">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -422,16 +59,23 @@ canvas {
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=wedRings">Халки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">ОБЕЦИ</a></li>
+									href="gallery.html?category=earrings">Обеци</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">КОЛИЕТА</a></li>
+									href="gallery.html?category=necklaces">Колиета</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=chains">Синджири</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=pendants">Висулки</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=accessories">Аксесоари</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=leather_and_silicone">Кожа и
+										силикон</a></li>
 							</ul></li>
-						<li class="active"><a href="#"><h4>Изкупуване</h4></a></li>
-						<li><a href="#"><h4>Поръчки</h4></a></li>
-						<li><a href="#"><h4>Съвети</h4></a></li>
-						<li><a href="#"><h4>За нас</h4></a></li>
+						<li class="active"><a href="buying.html"><h4>Изкупуване</h4></a></li>
+						<li><a href="orders.html"><h4>Поръчки</h4></a></li>
+						<li><a href="advices.html"><h4>Съвети</h4></a></li>
+						<li><a href="about.html"><h4>За нас</h4></a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -444,8 +88,7 @@ canvas {
 			<div class="col-sm-12">
 				<img src="ELEMENTS/Scrap.png" width="211" height="140" />
 				<h1>
-					Изкупуване</br>
-					<span>на златни накити</span>
+					Изкупуване</br> <span>на златни накити</span>
 				</h1>
 			</div>
 		</div>
@@ -538,8 +181,8 @@ canvas {
 				<div class="chart">
 					<p>Процентно съотношение на елементите в каратите:</p>
 					<canvas id="canvas" width="600" height="400">
-			Вашият браузър не поддържа този елемент. Моля използвайте по-нов браузър.
-		  </canvas>
+					Вашият браузър не поддържа този елемент. Моля използвайте по-нов браузър.
+				  </canvas>
 				</div>
 				<div id="btn_panel">
 					<ul>
@@ -602,7 +245,7 @@ canvas {
 			<li><a href="#"><h5>Контакти</h5></a></li>
 		  </ul> -->
 						<ul class="nav bottom">
-							<li><a href="#"><span>За нас</span></a></li>
+							<li><a href="about.html"><span>За нас</span></a></li>
 							<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
 							<li><a href="#"><span>Често задавани въпроси</span></a></li>
 							<li><a href="#"><span>Контакти</span></a></li>

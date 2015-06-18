@@ -113,13 +113,23 @@ menu-default.nav>li>a {
 		
 		//var timesPlayed = 0;
 		
-		$("#intro").playbackRate = 2.5;
+		$( document ).ready( function(){
+			document.getElementById("intro").playbackRate = 2.8; // This works only with getElementById and not with jQuery
+			$(".videoContainer").each(function(){
+				$(this).css({
+					'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
+					'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
+					})
+			});
+		})
+		
+		/*$("#intro").playbackRate = 2.5;
 		$(".videoContainer").each(function(){
 			$(this).css({
 				'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
 				'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
 			});
-		});
+		});*/
 		
 		$(window).load(function(){	
 			windowWidth = window.innerWidth;
@@ -144,20 +154,27 @@ menu-default.nav>li>a {
 				$pendants.addClass("right_img_pendants");
 			}
 			
+			function close(object){
+				$(object).fadeOut('slow');
+				$(".b-close").fadeOut("slow");
+				$.undim();
+				sessionStorage.setItem("timesPlayed", "1");
+			}
+			
 			if(!isMobile.any() && sessionStorage.length == 0){
 				$(".videoContainer").css('opacity', '1');
 				$("#intro").get(0).play();
 				$(".b-close").on('click', function(){
-					$("video").trigger('ended');
+					close("video");
 				});
 				$('body').dimBackground({
 					darkness : 0.8            // 0: no dimming, 1: completely black
 				}, function() {
+					$('.dimbackground-curtain').bind('click', function(){
+						close("video");
+					})
 					$("video").on("ended", function(){
-						$(this).fadeOut("slow");
-						$(".b-close").fadeOut("slow");
-						$.undim();
-						sessionStorage.setItem("timesPlayed", "1");
+						close(this);
 					});
 				});
 			}
@@ -193,20 +210,6 @@ menu-default.nav>li>a {
 				$earrings.addClass("r earrings_bg_pos");
 				$necklaces.addClass("l necklaces_bg_pos");
 				$pendants.addClass("r pendants_bg_pos");
-			}
-		});
-		
-		$(window).scroll(function(){
-			var docElement = $(document)[0].documentElement;
-			var winElement = $(window)[0];
-			
-			var subtract = docElement.scrollHeight - winElement.innerHeight;
-			if((subtract == winElement.pageYOffset) || (subtract == winElement.pageYOffset - 1)){
-				$("#footerContainer").slideDown(300);
-				//alert("bottom");
-			}
-			else {
-				$("#footerContainer").slideUp(300);
 			}
 		});
 		
@@ -252,7 +255,10 @@ menu-default.nav>li>a {
 					<ul class="nav nav-pills nav-justified">
 						<li class="active"><a href="markazit.html"><h4>Начало</h4></a></li>
 						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><h4>Колекция</h4></a>
+							data-toggle="dropdown"><h4>
+									Колекция <span class="glyphicon glyphicon-chevron-down"
+										style="margin-left: 10px; vertical-align: text-bottom;"></span>
+								</h4></a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
 								style="width: 100%;">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -264,16 +270,23 @@ menu-default.nav>li>a {
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=wedRings">Халки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">ОБЕЦИ</a></li>
+									href="gallery.html?category=earrings">Обеци</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">КОЛИЕТА</a></li>
+									href="gallery.html?category=necklaces">Колиета</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=chains">Синджири</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="gallery.html?category=pendants">Висулки</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=accessories">Аксесоари</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="gallery.html?category=leather_and_silicone">Кожа и
+										силикон</a></li>
 							</ul></li>
 						<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
-						<li><a href="#"><h4>Поръчки</h4></a></li>
-						<li><a href="#"><h4>Съвети</h4></a></li>
-						<li><a href="#"><h4>За нас</h4></a></li>
+						<li><a href="orders.html"><h4>Поръчки</h4></a></li>
+						<li><a href="advices.html"><h4>Съвети</h4></a></li>
+						<li><a href="about.html"><h4>За нас</h4></a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -383,7 +396,7 @@ menu-default.nav>li>a {
 			<li><a href="#"><h5>Контакти</h5></a></li>
 		  </ul> -->
 						<ul class="nav bottom">
-							<li><a href="#"><span>За нас</span></a></li>
+							<li><a href="about.html"><span>За нас</span></a></li>
 							<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
 							<li><a href="#"><span>Често задавани въпроси</span></a></li>
 							<li><a href="#"><span>Контакти</span></a></li>

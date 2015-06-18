@@ -38,6 +38,18 @@ function updateMenu() {
 }
 
 $(window).scroll(function() {
+	var docElement = $(document)[0].documentElement;
+	var winElement = $(window)[0];
+	
+	var subtract = docElement.scrollHeight - winElement.innerHeight;
+	if((subtract == winElement.pageYOffset) || (subtract == winElement.pageYOffset - 1)){
+		$("#footerContainer").slideDown(300);
+		//alert("bottom");
+	}
+	else {
+		$("#footerContainer").slideUp(300);
+	}
+	
 	updateMenu();
 });
 $(window).resize(function() {
