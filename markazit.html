@@ -12,81 +12,7 @@
 <link rel="stylesheet" href="css/markazit.css">
 <!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" href="css/forum.fonts.css">
-<style>
-.b-close {
-	border-radius: 18px;
-	font: bold 131% sans-serif;
-	padding: 0 9px 4px;
-	background-color: #333;
-	color: #fff;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	position: absolute;
-	left: 714px;
-	top: -13px;
-	z-index: 100;
-}
 
-.b-close:hover {
-	background-color: #1e1e1e;
-}
-
-h4 {
-	font-size: 22px;
-	white-space: nowrap;
-	text-transform: uppercase;
-	outline: none;
-}
-
-a, a:focus {
-	outline: none;
-}
-
-.navbar {
-	min-height: 66px;
-}
-
-menu-default.nav>li>a {
-	padding: 1px 15px;
-}
-
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.nav .close>a, .nav .close>a:focus, .nav .close>a:hover {
-	box-shadow: .01em .01em 2em .01em #825631 inset;
-	color: #ffeac8;
-	background-color: rgba(87, 59, 31, 0.6);
-}
-
-.open>.dropdown-menu {
-	background-color: rgba(138, 90, 51, 1);
-	border: 0;
-	/*margin: 0;*/
-	top: 97%;
-}
-
-.dropdown-menu {
-	background-color: rgba(138, 90, 51, 1);
-	border: 0;
-	top: 97%;
-}
-
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-	color: #ffeac8;
-	text-decoration: none;
-}
-
-@media ( max-width : 991px) {
-	h4 {
-		font-size: 17px;
-	}
-}
-</style>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
@@ -106,7 +32,7 @@ menu-default.nav>li>a {
 		var $diamonds = $("div[title=\"Diamonds\"]");
 		var $w_rings = $("div[title=\"Wedding rings\"]");
 		var $rings = $("div[title=\"Rings\"]");
-		var $crosses = $("div[title=\"Crosses\"]");
+		//var $crosses = $("div[title=\"Crosses\"]");
 		var $earrings = $("div[title=\"Earrings\"]");
 		var $necklaces = $("div[title=\"Necklaces\"]");
 		var $pendants = $("div[title=\"Pendants\"]");
@@ -138,20 +64,22 @@ menu-default.nav>li>a {
 				$diamonds.addClass("r right_img_diamonds diamonds_bg_pos");
 				$w_rings.addClass("l left_img_w_rings w_rings_bg_pos");
 				$rings.addClass("r right_img_rings rings_bg_pos");
-				$crosses.addClass("l left_img_crosses crosses_bg_pos");
+				//$crosses.addClass("l left_img_crosses crosses_bg_pos");
+				$pendants.addClass("l left_img_pendants pendants_bg_pos");
 				$earrings.addClass("r right_img_earrings earrings_bg_pos");
 				$necklaces.addClass("l left_img_necklaces necklaces_bg_pos");
-				$pendants.addClass("r right_img_pendants pendants_bg_pos");
+				
 			}
 			else {
 				$bracelets.addClass("left_img_bracelet");
 				$diamonds.addClass("right_img_diamonds");
 				$w_rings.addClass("left_img_w_rings");
 				$rings.addClass("right_img_rings");
-				$crosses.addClass("left_img_crosses");
+				//$crosses.addClass("left_img_crosses");
+				$pendants.addClass("left_img_pendants");
 				$earrings.addClass("right_img_earrings");
 				$necklaces.addClass("left_img_necklaces");
-				$pendants.addClass("right_img_pendants");
+				
 			}
 			
 			function close(object){
@@ -196,20 +124,22 @@ menu-default.nav>li>a {
 				$diamonds.removeClass("r diamonds_bg_pos");
 				$w_rings.removeClass("l w_rings_bg_pos");
 				$rings.removeClass("r rings_bg_pos");
-				$crosses.removeClass("l crosses_bg_pos");
+				//$crosses.removeClass("l crosses_bg_pos");
+				$pendants.removeClass("l pendants_bg_pos");
 				$earrings.removeClass("r earrings_bg_pos");
 				$necklaces.removeClass("l necklaces_bg_pos");
-				$pendants.removeClass("r pendants_bg_pos");
+				
 			}
 			else {
 				$bracelets.addClass("l bracelet_bg_pos");
 				$diamonds.addClass("r diamonds_bg_pos");
 				$w_rings.addClass("l w_rings_bg_pos");
 				$rings.addClass("r rings_bg_pos");
-				$crosses.addClass("l crosses_bg_pos");
+				//$crosses.addClass("l crosses_bg_pos");
+				$pendants.addClass("l pendants_bg_pos");
 				$earrings.addClass("r earrings_bg_pos");
 				$necklaces.addClass("l necklaces_bg_pos");
-				$pendants.addClass("r pendants_bg_pos");
+				
 			}
 		});
 		
@@ -388,7 +318,7 @@ menu-default.nav>li>a {
 		<footer class="footer">
 			<nav class="navbar navbar-default">
 				<div id="navbar" class="container-fluid">
-					<div class="bottomMenu" style="">
+					<div class="footerMenu" style="">
 						<!-- <ul class="nav nav-pills nav-justified">
 			<li><a href="#"><h5>За нас</h5></a></li>
 			<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>
@@ -396,10 +326,10 @@ menu-default.nav>li>a {
 			<li><a href="#"><h5>Контакти</h5></a></li>
 		  </ul> -->
 						<ul class="nav bottom">
-							<li><a href="about.html"><span>За нас</span></a></li>
-							<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
-							<li><a href="#"><span>Често задавани въпроси</span></a></li>
-							<li><a href="#"><span>Контакти</span></a></li>
+							<!-- <li><a href="about.html"><span>За нас</span></a></li> -->
+							<li><a href="advices.html"><span>Защо да пазарувате тук?</span></a></li>
+							<li><a href="advices.html"><span>Често задавани въпроси</span></a></li>
+							<li><a href="about.html"><span>Контакти</span></a></li>
 						</ul>
 						<div class="socials">
 							<a href="#"><div class="mail"></div></a> <a href="#"><div

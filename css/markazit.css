@@ -18,3 +18,122 @@
 .shadowBox:hover {
 	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 }
+
+.b-close {
+	border-radius: 18px;
+	font: bold 131% sans-serif;
+	padding: 0 9px 4px;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	left: 714px;
+	top: -13px;
+	z-index: 100;
+}
+
+.b-close:hover {
+	background-color: #1e1e1e;
+}
+
+.left_img_bracelet {
+	background: url('../Bracelets/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.bracelet_bg_pos {
+	padding-right: 7px;
+	background-position: -1px;
+}
+
+.right_img_diamonds {
+	background: url('../Diamonds/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.diamonds_bg_pos {
+	background-position: 6px;
+	padding-right: 7px;
+}
+
+.left_img_w_rings {
+	background: url('../wedRings/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.w_rings_bg_pos {
+	padding-right: 7px;
+	background-position: 1px;
+}
+
+.right_img_rings {
+	background: url('../Rings/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.rings_bg_pos {
+	padding-right: 7px;
+	background-position: 8px;
+}
+
+/* .left_img_crosses {
+	background: url('../Crosses/ON.png') no-repeat center;
+	background-size: contain;
+} */
+
+/* .crosses_bg_pos {
+	padding-right: 7px;
+	background-position: -1px;
+} */
+
+.right_img_earrings {
+	background: url('../Earrings/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.earrings_bg_pos {
+	padding-right: 7px;
+	background-position: 7px;
+}
+
+.left_img_necklaces {
+	background: url('../Necklaces/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.necklaces_bg_pos {
+	padding-right: 7px;
+	background-position: 1px;
+}
+
+/* .right_img_pendants {
+	background: url('../Pendants/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.pendants_bg_pos {
+	padding-right: 7px;
+	background-position: 7px;
+} */
+
+.left_img_pendants {
+	background: url('../Pendants/ON.png') no-repeat center;
+	background-size: contain;
+}
+
+.pendants_bg_pos {
+	padding-right: 7px;
+	background-position: 1px;
+}
+
+.col-sm-6.l {
+	padding-left: 0px;
+	padding-right: 7px;
+}
+
+.col-sm-6.r {
+	padding-left: 7px;
+	padding-right: 0px;
+}

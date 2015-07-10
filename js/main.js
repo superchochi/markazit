@@ -24,16 +24,16 @@ function updateMenu() {
 		if($(this).scrollTop() > $("#topImage").height() - $("#menu").height()) {
 			$("#menu").removeClass("menu-default");
 			$("#menu").addClass("menu-top");
-			$("#logo").css({"opacity":"1", "visibility": "visible", "margin-left": "5%"});
+			$("#logo").css({"opacity":"1", "visibility": "visible", "margin-left": "4%"});
 		} else if($(this).scrollTop() < $("#topImage").height()) {
 			$("#menu").removeClass("menu-top");
 			$("#menu").addClass("menu-default");
-			$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "0"});
+			$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "-10%"});
 		}
 	} else {
 		$("#menu").removeClass("menu-top");
 		$("#menu").addClass("menu-default");
-		$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "0"});
+		$("#logo").css({"opacity":"0", "visibility": "hidden", "margin-left": "-10%"});
 	}
 }
 
@@ -42,7 +42,7 @@ $(window).scroll(function() {
 	var winElement = $(window)[0];
 	
 	var subtract = docElement.scrollHeight - winElement.innerHeight;
-	if((subtract == winElement.pageYOffset) || (subtract == winElement.pageYOffset - 1)){
+	if((subtract <= winElement.pageYOffset)){ //|| (subtract == winElement.pageYOffset - 1)){
 		$("#footerContainer").slideDown(300);
 		//alert("bottom");
 	}

@@ -9,14 +9,13 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/markazit.css">
 <link rel="stylesheet" href="css/buying.css">
 <!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" href="css/forum.fonts.css">
 
+<script src="js/chart.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/chart.js"></script>
 
 </head>
 <body>
@@ -121,7 +120,7 @@
 						points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
 	</svg>
 				<div>
-					<p>
+					<p class="note">
 						<span class="asterisk">*</span>цените се променят в зависимост от
 						дневните котировки на благородния метал
 					</p>
@@ -211,14 +210,15 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<p class="eighteen">
+				<p class="info right">
 					За да бъдем законосъобразни,</br> при изкупуване на материал,</br> трябва да
 					имате навършени 18</br> години и при продажба от ваша</br> страна да
 					представите </br>документ за самоличност.
 				</p>
 			</div>
-			<div class="col-sm-6" style="text-align: right; padding-right: 45px;">
-				<svg style="position: relative; margin-right: 5%;" version="1.1"
+			<div class="col-sm-6" style="">
+				<img src="ELEMENTS/right.png" style="display: inline-block; vertical-align: top; height:24%;"/>	
+				<!-- <svg style="position: relative; margin-right: 5%;" version="1.1"
 					id="Line2" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					width="19.25px" height="232px" viewBox="0 0 19.25 232"
@@ -226,18 +226,45 @@
 			<polyline fill="none" stroke="#A97C50" stroke-width="4"
 						stroke-miterlimit="10"
 						points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
-		</svg>
+		</svg> -->
 				<div id="age_box">
 					<!-- <span>18</span> -->
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6" style="">				
+				<div style="display: inline-block; text-align: end; width: 90%; ">
+					<img src="ELEMENTS/ring.png" class="" style="display: inline-block;    max-width: 70%;
+  margin: 0 auto;
+  height: auto;"/>	
+				</div>
+				<!-- <svg style="position: relative; margin-right: 5%;" version="1.1"
+					id="Line2" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					width="19.25px" height="232px" viewBox="0 0 19.25 232"
+					enable-background="new 0 0 19.25 232" xml:space="preserve">
+					<polyline fill="none" stroke="#A97C50" stroke-width="4"
+						stroke-miterlimit="10"
+						points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
+				</svg> -->
+			</div>
+			<div class="col-sm-6" style="text-align: left; padding-left: 0.5%;">
+					<img src="ELEMENTS/left.png" style="display: inline-block;"/>					
+				<p class="info left" style="  vertical-align: middle;  padding-left: 3%;   width: 90%;">
+					За да Ви дадем коректна</br> изкупна цена за благородния метал,</br> остраняваме за наща сметка</br> всички скъпоценни или</br> полускъпоценни камъни.</br></br>
+					<span class="note"><span class="asterisk">*</span>Добре е да ни уведомите предварително ако желаете да запазим камъка при отсртаняването му.</span>
+				</p>
+				
+				
+			</div>			
 		</div>
 	</div>
 	<div id="footerContainer" class="container">
 		<footer class="footer">
 			<nav class="navbar navbar-default">
 				<div id="navbar" class="container-fluid">
-					<div class="bottomMenu" style="">
+					<div class="footerMenu" style="">
 						<!-- <ul class="nav nav-pills nav-justified">
 			<li><a href="#"><h5>За нас</h5></a></li>
 			<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>
@@ -245,10 +272,10 @@
 			<li><a href="#"><h5>Контакти</h5></a></li>
 		  </ul> -->
 						<ul class="nav bottom">
-							<li><a href="about.html"><span>За нас</span></a></li>
-							<li><a href="#"><span>Защо да пазарувате тук?</span></a></li>
-							<li><a href="#"><span>Често задавани въпроси</span></a></li>
-							<li><a href="#"><span>Контакти</span></a></li>
+							<!-- <li><a href="about.html"><span>За нас</span></a></li> -->
+							<li><a href="advices.html"><span>Защо да пазарувате тук?</span></a></li>
+							<li><a href="advices.html"><span>Често задавани въпроси</span></a></li>
+							<li><a href="about.html"><span>Контакти</span></a></li>
 						</ul>
 						<div class="socials">
 							<a href="#"><div class="mail"></div></a> <a href="#"><div
