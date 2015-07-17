@@ -246,14 +246,14 @@ a, a:focus {
 	display: inline-block;
 	/* width: 525px;
 	height: 91px; */
-	margin-top: 2%;
+	margin-top: 1.5em;
 }
 
 .mail, .phone, .facebook, .googlePlus {
 	width: 91px;
 	height: 91px;
 	display: inline-block;
-	padding: 0 50px;
+	padding: 0 45px;
 	transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
@@ -361,7 +361,7 @@ ul.bottom li a {
 	}
 	.bottom {
 		width: 100%;
-		padding-bottom: 13px;
+		/* padding-bottom: 13px; */
 		text-align: center;
 	}
 	.socials {
@@ -378,7 +378,7 @@ ul.bottom li a {
 	}
 }
 
-@media ( max-width : 767px) {
+@media ( max-width : 768px) {
 	.navbar .container-fluid {
 		padding-left: 6em;
 		padding-right: 6em;

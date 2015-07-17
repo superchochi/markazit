@@ -22,6 +22,7 @@ function getItems(categories, limit, offset, pager, view) {
 				 */
 				var span2 = $(document.createElement("span"));
 				span2.addClass("center-block");
+				span2.addClass("price");
 				span2.css("width", "100%");
 				span2.css("text-align", "center");
 				span2.text("Цена: " + item[2]);
