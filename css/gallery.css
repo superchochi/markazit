@@ -10,7 +10,7 @@
 .row div:hover {
 	cursor: pointer;
 	/*background-color: lightgrey;*/
-	transform: scale(1.2);
+	transform: scale(1.1);
 	box-shadow: 0px 0px 50px 2px rgb(202, 202, 202);
 	z-index: 100;
 }
