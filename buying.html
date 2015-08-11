@@ -16,11 +16,32 @@
 <script src="js/chart.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+	function pad(a,b) {
+		return(1e15+a+"").slice(-b)
+	}
+	$(function() {
+		$(".karats").click(function(e) {
+			$(".karats_selected").each(function() {
+				$(this).removeClass("karats_selected");
+			});
+			$(this).addClass("karats_selected");
+			var k = $(this).text();
+			var price = k*34/14;
+			var big = parseInt(price);
+			var small = parseInt((price - big)*100);
+			//alert(price);
+			$(".big_price").text(pad(big, 2));
+			$(".small_price").text(pad(small, 2));
+		});
+		$(".karats").first().click();
+	});
+</script>
 
 </head>
 <body>
-	<div class="background1"></div>
-	<div class="background2"></div>
+	<!--div class="background1"></div>
+	<div class="background2"></div-->
 	<div id="mainBanner" class="container" style="position: relative;">
 		<img class="center-block img-responsive" src="logo_baner.png"
 			id="topImage" />

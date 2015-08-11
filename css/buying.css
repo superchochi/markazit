@@ -120,6 +120,11 @@ h1>span {
 	color: #fff;
 }
 
+.karats_selected {
+	background-color: #8B5E3C;
+	color: #fff;
+}
+
 .big_price {
 	font-size: 10em;
 	padding-left: 13%;

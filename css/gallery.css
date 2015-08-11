@@ -245,18 +245,23 @@ input.radio:focus ~ label:before {
 .b-close {
 	border-radius: 7px;
 	font: bold 131% sans-serif;
-	padding: 0 6px 2px;
-	background-color: #2b91af;
+	/*padding: 0 6px 2px;*/
+	/*background-color: #2b91af;*/
 	color: #fff;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
 	position: absolute;
-	right: -7px;
-	top: -7px;
+	right: 0px;
+	top: 0px;
+	width: 50;
+	height: 50;
+	background-image: URL("../close_icon.png");
+	background-repeat: round;
 }
 .b-close:hover {
-	background-color: #1e1e1e;
+	/*background-color: #1e1e1e;*/
+	background-image: URL("../close_icon_hover.png");
 }
 
 .leftPart, .rightPart, .bottomPart, .thumbnail, .thumbnailBracelets {
