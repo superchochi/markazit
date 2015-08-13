@@ -32,10 +32,10 @@
 		var $diamonds = $("div[title=\"Diamonds\"]");
 		var $w_rings = $("div[title=\"Wedding rings\"]");
 		var $rings = $("div[title=\"Rings\"]");
-		//var $crosses = $("div[title=\"Crosses\"]");
 		var $earrings = $("div[title=\"Earrings\"]");
 		var $necklaces = $("div[title=\"Necklaces\"]");
 		var $pendants = $("div[title=\"Pendants\"]");
+		var $accessories = $("div[title=\"Accessories\"]");
 		
 		//var timesPlayed = 0;
 		
@@ -63,11 +63,11 @@
 				$bracelets.addClass("l left_img_bracelet bracelet_bg_pos");
 				$diamonds.addClass("r right_img_diamonds diamonds_bg_pos");
 				$w_rings.addClass("l left_img_w_rings w_rings_bg_pos");
-				$rings.addClass("r right_img_rings rings_bg_pos");
-				//$crosses.addClass("l left_img_crosses crosses_bg_pos");
+				$rings.addClass("r right_img_rings rings_bg_pos");				
 				$pendants.addClass("l left_img_pendants pendants_bg_pos");
 				$earrings.addClass("r right_img_earrings earrings_bg_pos");
 				$necklaces.addClass("l left_img_necklaces necklaces_bg_pos");
+				$accessories.addClass("r right_img_accessories accessories_bg_pos");
 				
 			}
 			else {
@@ -75,10 +75,10 @@
 				$diamonds.addClass("right_img_diamonds");
 				$w_rings.addClass("left_img_w_rings");
 				$rings.addClass("right_img_rings");
-				//$crosses.addClass("left_img_crosses");
 				$pendants.addClass("left_img_pendants");
 				$earrings.addClass("right_img_earrings");
 				$necklaces.addClass("left_img_necklaces");
+				$accessories.addClass("right_img_accessories");
 				
 			}
 			
@@ -124,10 +124,10 @@
 				$diamonds.removeClass("r diamonds_bg_pos");
 				$w_rings.removeClass("l w_rings_bg_pos");
 				$rings.removeClass("r rings_bg_pos");
-				//$crosses.removeClass("l crosses_bg_pos");
 				$pendants.removeClass("l pendants_bg_pos");
 				$earrings.removeClass("r earrings_bg_pos");
 				$necklaces.removeClass("l necklaces_bg_pos");
+				$accessories.removeClass("r accessories_bg_pos");
 				
 			}
 			else {
@@ -135,10 +135,10 @@
 				$diamonds.addClass("r diamonds_bg_pos");
 				$w_rings.addClass("l w_rings_bg_pos");
 				$rings.addClass("r rings_bg_pos");
-				//$crosses.addClass("l crosses_bg_pos");
 				$pendants.addClass("l pendants_bg_pos");
 				$earrings.addClass("r earrings_bg_pos");
 				$necklaces.addClass("l necklaces_bg_pos");
+				$accessories.addClass("r accessories_bg_pos");
 				
 			}
 		});
@@ -309,9 +309,9 @@
 						<img class="img-responsive" src="Necklaces/OFF.png" />
 					</div></a>
 			</div>
-			<!-- <div class="col-sm-6" title="Crosses" style="">
-		<div class="shadowBox"><img class="img-responsive" src="Crosses/OFF.png" /></div>
-    </div> -->
+			<a href="gallery.html?category=accessories"><div class="col-sm-6" title="Accessories" style="">
+		<div class="shadowBox"><img class="img-responsive" src="Accessories/OFF.png" /></div></a>
+    </div>
 		</div>
 	</div>
 	<div id="footerContainer" class="container">

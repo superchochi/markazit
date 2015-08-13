@@ -25,7 +25,8 @@ function getItems(categories, limit, offset, pager, view) {
 				span2.addClass("price");
 				span2.css("width", "100%");
 				span2.css("text-align", "center");
-				span2.text("Цена: " + item[2]);
+				span2.css("font-size", "1.4em");
+				span2.text("Цена: " + item[2] + " лв.");
 				col.append(img);
 				// col.append(span1);
 				col.append(span2);
@@ -79,6 +80,9 @@ function getItem(id) {
 			$("#popup #secondImg").attr("src", "");
 			$("#popup #thirdImg").attr("src", "");
 			$("#popup #fourthImg").attr("src", "");
+			$("#popup #secondImg").hide();
+			$("#popup #thirdImg").hide();
+			$("#popup #fourthImg").hide();
 			$("#popup #weight").text(weight);
 			$("#popup #params").text("");
 			var weight = data[0];
@@ -95,13 +99,20 @@ function getItem(id) {
 			if (price) {
 				$("#popup #price").text(price);
 			}
-			/*
-			 * if(param1) { $("#popup #secondImg").attr("src", param1.trim()); }
-			 * if(param2) { $("#popup #thirdImg").attr("src", param2.trim()); }
-			 * if(param3) { $("#popup #fourthImg").attr("src", param3.trim()); }
-			 */
+			if (param1 != "") {
+				$("#popup #secondImg").attr("src", "../" + param1.trim());
+				$("#popup #secondImg").show();
+			}
+			if (param2 != "") {
+				$("#popup #thirdImg").attr("src", "../" + param2.trim());
+				$("#popup #thirdImg").show();
+			}
+			if (param3 != "") {
+				$("#popup #fourthImg").attr("src", "../" + param3.trim());
+				$("#popup #fourthImg").show();
+			}
 			if (weight) {
-				$("#popup #weight").text(weight);
+				$("#popup #weight").text(weight + " гр.");
 			}
 			if (param4) {
 				$("#popup #params").text(param4.trim());

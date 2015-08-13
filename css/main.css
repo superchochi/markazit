@@ -404,6 +404,15 @@ left: 33%; */
         right: 0;
         padding: 15px;
     }
+	
+	 .container.gallery .col-sm-12 .img-responsive {
+        position: initial;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+    }
 
     .container.gallery .col-sm-3:before, .container.gallery .col-sm-6:before {
         display: block;
@@ -412,6 +421,6 @@ left: 33%; */
     }
 
     .container.gallery .center-block.price {
-        padding-top:11px;
+        padding-top: 20px;
     }
 }

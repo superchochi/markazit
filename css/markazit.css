@@ -78,15 +78,15 @@
 	background-position: 8px;
 }
 
-/* .left_img_crosses {
-	background: url('../Crosses/ON.png') no-repeat center;
+.right_img_accessories {
+	background: url('../Accessories/ON.png') no-repeat center;
 	background-size: contain;
-} */
+}
 
-/* .crosses_bg_pos {
+.accessories_bg_pos {
 	padding-right: 7px;
-	background-position: -1px;
-} */
+	background-position: 7px;
+}
 
 .right_img_earrings {
 	background: url('../Earrings/ON.png') no-repeat center;

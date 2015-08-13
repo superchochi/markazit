@@ -11,12 +11,12 @@
 <!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" href="css/forum.fonts.css">
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/bootstrap-paginator.min.js"></script>
 <script src="js/jquery.bpopup.js"></script>
 <script src="js/main.js"></script>
 <script src="js/db.js"></script>
 <script>
 	var categories = [];
-	var galleryPage = 1;
 	var allPages = 1;
 	var view = "col-sm-3";
 	
@@ -153,26 +153,23 @@
 		allPages = Math.ceil(getCount(categories) / 20);
 	}
 
+	function createPager() {
+		var options = {
+            currentPage: 1,
+            totalPages: allPages ? allPages : 1,
+			bootstrapMajorVersion: 3,
+			onPageChanged: function(e,oldPage,newPage){
+				$('html,body').animate({scrollTop:$("#galleryGrid").offset().top - $("#galleryMenu").height()}, 1000);
+				updateGallery(newPage);
+			}
+        }
+        $('#galleryPager').bootstrapPaginator(options);
+	}
+	
 	$(function() {
 		loadGallery();
-		$('.pager a[href*=#]').on('click', function(event){     
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top - $("#galleryMenu").height()}, 1000);
-		});
-		$(".previous").click(function() {
-			if(galleryPage > 1) {
-				galleryPage--;
-				updateGallery(galleryPage);
-			}
-		});
-		$(".next").click(function() {
-			if(galleryPage < allPages) {
-				galleryPage++;
-				updateGallery(galleryPage);
-			}
-		});
-		
-		updateGallery(galleryPage);
+		createPager();
+		updateGallery(1);
 		
 		$(window).load(function(){
 			$('.icon-small').css({'color': '#333', 'background-color': 'transparent'});
@@ -192,14 +189,17 @@
 			});
 			
 			$("#filter input:radio").bind('click', function(e){
-				$("#filter input:radio[checked=checked]").each(function() {
-					$(this).attr("checked", false);
-				});
-				$(this).attr("checked", true);
 				categories = $(this).attr("categories").split(',');
 				allPages = Math.ceil(getCount(categories) / 20);
-				galleryPage = 1;
-				updateGallery(galleryPage);
+				createPager();
+				updateGallery(1);
+			});
+			
+			$("#rightOrBottom img").bind("click", function() {
+				var src1 = $("#mainImg").attr("src");
+				var src2 = $(this).attr("src");
+				$("#mainImg").attr("src", src2);
+				$(this).attr("src", src1);
 			});
 		});
 		
@@ -230,7 +230,6 @@
 			}
 		}
 		getItems(str, 20, (page-1) * 20, pager, view);
-		$("#pages").text(galleryPage + "/" + allPages);
 	}
 </script>
 </head>
@@ -392,10 +391,12 @@
 		<!-- <ul id="types">
     <li class="active_type"><a href="#">Бяло</a></li><li class=""><a href="#">Жълто</a></li><li class=""><a href="#">Комбинирано</a></li>
 </ul> -->
-		<ul id="galleryPager" class="pager">
+		<!--ul id="galleryPager" class="pager">
 			<li class="previous"><a href="#galleryGrid">Previous</a></li>
 			<li id="pages"></li>
 			<li class="next"><a href="#galleryGrid">Next</a></li>
+		</ul-->
+		<ul id="galleryPager" class="pagination">
 		</ul>
 	</div>
 	<div id="footerContainer" class="container">

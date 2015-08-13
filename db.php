@@ -53,6 +53,16 @@ function getItem() {
 	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4 from items where id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
+	$imageUrl = trim($row [2]);
+	$imageUrl2 = str_replace ( ".jpg", "_2.jpg", $imageUrl );
+	$imageUrl3 = str_replace ( ".jpg", "_3.jpg", $imageUrl );
+	$imageUrl4 = str_replace ( ".jpg", "_4.jpg", $imageUrl );
+	$row [3] = file_exists("../".$imageUrl2) ? $imageUrl2 : "";
+	$row [4] = file_exists("../".$imageUrl3) ? $imageUrl3 : "";
+	$row [5] = file_exists("../".$imageUrl4) ? $imageUrl4 : "";
+	//$row [3] = $imageUrl2;
+	//$row [4] = $imageUrl3;
+	//$row [5] = $imageUrl4;
 	$arr = array (
 			$row [0],
 			$row [1],
