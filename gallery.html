@@ -37,6 +37,22 @@
 		  }
 		}
 		return "";
+	}	
+	
+	function doLeftRightPopup() {
+		$("#leftOrTop").removeClass("topPart").addClass("leftPart");
+		$("#rightOrBottom").removeClass("bottomPart").addClass("rightPart");
+		$("#secondImg").removeClass("thumbnailBracelets").addClass("thumbnail");
+		$("#thirdImg").removeClass("thumbnailBracelets").addClass("thumbnail");	
+		$("#fourthImg").removeClass("thumbnailBracelets").addClass("thumbnail");
+	}
+	
+	function doTopBottomPopup() {	
+		$("#leftOrTop").removeClass("leftPart").addClass("topPart");
+		$("#rightOrBottom").removeClass("rightPart").addClass("bottomPart");
+		$("#secondImg").removeClass("thumbnail").addClass("thumbnailBracelets");
+		$("#thirdImg").removeClass("thumbnail").addClass("thumbnailBracelets");
+		$("#fourthImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 	}
 	
 	function loadGallery() {
@@ -53,11 +69,7 @@
 				$("#radio2div").show();
 				$("#radio2div label").text("Мъжки");
 				$("#radio2").attr("categories", "3");
-				$("#leftOrTop").removeClass("topPart").addClass("leftPart");
-				$("#rightOrBottom").removeClass("bottomPart").addClass("rightPart");
-				$("#secondImg").removeClass("thumbnailBracelets").addClass("thumbnail");
-				$("#thirdImg").removeClass("thumbnailBracelets").addClass("thumbnail");
-				$("#fourthImg").removeClass("thumbnailBracelets").addClass("thumbnail");
+				doLeftRightPopup();				
 				break;
 			case "diamonds":
 				this.categories = [14, 18, 19, 21, 26, 27];
@@ -76,11 +88,7 @@
 				$("#radio3div").show();
 				$("#radio3div label").text("Детски");
 				$("#radio3").attr("categories", "22");
-				$("#leftOrTop").removeClass("leftPart").addClass("topPart");
-				$("#rightOrBottom").removeClass("rightPart").addClass("bottomPart");
-				$("#secondImg").removeClass("thumbnail").addClass("thumbnailBracelets");
-				$("#thirdImg").removeClass("thumbnail").addClass("thumbnailBracelets");
-				$("#fourthImg").removeClass("thumbnail").addClass("thumbnailBracelets");
+				doTopBottomPopup();
 				break;
 			case "wedRings":
 				this.categories = [9];
@@ -97,11 +105,10 @@
 			case "chains":
 				this.categories = [8];
 				$(".categoryTitle").text("Синджири");
-				$("#leftOrTop").removeClass("leftPart").addClass("topPart");
-				$("#rightOrBottom").removeClass("rightPart").addClass("bottomPart");
-				$("#secondImg").removeClass("thumbnail").addClass("thumbnailBracelets");
-				$("#thirdImg").removeClass("thumbnail").addClass("thumbnailBracelets");
-				$("#fourthImg").removeClass("thumbnail").addClass("thumbnailBracelets");
+				doTopBottomPopup();
+				$('.navbar-right').css('display', "none");
+				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-12');
+				view = "col-sm-12";
 				break;
 			case "pendants":
 				this.categories = [31];
@@ -119,11 +126,7 @@
 				$("#radio4div").show();
 				$("#radio4div label").text("Букви");
 				$("#radio4").attr("categories", "34");
-				$("#leftOrTop").removeClass("topPart").addClass("leftPart");
-				$("#rightOrBottom").removeClass("bottomPart").addClass("rightPart");
-				$("#secondImg").removeClass("thumbnailBracelets").addClass("thumbnail");
-				$("#thirdImg").removeClass("thumbnailBracelets").addClass("thumbnail");
-				$("#fourthImg").removeClass("thumbnailBracelets").addClass("thumbnail");
+				doLeftRightPopup();
 				//$("#radio5div").show();
 				//$("#radio5div label").text("Други");
 				//$("#radio5").attr("categories", "2");
@@ -231,6 +234,18 @@
 		}
 		getItems(str, 20, (page-1) * 20, pager, view);
 	}
+	
+	function searchItem0() {
+		if(num == "") {
+			return;
+		}
+		$(".row").remove();
+		var pager = $("#galleryPager");
+		var num = $("#searchBox").val();
+		allPages = 1;
+		createPager();
+		searchItem(num, pager, view);
+	}
 </script>
 </head>
 <body>
@@ -309,20 +324,24 @@
 			  </ul>
 			</li> -->
 					<li class="sort dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Сортирай<span
+						data-toggle="dropdown" role="button" aria-expanded="false">Сортирай по цена<span
 							class="caret"></span></a>
 						<ul class="sort dropdown-menu" role="menu">
-							<li><a href="#" style="font-size: 1.4em;">цена <span
-									class="glyphicon glyphicon-menu-up"></a></li>
-							<li><a href="#" style="font-size: 1.4em;">цена <span
-									class="glyphicon glyphicon-menu-down"></a></li>
-						</ul></li>
+							<li><a href="#" style="font-size: 1.4em; width: 210px;">от най-ниска <span class="glyphicon glyphicon-menu-up" style="float: right;"></span></a></li>
+							<li><a href="#" style="font-size: 1.4em; width: 210px;">от най-висока <span class="glyphicon glyphicon-menu-down" style="float: right;"></span></a></li>
+						</ul>
+					</li>
+					<li>
+						<label for="searchBox" style="display: inline;">Кат. №</label>
+						<input class="form-control" id="searchBox" type="text" style="display: inline; width: initial;">
+						<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();">
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" class="icon-small"><span
-							class="glyphicon glyphicon-th"></a></li>
+							class="glyphicon glyphicon-th"></span></a></li>
 					<li><a href="#" class="icon-large"><span
-							class="glyphicon glyphicon-th-large "></a></li>
+							class="glyphicon glyphicon-th-large "></span></a></li>
 				</ul>
 			</div>
 			<!-- /.container-fluid -->
@@ -336,66 +355,57 @@
 		</div>
 		<div id="rightOrBottom" class="rightPart">
 			<span style="font-size: 1.5em;">Кат. №<span id="catalogNum"></span></span></br>
-			<span class=""
-				style="width: 100%; text-align: center; font-size: 1.9em;">Цена:
-				<span id="price" style="font-size: 1.1em"></span><span
-				style="font-size: 1.1em"> лв.</span>
+			<span class="" style="width: 100%; text-align: center; font-size: 1.9em;">Цена: <span id="price" style="font-size: 1.1em"></span>
+			<span style="font-size: 1.1em"> лв.</span>
 			</span>
-			<hr></hr>
-			<img id="secondImg" class="img-responsive thumbnail" src=""/> 
+			<div class="imageContainer"><hr></hr>
+			<img id="secondImg" class="img-responsive thumbnail" src=""/>
 			<img id="thirdImg" class="img-responsive thumbnail" src=""/>
-			<img id="fourthImg" class="img-responsive thumbnail" src=""/>
-			<hr></hr>
-			<span class="" >Тегло: </span><span id="weight"></span></br> <span
-				class="" >Параметри: </span><span id="params"></span>
+			<img id="fourthImg" class="img-responsive thumbnail" src=""/><hr></hr></div>
+			<div>
+			<span class="" style="font-size: 1.5em;" >Тегло: <span id="weight"></span></span></br><span class="" style="font-size: 1.5em;" >Параметри: <span id="params"></span></span>
+			</div>
 		</div>
 	</div>
 
 	<div id="galleryGrid" class="container gallery last">
 		<div id="filter">
 			<span class="categoryTitle"></span>
+			<div class="radioBtnWrapper">
 			<div class="radioBtnContainer">
 				<div id="radio1div" class="radioDiv" style="display: none;">
-					<input type="radio" name="radio" id="radio1" class="radio" /> <label
-						for="radio1"></label>
+					<input type="radio" name="radio" id="radio1" class="radio" />
+					<label for="radio1"></label>
 				</div>
 				<div id="radio2div" class="radioDiv" style="display: none;">
-					<input type="radio" name="radio" id="radio2" class="radio" /> <label
-						for="radio2"></label>
+					<input type="radio" name="radio" id="radio2" class="radio" />
+					<label for="radio2"></label>
 				</div>
 			</div>
 			<div class="radioBtnContainer">
 				<div id="radio3div" class="radioDiv" style="display: none; /*margin-bottom: 2.4em*/">
-					<input type="radio" name="radio" id="radio3" class="radio" /> <label
-						for="radio3"></label>
+					<input type="radio" name="radio" id="radio3" class="radio" />
+					<label for="radio3"></label>
 				</div>
 			
 				<!-- </br> -->
 				<div id="radio4div" class="radioDiv" style="display: none;">
-					<input type="radio" name="radio" id="radio4" class="radio" /> <label
-						for="radio4"></label>
+					<input type="radio" name="radio" id="radio4" class="radio" />
+					<label for="radio4"></label>
 				</div>
 			</div>
 			<div class="radioBtnContainer">
 				<div id="radio5div" class="radioDiv" style="display: none;">
-					<input type="radio" name="radio" id="radio5" class="radio" /> <label
-						for="radio5"></label>
+					<input type="radio" name="radio" id="radio5" class="radio" />
+					<label for="radio5"></label>
 				</div>
 				<div id="radio6div" class="radioDiv" style="display: none;">
-					<input type="radio" name="radio" id="radio6" class="radio" /> <label
-						for="radio6"></label>
+					<input type="radio" name="radio" id="radio6" class="radio" />
+					<label for="radio6"></label>
 				</div>
 			</div>
+			</div>
 		</div><br/><br/>
-
-		<!-- <ul id="types">
-    <li class="active_type"><a href="#">Бяло</a></li><li class=""><a href="#">Жълто</a></li><li class=""><a href="#">Комбинирано</a></li>
-</ul> -->
-		<!--ul id="galleryPager" class="pager">
-			<li class="previous"><a href="#galleryGrid">Previous</a></li>
-			<li id="pages"></li>
-			<li class="next"><a href="#galleryGrid">Next</a></li>
-		</ul-->
 		<ul id="galleryPager" class="pagination">
 		</ul>
 	</div>

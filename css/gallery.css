@@ -38,9 +38,10 @@
 }
 
 label {
-	width: 175px;
+	width: 180px;
 	border-radius: 3px;
-	border: 1px solid #D1D3D4
+	border: 1px solid #D1D3D4;
+	font-size: 0.9em;
 }
 
 /* hide input */
@@ -103,7 +104,10 @@ input.radio:checked ~ label {
 input.radio:focus ~ label:before {
 	box-shadow: 0 0 0 3px #999;
 }
-
+.radioBtnWrapper{
+	text-align: center;
+	width: 102%;
+}
 .radioBtnContainer {
 	display: inline-block;
 	margin: 0 auto;
@@ -243,8 +247,7 @@ input.radio:focus ~ label:before {
 	text-align: center;
 	text-decoration: none;
 	position: absolute;
-	right: 0px;
-	top: 0px;
+	right: 5px;    top: 5px;
 	width: 50;
 	height: 50;
 	background-image: URL("../close_icon.png");
@@ -270,7 +273,7 @@ input.radio:focus ~ label:before {
 }
 .rightPart {	
 	vertical-align: top;
-	top: 24%;
+	top: 24%;	margin-top: 5%;
 }
 
 .bottomPart {
@@ -288,7 +291,12 @@ input.radio:focus ~ label:before {
 	margin: 0 10px;
 	cursor: pointer;
 }
-
+.imageContainer{
+	text-align: center;
+}
+hr {
+	width: 90%;
+}
 .sort.dropdown-menu {
 	background-color: rgba(255, 255, 255, 1);
 	border: 0;

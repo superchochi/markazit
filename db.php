@@ -31,11 +31,29 @@ function getItems() {
 				$row ['id'],
 				$row ['param1'],
 				$row ['price'],
-				$row ['path'] 
+				$row ['path'],
 		);
 		$arr [$i] = $tmp;
 		$i ++;
 	}
+	header ( 'Content-type: application/json' );
+	echo json_encode ( $arr );
+	mysql_free_result ( $result );
+	mysql_close ( $link );
+}
+function searchItem() {
+	$mag_nom = $_GET ["mag_nom"];
+	if (! is_numeric ( $mag_nom )) {
+		die ( "Missing parameter!" );
+	}
+	$link = openDBConnection ();
+	/*
+	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
+	 */
+	$query = sprintf ( "select id, param1, price, path from items where mag_nom=%d", mysql_real_escape_string ( $mag_nom ) );
+	$result = mysql_query ( $query, $link );
+	$row = mysql_fetch_row ( $result );
+	$arr = array ($row [0], $row [1], $row [2], $row [3] );
 	header ( 'Content-type: application/json' );
 	echo json_encode ( $arr );
 	mysql_free_result ( $result );
@@ -50,7 +68,7 @@ function getItem() {
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4 from items where id=%d", mysql_real_escape_string ( $id ) );
+	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4, mag_nom from items where id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$imageUrl = trim($row [2]);
@@ -70,7 +88,8 @@ function getItem() {
 			$row [3],
 			$row [4],
 			$row [5],
-			$row [6] 
+			$row [6],
+			$row [7]
 	);
 	header ( 'Content-type: application/json' );
 	echo json_encode ( $arr );
@@ -104,6 +123,9 @@ switch ($function) {
 		break;
 	case "getItem" :
 		getItem ();
+		break;
+	case "searchItem" :
+		searchItem ();
 		break;
 	default :
 		die ( "Unknown function " . $function );
