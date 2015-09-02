@@ -34,7 +34,7 @@
 			$(".big_price").text(pad(big, 2));
 			$(".small_price").text(pad(small, 2));
 		});
-		$(".karats").first().click();
+		$(".karats").eq(1).click();
 	});
 </script>
 
@@ -131,7 +131,7 @@
 				</div>
 				<!-- End of Gold Price Script -->
 
-				<svg style="vertical-align: bottom; margin-left: 50px;"
+				<svg class="hiddenSideBanner" style="vertical-align: bottom; margin-left: 50px;"
 					version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					width="19.25px" height="232px" viewBox="0 0 19.25 232"
@@ -151,7 +151,7 @@
 				style="margin-top: 40px; padding-left: 0; padding-right: 0;">
 				<span style="font-size: 1.4em;">Избор на карати:</span></br>
 				<div class="karats_wrapper" style="">
-					<div class="karats_container">
+					<div class="first karats_container">
 						<span class="karats">8</span>
 					</div>
 					<div class="karats_container">
@@ -161,7 +161,7 @@
 						<span class="karats">18</span>
 					</div>
 					</br>
-					<div class="karats_container karats_container_small">
+					<div class="first karats_container karats_container_small">
 						<span class="karats karats_small">21.6</span>
 					</div>
 					<div class="karats_container">
@@ -171,17 +171,26 @@
 						<span class="karats">24</span>
 					</div>
 				</div>
-				<svg style="position: relative; top: -25px; margin-left: 30px;"
-					version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					width="19.25px" height="232px" viewBox="0 0 19.25 232"
-					enable-background="new 0 0 19.25 232" xml:space="preserve">
-			<polyline fill="none" stroke="#A97C50" stroke-width="4"
-						stroke-miterlimit="10"
-						points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
-		</svg>
+				<!-- <svg style="position: relative; top: -25px; margin-left: 30px;"
+							version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							width="19.25px" height="232px" viewBox="0 0 19.25 232"
+							enable-background="new 0 0 19.25 232" xml:space="preserve">
+					<polyline fill="none" stroke="#A97C50" stroke-width="4"
+								stroke-miterlimit="10"
+								points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
+				</svg> -->
 			</div>
 			<div class="col-sm-4">
+				<svg class="hiddenSideBanner" style="position: relative; top: -25px; margin-left: -30px;"
+							version="1.1" id="Line2" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							width="19.25px" height="232px" viewBox="0 0 19.25 232"
+							enable-background="new 0 0 19.25 232" xml:space="preserve">
+					<polyline fill="none" stroke="#A97C50" stroke-width="4"
+								stroke-miterlimit="10"
+								points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
+				</svg>
 				<div id="price_box">
 					<span class="big_price">36</span><span class="small_price">.60</span><span
 						class="text">лв/гр.</span>
@@ -237,8 +246,8 @@
 					представите </br>документ за самоличност.
 				</p>
 			</div>
-			<div class="col-sm-6" style="">
-				<img src="ELEMENTS/right.png" style="display: inline-block; vertical-align: top; height:24%;"/>	
+			<div class="col-sm-6">
+				<img src="ELEMENTS/right.png" class="hiddenSideBannerImage" style="/*height:25.5%;*/"/>	
 				<!-- <svg style="position: relative; margin-right: 5%;" version="1.1"
 					id="Line2" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -251,12 +260,20 @@
 				<div id="age_box">
 					<!-- <span>18</span> -->
 				</div>
+				<svg style="width: 100%;" version="1.1" id="Line4"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					width="854px" height="22.5px" viewBox="0 0 854 22.5"
+					enable-background="new 0 0 854 22.5" xml:space="preserve">
+		<polyline fill="none" stroke="#A97C50" stroke-width="4"
+						stroke-miterlimit="10" points="0,3 414,3 429,18 444,3 854,3 " />
+		</svg>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6" style="">				
-				<div style="display: inline-block; text-align: end; width: 90%; ">
-					<img src="ELEMENTS/ring.png" class="" style="display: inline-block;    max-width: 70%;
+			<div class="col-sm-6">				
+				<div>
+					<img src="ELEMENTS/ring.png" style="display: inline-block; max-width: 70%;
   margin: 0 auto;
   height: auto;"/>	
 				</div>
@@ -270,22 +287,41 @@
 						points="3,0 3,103 15,115 2.5,127.5 2.5,232 " />
 				</svg> -->
 			</div>
-			<div class="col-sm-6" style="text-align: left; padding-left: 0.5%;">
-					<img src="ELEMENTS/left.png" style="display: inline-block;"/>					
-				<p class="info left" style="  vertical-align: middle;  padding-left: 3%;   width: 90%;">
+			<div class="col-sm-6 left" style="padding-left: 0.5%;">
+					<img src="ELEMENTS/left.png" class="hiddenSideBannerImage"/>					
+				<p class="info left" style="vertical-align: middle;  padding-left: 3%;   width: 90%;">
 					За да Ви дадем коректна</br> изкупна цена за благородния метал,</br> остраняваме за наща сметка</br> всички скъпоценни или</br> полускъпоценни камъни.</br></br>
 					<span class="note"><span class="asterisk">*</span>Добре е да ни уведомите предварително ако желаете да запазим камъка при отсртаняването му.</span>
 				</p>
-				
-				
-			</div>			
+				<svg style="width: 100%;" version="1.1" id="Line5"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					width="854px" height="22.5px" viewBox="0 0 854 22.5"
+					enable-background="new 0 0 854 22.5" xml:space="preserve">
+				<polyline fill="none" stroke="#A97C50" stroke-width="4"
+								stroke-miterlimit="10" points="0,3 414,3 429,18 444,3 854,3 " />
+				</svg>
+			</div>				
+		</div>
+		<div class="row">
+			<div class="col-sm-6">				
+				<div>
+					<p class="info left" style="vertical-align: middle; padding-left: 3%; width: 90%;">
+						Последният етап е тестване и анализиране на точния карат на бижуто.
+					</p>
+				</div>				
+			</div>
+			<div class="col-sm-6 left" style="padding-left: 1.5%;">
+				<img src="ELEMENTS/right.png" class="hiddenSideBannerImage"/>	
+				<img src="ELEMENTS/IZkupuvane.png" style="display: inline-block; max-width: 70%;  margin: 0 auto; height: auto;"/>					
+			</div>				
 		</div>
 	</div>
 	<div id="footerContainer" class="container">
 		<footer class="footer">
 			<nav class="navbar navbar-default">
 				<div id="navbar" class="container-fluid">
-					<div class="footerMenu" style="">
+					<div class="footerMenu">
 						<!-- <ul class="nav nav-pills nav-justified">
 			<li><a href="#"><h5>За нас</h5></a></li>
 			<li><a href="#"><h5>Защо да пазарувате тук?</h5></a></li>

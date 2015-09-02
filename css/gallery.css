@@ -29,6 +29,30 @@
 	background-color: transparent;
 }
 
+.searchSectionContainer {
+	float: right;
+}
+
+.searchSectionContainer:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.searchSection {
+	padding: 0;
+    color: #777;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 1.4em;
+    padding: 0px 15px;
+    /* display: none; */
+}
+
 #filter {
 	display: block;
 	/* width: 100%; */
@@ -195,13 +219,14 @@ input.radio:focus ~ label:before {
 }
 
 .categoryTitle {
+	/* display: inline-block; */
+	/* line-height: 0.7em; */	/* uncomment this for previous version with searchBox placed by the sort section */
 	display: block;
 	margin: 0 auto;
 	text-align: center;
-	font-size: 2em;
-	line-height: 0.7em;
+	font-size: 2em;	
 	position: relative;
-	bottom: 0.5em;
+	/* bottom: 0.5em; */
 }
 
 #popup {

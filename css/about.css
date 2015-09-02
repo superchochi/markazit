@@ -10,3 +10,27 @@ p {
 	text-align: center;
 	margin: 0 auto;
 }
+
+.col-sm-4, .col-sm-6, .col-sm-12 {
+	text-align: center;
+}
+
+iframe {
+	width:800px; 
+	height:600px
+}
+
+
+@media ( max-width : 991px) {
+	iframe {
+		width: 700px;
+		height: 500px;
+	}
+}
+
+@media ( max-width : 768px) {
+	iframe {
+		width: 70vw;
+		height: 50vh;
+	}
+}

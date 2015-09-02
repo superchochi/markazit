@@ -331,11 +331,11 @@
 							<li><a href="#" style="font-size: 1.4em; width: 210px;">от най-висока <span class="glyphicon glyphicon-menu-down" style="float: right;"></span></a></li>
 						</ul>
 					</li>
-					<li>
-						<label for="searchBox" style="display: inline;">Кат. №</label>
+					<!-- <li class="searchSection">
+						<label for="searchBox" style="display: inline; border: 0; font-size: 0.6em;">Кат. №</label>
 						<input class="form-control" id="searchBox" type="text" style="display: inline; width: initial;">
 						<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();">
-					</li>
+					</li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" class="icon-small"><span
@@ -370,7 +370,12 @@
 
 	<div id="galleryGrid" class="container gallery last">
 		<div id="filter">
-			<span class="categoryTitle"></span>
+			<div style="bottom: 0.5em; text-align: right;"><div class="searchSection">
+													<label for="searchBox" style="display: inline; border: 0; font-size: 0.8em;">Кат. №</label>
+													<input class="form-control" id="searchBox" type="text" style="display: inline; width: initial;">
+													<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();">
+												</div></div>
+			<span class="categoryTitle"></span> 			
 			<div class="radioBtnWrapper">
 			<div class="radioBtnContainer">
 				<div id="radio1div" class="radioDiv" style="display: none;">

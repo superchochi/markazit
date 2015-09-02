@@ -55,6 +55,10 @@ menu-default.nav>li>a {
 	color: #8B5E3C;
 }
 
+.last {
+	padding-bottom: 0%;
+}
+
 h1 {
 	display: inline-block;
 	font-size: 3.6em;
@@ -141,8 +145,10 @@ h1>span {
 	display: inline-block;
 	position: relative;
 	font-size: 2em;
-	bottom: 125px;
-	left: 180px;
+	/* bottom: 125px; */
+    bottom: 53%;
+  /*   left: 180px; */
+    left: 64%;
 }
 
 .asterisk {
@@ -160,14 +166,18 @@ h1>span {
 	background: url('../ELEMENTS/box.png') center center;
 	width: 282px;
 	height: 235px;
+	background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #age_box {
 	background: url('../ELEMENTS/18.png') center center;
-	width: 261px;
-	height: 217px;
+	width: 260px;
+	height: 235px;
 	margin: 0;
 	margin-bottom: 10px;
+	background-size: contain;
+    background-repeat: no-repeat
 }
 
 .chart {
@@ -184,6 +194,10 @@ h1>span {
 
 canvas {
 	transition: all .3s ease;
+	width: 100%;
+    height: auto;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 .buying_header {
@@ -207,12 +221,27 @@ canvas {
 	width: 100%; 
 }
 
+.hiddenSideBannerImage {
+	vertical-align: top;
+	display: inline-block;
+}
+
 .left{
 	text-align: left;
 }
 
 .right{
 	text-align: right;
+}
+
+.col-sm-6 div {
+	display: inline-block; 
+	text-align: end; 
+	width: 90%;
+}
+
+#Line4, #Line5 {
+	display: none;
 }
 
 /* button panel start */
@@ -290,5 +319,67 @@ canvas {
 @media ( max-width : 991px) {
 	h4 {
 		font-size: 17px;
+	}
+	/* .last {
+		padding-bottom: 0%;
+	} */
+	.hiddenSideBanner {
+		display: none;
+	}
+	.row div .karats_wrapper .first {
+		margin-left: 0px;
+	}
+	#price_box {
+		width: 239px;
+		overflow: hidden;
+	}
+	.big_price {
+		padding-left: 5%;
+	}
+}
+
+@media ( max-width : 860px) {	
+	 .last {
+		padding-bottom: 8%;
+	}	
+}
+
+@media ( max-width : 768px) {
+	.last {
+		padding-bottom: 8%;
+	}
+	.col-sm-4, .col-sm-6, .col-sm-12 {
+		text-align: center;
+	}
+	.col-sm-6 {
+		margin: 0;
+	}
+	.col-sm-6 div {
+		margin: 0 auto;
+		text-align: center;
+	}
+	.row div .karats_wrapper {
+		width: 100%;
+	}
+	.right {
+		text-align: center;
+	}
+	.left {
+		text-align: center;
+	}
+	.big_price {
+		padding-left: 5%;
+	}
+	.text {
+		left: 33%;
+	}
+	.hiddenSideBannerImage {
+		display: none;
+	}
+	#Line4, #Line5 {
+		display: inline-block;
+	}
+	.info {
+		margin-top: 0%;
 	}
 }
