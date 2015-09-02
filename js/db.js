@@ -13,9 +13,9 @@ function getItems(categories, limit, offset, pager, view) {
 	});
 }
 
-function searchItem(mag_nom, pager, view) {
+function searchItem(id, pager, view) {
 	$.ajax({
-		url : "db.php?function=searchItem&mag_nom=" + mag_nom,
+		url : "db.php?function=searchItem&id=" + id,
 		success : function(data) {
 			var arr = [data];
 			createElements(arr, this.limit, this.pager, this.view);

@@ -42,15 +42,15 @@ function getItems() {
 	mysql_close ( $link );
 }
 function searchItem() {
-	$mag_nom = $_GET ["mag_nom"];
-	if (! is_numeric ( $mag_nom )) {
+	$id = $_GET ["id"];
+	if (! is_numeric ( $id )) {
 		die ( "Missing parameter!" );
 	}
 	$link = openDBConnection ();
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select id, param1, price, path from items where mag_nom=%d", mysql_real_escape_string ( $mag_nom ) );
+	$query = sprintf ( "select id, param1, price, path from items where id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$arr = array ($row [0], $row [1], $row [2], $row [3] );
@@ -68,7 +68,7 @@ function getItem() {
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4, mag_nom from items where id=%d", mysql_real_escape_string ( $id ) );
+	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4, id from items where id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$imageUrl = trim($row [2]);

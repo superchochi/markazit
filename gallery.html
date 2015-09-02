@@ -236,12 +236,12 @@
 	}
 	
 	function searchItem0() {
+		var num = $("#searchBox").val();
 		if(num == "") {
 			return;
 		}
 		$(".row").remove();
 		var pager = $("#galleryPager");
-		var num = $("#searchBox").val();
 		allPages = 1;
 		createPager();
 		searchItem(num, pager, view);
