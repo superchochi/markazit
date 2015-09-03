@@ -14,7 +14,25 @@
 <link rel="stylesheet" href="css/forum.fonts.css">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+	$(window).load(function (){
+		function validateEmail(email) {
+			var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+			return re.test(email);
+		}
 
+		function validate() {
+			var email = $("#contactEmail").val();
+			if(!validateEmail(email)){
+				alert("Адресът за връзка не е коректен!")
+			}
+			return false;
+		}
+
+		$('button').bind('click', validate);
+	});
+	
+</script>
 </head>
 <body>
 	<div class="background1"></div>
@@ -82,8 +100,44 @@
 	</div>
 	<div id="mainContainer" class="container last">
 		<div class="row">
-			<div class="col-sm-12 clearHover">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sbg!2sus!4v1441031485291!6m8!1m7!1st3i6rGfEKbsAAAQuoQBATw!2m2!1d42.64298356384413!2d23.36710832655456!3f320.5780762634854!4f-10.184519539806388!5f0.4000000000000002"  frameborder="0" style="border:0;" allowfullscreen></iframe>
+			<div class="col-sm-12 clearHover"> <!-- What is this class clearHover? -->
+				<iframe id="firstiFrame" src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sbg!2sus!4v1441031485291!6m8!1m7!1st3i6rGfEKbsAAAQuoQBATw!2m2!1d42.64298356384413!2d23.36710832655456!3f320.5780762634854!4f-10.184519539806388!5f0.4000000000000002"  frameborder="0" style="border:0;" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<!-- <div style="width: 50%;"> -->
+					<p class="header">Къде се намираме</p>
+					<iframe id="secondiFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2467.699602423518!2d23.36665996028998!3d42.64851356780564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7207083d01d5c4ea!2sMarkazit!5e0!3m2!1sbg!2sus!4v1441190072995"  frameborder="0" style="border:0" allowfullscreen></iframe>
+				<!-- </div> -->
+			</div>
+			<div class="col-sm-6">
+				<p>Форма за обратна връзка</p>
+				<div class="contactFormContainer">
+					<!-- <form method="post" onsubmit="validate()"> -->
+					<div>	<label for="contactName">Име:</label>
+			       		<input id="contactName" class="" name="name">
+			       	</div>
+			       	<div>	<label for="contactEmail">Имейл:</label>
+			       		<input id="contactEmail" class="" name="email" required>
+			       	</div>
+			       	<div>	<label for="contactContent">Текст:</label>
+						<textarea id="contactContent" class="" name="content" rows="6" cols="20"></textarea>
+			       	</div>
+					
+					<button class="" type="button" onclick="">Изпрати</button>
+				<!-- 	</form> -->
+				</div>				
+				<div class="contacts" id="phones">
+					<span class="center header">Контакти:</span><hr></hr>
+					<span>02 887 4568</span></br>
+					<span>02 955 5559</span></br>
+					<span>087 912 2259</span></br>
+					<span>Харесайте ни във Facebook</span><hr></hr>
+					<span class="left center header">Работно време: </span>
+					<span class="days">Понеделник - Събота: </span><span class="hours">10:00 - 19:00</span>
+					<span class="days">Неделя: </span><span class="hours">Почивен ден</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -99,7 +153,7 @@
 							<li><a href="about.html"><span>Контакти</span></a></li>
 						</ul>
 						<div class="socials">
-							<a href="#"><div class="mail"></div></a> <a href="#"><div
+							<a href="#"><div class="mail"></div></a> <a href="#phones"><div
 									class="phone"></div></a> <a href="#"><div class="facebook"></div></a>
 							<a href="#"><div class="googlePlus"></div></a>
 						</div>
