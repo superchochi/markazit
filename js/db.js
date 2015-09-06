@@ -83,7 +83,7 @@ function createElements(json, limit, pager, view) {
 		if (item[2]) {
 			$("#popup #mainImg").attr("src", "../" + item[2].trim());
 		}
-		$("#popup #catalogNum").text(item[7]);
+		$("#popup #catalogNum").text(item[10]);
 		if (item[1]) {
 			$("#popup #price").text(item[1]);
 		}
@@ -102,9 +102,25 @@ function createElements(json, limit, pager, view) {
 		if (item[0]) {
 			$("#popup #weight").text(item[0] + " гр.");
 		}
+		
+		var params = "";
 		if (item[6]) {
-			$("#popup #params").text(item[6].trim());
+			//$("#popup #params").text(item[6].trim());
+			params += (item[6].trim() + " ");
 		}
+		if (item[7]) {
+			//$("#popup #params").text(item[7].trim());
+			params += (item[7].trim() + " ");
+		}
+		if (item[8]) {
+			//$("#popup #params").text(item[8].trim());
+			params += (item[8].trim() + " ");
+		}
+		if (item[9]) {
+			//$("#popup #params").text(item[9].trim());
+			params += (item[9].trim() + " ");
+		}
+		$("#popup #params").text(params);
 		$('#popup').bPopup().css('top',
 				$(this).css("top") - 600 + 'px');
 	});

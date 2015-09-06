@@ -75,9 +75,9 @@ function getItem() {
 	$imageUrl2 = str_replace ( ".jpg", "_2.jpg", $imageUrl );
 	$imageUrl3 = str_replace ( ".jpg", "_3.jpg", $imageUrl );
 	$imageUrl4 = str_replace ( ".jpg", "_4.jpg", $imageUrl );
-	$row [3] = file_exists("../".$imageUrl2) ? $imageUrl2 : "";
-	$row [4] = file_exists("../".$imageUrl3) ? $imageUrl3 : "";
-	$row [5] = file_exists("../".$imageUrl4) ? $imageUrl4 : "";
+	$img2 = file_exists("../".$imageUrl2) ? $imageUrl2 : "";
+	$img3 = file_exists("../".$imageUrl3) ? $imageUrl3 : "";
+	$img4 = file_exists("../".$imageUrl4) ? $imageUrl4 : "";
 	//$row [3] = $imageUrl2;
 	//$row [4] = $imageUrl3;
 	//$row [5] = $imageUrl4;
@@ -85,6 +85,9 @@ function getItem() {
 			$row [0],
 			$row [1],
 			$row [2],
+			$img2,
+			$img3,
+			$img4,
 			$row [3],
 			$row [4],
 			$row [5],

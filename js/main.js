@@ -24,7 +24,7 @@ function updateMenu() {
         if ($(this).scrollTop() > $("#topImage").height() - $("#menu").height()) {
             $("#menu").removeClass("menu-default");
             $("#menu").addClass("menu-top");
-            $("#logo").css({"opacity": "1", "visibility": "visible", "margin-left": "4%"});
+            $("#logo").css({"opacity": "1", "visibility": "visible", "margin-left": "3.8%"});
             $("#galleryGrid").css({"padding-top": "calc(1% + 86px)"});
         } else if ($(this).scrollTop() < $("#topImage").height()) {
             $("#menu").removeClass("menu-top");

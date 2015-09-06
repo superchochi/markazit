@@ -6,7 +6,149 @@
 
 p {
 	font-size: 1.4em;
-	text-transform: uppercase;
+	color: #A56B3D;
 	text-align: center;
 	margin: 0 auto;
+}
+
+.info {
+	display: inline-block;
+	margin: 10% 0;
+}
+
+.left{
+	text-align: left;
+	/* padding-left: 0.5%; */
+}
+
+.right{
+	text-align: right;
+	padding-right: 0.5%;
+}
+
+.hiddenSideBannerImage {
+	vertical-align: top;
+	display: inline-block;
+}
+
+#Line4, #Line5 {
+	display: none;
+}
+
+.originText {
+	display: inline-block;
+    /* width: 50%; */
+    color: #fff;
+    position: relative;
+   /*  top: 46px; */
+    left: -60px;
+    text-align: left;
+    line-height: 1.1em;
+	margin: 14.5% 0;
+}
+
+.topIcon {
+	display: inline-block;
+	max-width: 35%;
+	display: none;
+}
+
+.secondIcon, .fifthIcon, .sixthIcon , .seventhIcon {
+	max-width: 50%;
+	margin: 5% 0;
+}
+
+.iconContainer {
+	display: inline-block;
+	width: 93%;
+	text-align: center;
+}
+
+.thirdIcon {
+	margin: 10% 0;
+}
+
+.sixthIcon  {
+	margin: 0;
+}
+
+.seventhIcon {
+	max-width: 60%;
+}
+
+.originContainer {
+	background: url('../ELEMENTS/suveti.png') center center no-repeat; 
+	width: 98%;
+	/* height: 30%; */
+	background-size: contain;
+	min-height: 233px;
+}
+
+@media ( max-width : 991px) {
+	.fifthIcon {
+		max-width: 70%;
+	}
+	.sixthIcon  {
+		max-width: 60%;
+		margin: 5% 0;
+	}
+	.seventhIcon {
+		max-width: 75%;
+	}
+}
+
+@media ( max-width : 768px) {
+	.originContainer {
+		background: none;
+		height: initial;
+		background-color: #A56B3D;
+		width: 96%;
+	}
+	.topIcon {
+		display: inline-block;
+		margin: 2% 0;
+
+	}
+	.secondIcon {
+		max-width: 30%;
+	}
+	.originText {
+		margin: 0;
+		left: 0;
+	}
+	.col-sm-4, .col-sm-6 {
+		text-align: center;
+	}
+	.right {
+		text-align: center;
+	}
+	.left {
+		text-align: center;
+		padding-left: 0;
+	}
+	.info {
+		margin: 0;
+	}
+	.hiddenSideBannerImage {
+		display: none;
+	}
+	#Line4, #Line5 {
+		display: inline-block;
+		margin: 2% 0;
+	}
+	.secondIcon, .thirdIcon, .fourthIcon {
+		margin: 0;
+	}
+	.fifthIcon, .seventhIcon  {
+		max-width: 50%;
+		margin: 0;
+	}
+	
+	.sixthIcon  {
+		max-width: 37%;
+		margin: 0;
+		}
+	.last {
+		padding-bottom: 9%;
+	}
 }

@@ -42,6 +42,7 @@
 	function doLeftRightPopup() {
 		$("#leftOrTop").removeClass("topPart").addClass("leftPart");
 		$("#rightOrBottom").removeClass("bottomPart").addClass("rightPart");
+		$("#mainImg").css({'max-width': '500px', 'max-height': '500px' });
 		$("#secondImg").removeClass("thumbnailBracelets").addClass("thumbnail");
 		$("#thirdImg").removeClass("thumbnailBracelets").addClass("thumbnail");	
 		$("#fourthImg").removeClass("thumbnailBracelets").addClass("thumbnail");
@@ -50,6 +51,7 @@
 	function doTopBottomPopup() {	
 		$("#leftOrTop").removeClass("leftPart").addClass("topPart");
 		$("#rightOrBottom").removeClass("rightPart").addClass("bottomPart");
+		$("#mainImg").css({'max-width': '1000px', 'max-height': '200px' });
 		$("#secondImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 		$("#thirdImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 		$("#fourthImg").removeClass("thumbnail").addClass("thumbnailBracelets");
@@ -88,6 +90,9 @@
 				$("#radio3div").show();
 				$("#radio3div label").text("Детски");
 				$("#radio3").attr("categories", "22");
+				$("#radio4div").show();
+				$("#radio4div label").text("С червен конец");
+				$("#radio4").attr("categories", "22");
 				doTopBottomPopup();
 				break;
 			case "wedRings":
@@ -95,7 +100,7 @@
 				$(".categoryTitle").text("Халки");
 				break;
 			case "earrings":
-				this.categories = [1];
+				this.categories = [16];
 				$(".categoryTitle").text("Обеци");
 				break;
 			case "necklaces":
@@ -132,18 +137,18 @@
 				//$("#radio5").attr("categories", "2");
 				break;
 			case "accessories":
-				this.categories = [1];
+				this.categories = [30];
 				$(".categoryTitle").text("Аксесоари");
 				$("#radio1div").show();				
 				$("#radio1").attr("checked", true);
 				$("#radio1div label").text("Златни аксесоари");
-				$("#radio1").attr("categories", "1");
+				$("#radio1").attr("categories", "30");
 				$("#radio2div").show();
 				$("#radio2div label").text("Златни часовници");
-				$("#radio2").attr("categories", "1");
+				$("#radio2").attr("categories", "30");
 				$("#radio3div").show();
 				$("#radio3div label").text("Стомана и диаманти");
-				$("#radio3").attr("categories", "1");
+				$("#radio3").attr("categories", "30");
 				break;
 			case "leather_and_silicone":
 				this.categories = [11, 12];
@@ -426,7 +431,7 @@
 							<li><a href="about.html"><span>Контакти</span></a></li>
 						</ul>
 						<div class="socials">
-							<a href="#"><div class="mail"></div></a> <a href="#"><div
+							<a href="#"><div class="mail"></div></a> <a href="about.html#phones"><div
 									class="phone"></div></a> <a href="#"><div class="facebook"></div></a>
 							<a href="#"><div class="googlePlus"></div></a>
 						</div>
