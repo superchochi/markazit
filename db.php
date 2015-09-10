@@ -15,14 +15,21 @@ function getItems() {
 	$categories = $_GET ["categories"];
 	$limit = $_GET ["limit"];
 	$offset = $_GET ["offset"];
+	$order = $_GET ["order"];
 	if (! $categories || ! is_numeric ( $limit ) || ! is_numeric ( $offset )) {
-		die ( "Missing parameter!" );
+		die ( "Missing or wrong parameter!" );
+	}
+	if ( is_null($order) ) {
+		$order = "ASC";
+	}
+	if ( $order !== "ASC" && $order !== "DESC" ) {
+		die ( "Wrong order parameter!" );
 	}
 	$link = openDBConnection ();
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select id, param1, price, path from items where category in(%s) limit %d offset %d", mysql_real_escape_string ( $categories ), mysql_real_escape_string ( $limit ), mysql_real_escape_string ( $offset ) );
+	$query = sprintf ( "SELECT id, param1, price, path FROM items WHERE category IN(%s) ORDER BY price %s LIMIT %d OFFSET %d", mysql_real_escape_string ( $categories ), mysql_real_escape_string ( $order ), mysql_real_escape_string ( $limit ), mysql_real_escape_string ( $offset ) );
 	$result = mysql_query ( $query, $link );
 	$arr = array ();
 	$i = 0;
@@ -50,7 +57,7 @@ function searchItem() {
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select id, param1, price, path from items where id=%d", mysql_real_escape_string ( $id ) );
+	$query = sprintf ( "SELECT id, param1, price, path FROM items WHERE id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$arr = array ($row [0], $row [1], $row [2], $row [3] );
@@ -68,7 +75,7 @@ function getItem() {
 	/*
 	 * columns: id, weight, price, path, category, param1, param2, param3, param4, mag_nom
 	 */
-	$query = sprintf ( "select weight, price, path, param1, param2, param3, param4, id from items where id=%d", mysql_real_escape_string ( $id ) );
+	$query = sprintf ( "SELECT weight, price, path, param1, param2, param3, param4, id FROM items WHERE id=%d", mysql_real_escape_string ( $id ) );
 	$result = mysql_query ( $query, $link );
 	$row = mysql_fetch_row ( $result );
 	$imageUrl = trim($row [2]);
@@ -105,7 +112,7 @@ function getCount() {
 		die ( "Missing parameter!" );
 	}
 	$link = openDBConnection ();
-	$query = sprintf ( "select count(*) from items where category in (%s)", mysql_real_escape_string ( $categories ) );
+	$query = sprintf ( "SELECT count(*) FROM items WHERE category IN (%s)", mysql_real_escape_string ( $categories ) );
 	$result = mysql_query ( $query, $link );
 	$count = mysql_result ( $result, 0 );
 	echo $count;

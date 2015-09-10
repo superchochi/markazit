@@ -19,6 +19,7 @@
 	var categories = [];
 	var allPages = 1;
 	var view = "col-sm-3";
+	var orderBy = "ASC";
 	
 	function getUrlParam(param) {
 		if (window.document.URL.indexOf("?") > 0) {
@@ -43,6 +44,7 @@
 		$("#leftOrTop").removeClass("topPart").addClass("leftPart");
 		$("#rightOrBottom").removeClass("bottomPart").addClass("rightPart");
 		$("#mainImg").css({'max-width': '500px', 'max-height': '500px' });
+		$("#firstImg").removeClass("thumbnailBracelets").addClass("thumbnail");
 		$("#secondImg").removeClass("thumbnailBracelets").addClass("thumbnail");
 		$("#thirdImg").removeClass("thumbnailBracelets").addClass("thumbnail");	
 		$("#fourthImg").removeClass("thumbnailBracelets").addClass("thumbnail");
@@ -52,6 +54,7 @@
 		$("#leftOrTop").removeClass("leftPart").addClass("topPart");
 		$("#rightOrBottom").removeClass("rightPart").addClass("bottomPart");
 		$("#mainImg").css({'max-width': '1000px', 'max-height': '200px' });
+		$("#firstImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 		$("#secondImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 		$("#thirdImg").removeClass("thumbnail").addClass("thumbnailBracelets");
 		$("#fourthImg").removeClass("thumbnail").addClass("thumbnailBracelets");
@@ -217,10 +220,22 @@
 			});
 			
 			$("#rightOrBottom img").bind("click", function() {
-				var src1 = $("#mainImg").attr("src");
-				var src2 = $(this).attr("src");
-				$("#mainImg").attr("src", src2);
-				$(this).attr("src", src1);
+				var src = $(this).attr("src");
+				$("#mainImg").attr("src", src);
+			});
+			
+			$("#sortASC").bind("click", function() {
+				orderBy = "ASC";
+				updateGallery(1);
+			});
+			$("#sortDESC").bind("click", function() {
+				orderBy = "DESC";
+				updateGallery(1);
+			});
+			
+			$(".searchSection #clearSearch").bind("click", function() {
+				$("#searchBox").val("");
+				updateGallery(1);
 			});
 		});
 		
@@ -250,7 +265,7 @@
 				str += ",";
 			}
 		}
-		getItems(str, 20, (page-1) * 20, pager, view);
+		getItems(str, 20, (page-1) * 20, pager, view, orderBy);
 	}
 	
 	function searchItem0() {
@@ -345,8 +360,8 @@
 						data-toggle="dropdown" role="button" aria-expanded="false">Сортирай по цена<span
 							class="caret"></span></a>
 						<ul class="sort dropdown-menu" role="menu">
-							<li><a href="#" style="font-size: 1.4em; width: 210px;">от най-ниска <span class="glyphicon glyphicon-menu-up" style="float: right;"></span></a></li>
-							<li><a href="#" style="font-size: 1.4em; width: 210px;">от най-висока <span class="glyphicon glyphicon-menu-down" style="float: right;"></span></a></li>
+							<li id="sortASC"><a href="#" style="font-size: 1.4em; width: 210px;">от най-ниска <span class="glyphicon glyphicon-menu-up" style="float: right;"></span></a></li>
+							<li id="sortDESC"><a href="#" style="font-size: 1.4em; width: 210px;">от най-висока <span class="glyphicon glyphicon-menu-down" style="float: right;"></span></a></li>
 						</ul>
 					</li>
 					<!-- <li class="searchSection">
@@ -393,7 +408,7 @@
 				<label for="searchBox">Кат. №</label>
 				<input class="form-control" id="searchBox" type="text"/>
 				<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();"/>
-				<a class="clear" href="#">Изчисти</a>
+				<a id="clearSearch" class="clear" href="#">Изчисти</a>
 				</div>
 			</div>
 			<span class="categoryTitle"></span> 			

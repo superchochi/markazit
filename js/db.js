@@ -1,9 +1,9 @@
 ﻿/**
  * file containing functions for db
  */
-function getItems(categories, limit, offset, pager, view) {
+function getItems(categories, limit, offset, pager, view, order) {
 	$.ajax({
-		url : "db.php?function=getItems&categories=" + categories + "&limit=" + limit + "&offset=" + offset,
+		url : "db.php?function=getItems&categories=" + categories + "&limit=" + limit + "&offset=" + offset + "&order=" + order,
 		success : function(data) {
 			createElements(data, limit, pager, view);
 		},
@@ -72,9 +72,11 @@ function createElements(json, limit, pager, view) {
 		$("#popup #mainImg").attr("src", "");
 		$("#popup #catalogNum").text("");
 		$("#popup #price").text("");
+		$("#popup #firstImg").attr("src", "");
 		$("#popup #secondImg").attr("src", "");
 		$("#popup #thirdImg").attr("src", "");
 		$("#popup #fourthImg").attr("src", "");
+		$("#popup #firstImg").hide();
 		$("#popup #secondImg").hide();
 		$("#popup #thirdImg").hide();
 		$("#popup #fourthImg").hide();
@@ -82,6 +84,8 @@ function createElements(json, limit, pager, view) {
 		$("#popup #params").text("");
 		if (item[2]) {
 			$("#popup #mainImg").attr("src", "../" + item[2].trim());
+			$("#popup #firstImg").attr("src", "../" + item[2].trim());
+			$("#popup #firstImg").show();
 		}
 		$("#popup #catalogNum").text(item[10]);
 		if (item[1]) {
