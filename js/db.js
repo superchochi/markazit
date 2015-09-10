@@ -35,7 +35,7 @@ function createElements(json, limit, pager, view) {
 		col.addClass(view);
 		var img = $(document.createElement("img"));
 		img.addClass("img-responsive");
-		img.attr("src", "../" + item[3].trim());
+		img.attr("src", item[3].trim());
 		/*
 		 * var span1 = $(document.createElement("span"));
 		 * span1.addClass("center-block"); span1.css("width", "100%");
@@ -83,8 +83,8 @@ function createElements(json, limit, pager, view) {
 		$("#popup #weight").text(weight);
 		$("#popup #params").text("");
 		if (item[2]) {
-			$("#popup #mainImg").attr("src", "../" + item[2].trim());
-			$("#popup #firstImg").attr("src", "../" + item[2].trim());
+			$("#popup #mainImg").attr("src", item[2].trim());
+			$("#popup #firstImg").attr("src", item[2].trim());
 			$("#popup #firstImg").show();
 		}
 		$("#popup #catalogNum").text(item[10]);
@@ -92,15 +92,15 @@ function createElements(json, limit, pager, view) {
 			$("#popup #price").text(item[1]);
 		}
 		if (item[3] != "") {
-			$("#popup #secondImg").attr("src", "../" + item[3].trim());
+			$("#popup #secondImg").attr("src", item[3].trim());
 			$("#popup #secondImg").show();
 		}
 		if (item[4] != "") {
-			$("#popup #thirdImg").attr("src", "../" + item[4].trim());
+			$("#popup #thirdImg").attr("src", item[4].trim());
 			$("#popup #thirdImg").show();
 		}
 		if (item[5] != "") {
-			$("#popup #fourthImg").attr("src", "../" + item[5].trim());
+			$("#popup #fourthImg").attr("src", item[5].trim());
 			$("#popup #fourthImg").show();
 		}
 		if (item[0]) {
