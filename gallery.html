@@ -71,6 +71,9 @@
 				$("#radio2div").show();
 				$("#radio2div label").text("Мъжки");
 				$("#radio2").attr("categories", "3");
+				$("#radio3div").show();
+				$("#radio3div label").text("Годежни пръстени");
+				$("#radio3").attr("categories", "3");
 				doLeftRightPopup();				
 				break;
 			case "diamonds":
@@ -89,10 +92,13 @@
 				$("#radio2").attr("categories", "5");
 				$("#radio3div").show();
 				$("#radio3div label").text("Детски");
-				$("#radio3").attr("categories", "22");
+				$("#radio3").attr("categories", "22"); //TODO Use the correct categories
 				$("#radio4div").show();
 				$("#radio4div label").text("С червен конец");
-				$("#radio4").attr("categories", "22");
+				$("#radio4").attr("categories", "22"); //TODO Use the correct categories
+				$("#radio5div").show();
+				$("#radio5div label").text("Твърди гривни");
+				$("#radio5").attr("categories", "22"); //TODO Use the correct categories
 				doTopBottomPopup();
 				break;
 			case "wedRings":
@@ -102,6 +108,13 @@
 			case "earrings":
 				this.categories = [16];
 				$(".categoryTitle").text("Обеци");
+				$("#radio1div").show();
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Дамски");
+				//$("#radio1").attr("categories", "??"); //TODO Use the correct categories
+				$("#radio2div").show();
+				$("#radio2div label").text("Детски");
+				//$("#radio2").attr("categories", "5??"); //TODO Use the correct categories
 				break;
 			case "necklaces":
 				this.categories = [6];
@@ -131,10 +144,10 @@
 				$("#radio4div").show();
 				$("#radio4div label").text("Букви");
 				$("#radio4").attr("categories", "34");
-				doLeftRightPopup();
-				//$("#radio5div").show();
-				//$("#radio5div label").text("Други");
-				//$("#radio5").attr("categories", "2");
+				$("#radio5div").show();
+				$("#radio5div label").text("Висулки"); //TODO Use the correct categories
+				$("#radio5").attr("categories", "2");
+				doLeftRightPopup();				
 				break;
 			case "accessories":
 				this.categories = [30];
@@ -364,10 +377,11 @@
 			<span style="font-size: 1.1em"> лв.</span>
 			</span>
 			<div class="imageContainer"><hr></hr>
+			<img id="firstImg" class="img-responsive thumbnail" src=""/>
 			<img id="secondImg" class="img-responsive thumbnail" src=""/>
 			<img id="thirdImg" class="img-responsive thumbnail" src=""/>
 			<img id="fourthImg" class="img-responsive thumbnail" src=""/><hr></hr></div>
-			<div>
+			<div class="description">
 			<span class="" style="font-size: 1.5em;" >Тегло: <span id="weight"></span></span></br><span class="" style="font-size: 1.5em;" >Параметри: <span id="params"></span></span>
 			</div>
 		</div>
@@ -375,11 +389,13 @@
 
 	<div id="galleryGrid" class="container gallery last">
 		<div id="filter">
-			<div style="bottom: 0.5em; text-align: right;"><div class="searchSection">
-													<label for="searchBox" style="display: inline; border: 0; font-size: 0.8em;">Кат. №</label>
-													<input class="form-control" id="searchBox" type="text" style="display: inline; width: initial;">
-													<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();">
-												</div></div>
+			<div><div class="searchSection">
+				<label for="searchBox">Кат. №</label>
+				<input class="form-control" id="searchBox" type="text"/>
+				<input class="btn btn-default" type="submit" value="Търси" onclick="searchItem0();"/>
+				<a class="clear" href="#">Изчисти</a>
+				</div>
+			</div>
 			<span class="categoryTitle"></span> 			
 			<div class="radioBtnWrapper">
 			<div class="radioBtnContainer">
@@ -391,31 +407,37 @@
 					<input type="radio" name="radio" id="radio2" class="radio" />
 					<label for="radio2"></label>
 				</div>
-			</div>
-			<div class="radioBtnContainer">
 				<div id="radio3div" class="radioDiv" style="display: none; /*margin-bottom: 2.4em*/">
 					<input type="radio" name="radio" id="radio3" class="radio" />
 					<label for="radio3"></label>
 				</div>
-			
-				<!-- </br> -->
+			</div>
+			<div class="radioBtnContainer">
+				<!-- <div id="radio3div" class="radioDiv" style="display: none; /*margin-bottom: 2.4em*/">
+					<input type="radio" name="radio" id="radio3" class="radio" />
+					<label for="radio3"></label>
+				</div> -->
 				<div id="radio4div" class="radioDiv" style="display: none;">
 					<input type="radio" name="radio" id="radio4" class="radio" />
 					<label for="radio4"></label>
 				</div>
-			</div>
-			<div class="radioBtnContainer">
 				<div id="radio5div" class="radioDiv" style="display: none;">
 					<input type="radio" name="radio" id="radio5" class="radio" />
 					<label for="radio5"></label>
 				</div>
+			</div>
+			<div class="radioBtnContainer">
+				<!-- <div id="radio5div" class="radioDiv" style="display: none;">
+					<input type="radio" name="radio" id="radio5" class="radio" />
+					<label for="radio5"></label>
+				</div> -->
 				<div id="radio6div" class="radioDiv" style="display: none;">
 					<input type="radio" name="radio" id="radio6" class="radio" />
 					<label for="radio6"></label>
 				</div>
 			</div>
 			</div>
-		</div><br/><br/>
+		</div>
 		<ul id="galleryPager" class="pagination">
 		</ul>
 	</div>

@@ -156,7 +156,7 @@ a, a:focus {
 {
     background: transparent;
     /* box-shadow:.01em .01em 2em .01em #f6f0e9 inset; */
-    /* color: #e3bb5e; */
+     color: #ffeac8; 
     background-color: rgba(87, 59, 31, 0.6);
 }
 
@@ -263,35 +263,42 @@ a, a:focus {
 
 .mail {
     background: url('../ELEMENTS/social/mail/mail OFF.png') no-repeat;
+	background-size: contain;
 }
 
 .mail:hover {
     background: url('../ELEMENTS/social/mail/mail ON.png') no-repeat;
+	background-size: contain;
 }
 
 .phone {
     background: url('../ELEMENTS/social/phone/phone OFF.png') no-repeat;
+	background-size: contain;
 }
 
 .phone:hover {
     background: url('../ELEMENTS/social/phone/phone ON.png') no-repeat;
+	background-size: contain;
 }
 
 .facebook {
-    background: url('../ELEMENTS/social/facebook/Facebook OFF.png')
-        no-repeat;
+    background: url('../ELEMENTS/social/facebook/Facebook OFF.png') no-repeat;
+	background-size: contain;
 }
 
 .facebook:hover {
     background: url('../ELEMENTS/social/facebook/Facebook ON.png') no-repeat;
+	background-size: contain;
 }
 
 .googlePlus {
     background: url('../ELEMENTS/social/G+/G+ OFF.png') no-repeat;
+	background-size: contain;
 }
 
 .googlePlus:hover {
     background: url('../ELEMENTS/social/G+/G+ ON.png') no-repeat;
+	background-size: contain;
 }
 
 /* ul li a {
@@ -423,4 +430,12 @@ left: 33%; */
     .container.gallery .center-block.price {
         padding-top: 20px;
     }
+}
+
+@media ( max-width : 395px) {
+    .mail, .phone, .facebook, .googlePlus {
+		width: 60px;
+		height: 60px;
+		padding: 0;
+	}
 }
