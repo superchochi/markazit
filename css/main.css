@@ -54,9 +54,14 @@ body {
 
 .row div {
     margin: 1.5em 0 0 0;
-    transition-property: all;
+    /* transition-property: all;
     transition-duration: 0.3s, background-position 1ms;
-    transition-timing-function: linear;
+    transition-timing-function: linear; */
+	transition: all 0.1s ease;
+	-webkit-transition: all 0.1s ease;	
+	-moz-transition: all 0.1s ease;	
+	-o-transition: all 0.1s ease;
+	-ms-transition: all 0.1s ease;
 }
 
 .last {
@@ -91,7 +96,7 @@ a, a:focus {
     margin: 0;
     background: transparent;
     border-color: transparent;
-    height: 16%;
+    height: 16%;	
 }
 
 .menu-top {
@@ -103,19 +108,20 @@ a, a:focus {
     background: URL('../small_baner.png');
     background-repeat: no-repeat;
     /* background-size: contain; */
-    -webkit-transition-property: all;
-    -webkit-transition-duration: 0.2s;
-    -webkit-transition-timing-function: linear;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
+	transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;	
+	-moz-transition: all 0.2s linear;	
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
 }
 
 .menu-default .nav a {
     color: #F7F7F7;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
+    transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;	
+	-moz-transition: all 0.2s linear;	
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
 }
 
 .menu-default.nav>li>a {
@@ -131,9 +137,11 @@ a, a:focus {
 
 .menu-top .nav a {
     color: #F7F7F7;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
+    transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;	
+	-moz-transition: all 0.2s linear;	
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
 }
 
 .menu-top li.active>a {
@@ -221,8 +229,11 @@ a, a:focus {
     /*z-index: -1; */
     margin: 10px 0;
     margin-left: -80px;
-    -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;	
+	-moz-transition: all 0.2s linear;	
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
 }
 
 #navbar {
@@ -256,6 +267,7 @@ a, a:focus {
     display: inline-block;
     padding: 0 45px;
     transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -317,6 +329,7 @@ ul.bottom li a {
     font-weight: 700;
     color: #e4c4ad;
     transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -352,13 +365,16 @@ left: 33%; */
     }
 }
 
+@media ( max-width : 1046px) {    
+    h4 {
+        font-size: 18px;
+    }
+}
+
 @media ( max-width : 991px) {
     .navbar .container-fluid {
         padding-left: 0;
         padding-right: 0;
-    }
-    h4 {
-        font-size: 17px;
     }
 }
 
@@ -377,19 +393,22 @@ left: 33%; */
         text-align: center;
     }
     h4 {
-        font-size: 17px;
+        font-size: 16px;
         !
         important
     }
     #logo {
         height: 4%;
+		margin-top: 2.5%;
     }
 }
 
-@media ( max-width : 768px) {
+@media ( max-width : 767px) {
     .navbar .container-fluid {
-        padding-left: 6em;
-        padding-right: 6em;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
     }
     #mainBanner {
         padding-top: 50px;
@@ -399,6 +418,7 @@ left: 33%; */
     }
     .menu-default {
         height: initial;
+		background: url('../ELEMENTS/baner.png');
     }
 }
 

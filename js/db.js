@@ -1,6 +1,7 @@
 ﻿/**
  * file containing functions for db
- */
+ */ 
+
 function getItems(categories, limit, offset, pager, view, order) {
 	$.ajax({
 		url : "db.php?function=getItems&categories=" + categories + "&limit=" + limit + "&offset=" + offset + "&order=" + order,
@@ -35,7 +36,7 @@ function createElements(json, limit, pager, view) {
 		col.addClass(view);
 		var img = $(document.createElement("img"));
 		img.addClass("img-responsive");
-		img.attr("src", item[3].trim());
+		img.attr("src", item[3].trim());		
 		/*
 		 * var span1 = $(document.createElement("span"));
 		 * span1.addClass("center-block"); span1.css("width", "100%");
@@ -50,7 +51,7 @@ function createElements(json, limit, pager, view) {
 		span2.text("Цена: " + item[2] + " лв.");
 		col.append(img);
 		// col.append(span1);
-		col.append(span2);
+		col.append(span2);		
 		cols[i] = col;
 	});
 	var row = $(document.createElement("div"));
@@ -65,9 +66,33 @@ function createElements(json, limit, pager, view) {
 	});
 	if (row.has("div")) {
 		row.insertBefore(pager);
-	}
+	};
+	
+	$('.' + view).bind('load', function(e){
+		var img = $(this).children('img');
+		console.log(img);
+		if(img.naturalWidth() != img.naturalHeight()){
+			$('.navbar-right').css('display', "none");
+				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-12');
+				view = "col-sm-12";
+		}
+	});
+	/*var img = $('.' + view).children('img');
+	console.log(img);
+	if(img.naturalWidth() != img.naturalHeight()){
+			$('.navbar-right').css('display', "none");
+				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-12');
+				view = "col-sm-12";
+	}*/
 	$("." + view).bind('click', function(e) {
 		e.preventDefault();
+		var imgChild = $("." + view + ' img');
+		if(imgChild.first().naturalWidth() == imgChild.first().naturalHeight()){
+			doLeftRightPopup();			
+		}
+		else {
+			doTopBottomPopup();
+		}
 		var item = getItem($(this).attr("dbId"));
 		$("#popup #mainImg").attr("src", "");
 		$("#popup #catalogNum").text("");
@@ -103,28 +128,34 @@ function createElements(json, limit, pager, view) {
 			$("#popup #fourthImg").attr("src", item[5].trim());
 			$("#popup #fourthImg").show();
 		}
-		if (item[0]) {
+		if (parseFloat(item[0]) > 0) {
 			$("#popup #weight").text(item[0] + " гр.");
+			$("#popup #weight").parent().css('display', '');
+			$("#popup #weight").parent().next().css('display', '');
+		}
+		else{
+			$("#popup #weight").parent().css('display', 'none');
+			$("#popup #weight").parent().next().css('display', 'none');
 		}
 		
 		var params = "";
-		if (item[6]) {
+		if (item[6].trim().length != 0) {
 			//$("#popup #params").text(item[6].trim());
-			params += (item[6].trim() + " ");
+			params += ("<span>" + item[6].trim() + "</span>");
 		}
-		if (item[7]) {
+		if (item[7].trim().length != 0) {
 			//$("#popup #params").text(item[7].trim());
-			params += (item[7].trim() + " ");
+			params += ("</br><span>" + item[7].trim() + "</span>");
 		}
-		if (item[8]) {
+		if (item[8].trim().length != 0) {
 			//$("#popup #params").text(item[8].trim());
-			params += (item[8].trim() + " ");
+			params += ("</br><span>" + item[8].trim() + "</span>");
 		}
-		if (item[9]) {
+		if (item[9].trim().length != 0) {
 			//$("#popup #params").text(item[9].trim());
-			params += (item[9].trim() + " ");
+			params += ("</br><span>" + item[9].trim() + "</span>");
 		}
-		$("#popup #params").text(params);
+		$("#popup #params").html(params);
 		$('#popup').bPopup().css('top',
 				$(this).css("top") - 600 + 'px');
 	});

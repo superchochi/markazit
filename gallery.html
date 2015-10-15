@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="jquery-ui-1.11.3/jquery-ui.min.js"></script>
@@ -16,18 +16,47 @@
 <script src="js/main.js"></script>
 <script src="js/db.js"></script>
 <script>
+(function ( $ ) {
+	var
+    props = ['Width', 'Height'],
+    prop;
+	while (prop = props.pop()) {
+		(function (natural, prop) {
+			$.fn[natural] = (natural in new Image()) ? 
+			function () {
+				return this[0][natural];
+			} : 
+			function () {
+				var 
+				node = this[0],
+				img,
+				value;
+
+			if (node.tagName.toLowerCase() === 'img') {
+				img = new Image();
+				img.src = node.src,
+				value = img[prop];
+				}
+			return value;
+			};
+		}('natural' + prop, prop.toLowerCase()));
+	}
+}(jQuery));
+</script>
+<script>
 	var categories = [];
 	var allPages = 1;
 	var view = "col-sm-3";
 	var orderBy = "ASC";
 	
 	function getUrlParam(param) {
+		var url = decodeURIComponent(window.location.href)
 		if (window.document.URL.indexOf("?") > 0) {
-		  var end = window.document.URL.indexOf("#");
+		  var end = url.indexOf("#");
 		  if (end === -1) {
-			end = window.document.URL.length;
+			end = url.length;
 		  }
-		  var params = window.document.URL.substring(window.document.URL.indexOf("?") + 1, end).split("&");
+		  var params = url.substring(url.indexOf("?") + 1, end).split("&");
 		  for (var i = 0; i < params.length; i++) {
 			if (params[i].indexOf("=") > 0) {
 			  var spl = params[i].split("=");
@@ -62,117 +91,137 @@
 	
 	function loadGallery() {
 		var category = getUrlParam("category");
-		if(!category) category = "rings";
+		if(!category) category = "пръстени";
 		switch(category) {
-			case "rings":
+			case "пръстени":
 				this.categories = [2];
 				$(".categoryTitle").text("Пръстени");
 				$("#radio1div").show();				
 				$("#radio1").attr("checked", true);
 				$("#radio1div label").text("Дамски");
 				$("#radio1").attr("categories", "2");
-				$("#radio2div").show();
+				/*$("#radio2div").show();
 				$("#radio2div label").text("Мъжки");
-				$("#radio2").attr("categories", "3");
+				$("#radio2").attr("categories", ""); */ //TODO: Add the category when Male rings is available
 				$("#radio3div").show();
 				$("#radio3div label").text("Годежни пръстени");
-				$("#radio3").attr("categories", "3");
-				doLeftRightPopup();				
+				$("#radio3").attr("categories", "15");
+				
+				//doLeftRightPopup();				
 				break;
-			case "diamonds":
-				this.categories = [14, 18, 19, 21, 26, 27];
+			case "диаманти":
+				this.categories = [14, 18, 19, 21, 26];
 				$(".categoryTitle").text("Диаманти");
 				break;
-			case "bracelets":
-				this.categories = [4, 25, 28];
+			case "гривни":
+				this.categories = [4, 28];
 				$(".categoryTitle").text("Гривни");
 				$("#radio1div").show();
 				$("#radio1").attr("checked", true);
 				$("#radio1div label").text("Дамски");
-				$("#radio1").attr("categories", "4,25,28");
-				$("#radio2div").show();
-				$("#radio2div label").text("Мъжки");
-				$("#radio2").attr("categories", "5");
+				$("#radio1").attr("categories", "4,28");
+				/*$("#radio2div").show();
+				$("#radio2div label").text("Мъжки"); //TODO: Add the category when Male bracelets is available
+				$("#radio2").attr("categories", "");
 				$("#radio3div").show();
 				$("#radio3div label").text("Детски");
-				$("#radio3").attr("categories", "22"); //TODO Use the correct categories
-				$("#radio4div").show();
+				$("#radio3").attr("categories", ""); */ //TODO: Add the category when Kids bracelets is available
+				$("#radio4div").show(); 
 				$("#radio4div label").text("С червен конец");
-				$("#radio4").attr("categories", "22"); //TODO Use the correct categories
-				$("#radio5div").show();
+				$("#radio4").attr("categories", "36");
+				/*$("#radio5div").show();
 				$("#radio5div label").text("Твърди гривни");
-				$("#radio5").attr("categories", "22"); //TODO Use the correct categories
-				doTopBottomPopup();
+				$("#radio5").attr("categories", "22"); */ //TODO: Add the category when Hard bracelets is available
+											
+				//doTopBottomPopup();
 				break;
-			case "wedRings":
+			case "халки":
 				this.categories = [9];
 				$(".categoryTitle").text("Халки");
 				break;
-			case "earrings":
-				this.categories = [16];
+			case "обеци":
+				this.categories = [16, 35];
 				$(".categoryTitle").text("Обеци");
 				$("#radio1div").show();
 				$("#radio1").attr("checked", true);
 				$("#radio1div label").text("Дамски");
-				//$("#radio1").attr("categories", "??"); //TODO Use the correct categories
-				$("#radio2div").show();
+				$("#radio1").attr("categories", "16, 35");
+				/*$("#radio2div").show();
 				$("#radio2div label").text("Детски");
-				//$("#radio2").attr("categories", "5??"); //TODO Use the correct categories
+				$("#radio2").attr("categories", "");*/ //TODO: Add the category when Kids earrings is available
 				break;
-			case "necklaces":
+			case "колиета":
 				this.categories = [6];
 				$(".categoryTitle").text("Колиета");
 				break;
-			case "chains":
+			case "синджири":
 				this.categories = [8];
 				$(".categoryTitle").text("Синджири");
-				doTopBottomPopup();
-				$('.navbar-right').css('display', "none");
+				
+				//doTopBottomPopup();
+				/*$('.navbar-right').css('display', "none");
 				$('.col-sm-3').removeClass('col-sm-3').addClass('col-sm-12');
-				view = "col-sm-12";
+				view = "col-sm-12"; */
 				break;
-			case "pendants":
-				this.categories = [31];
+			case "висулки":
+				this.categories = [7];
 				$(".categoryTitle").text("Висулки");
 				$("#radio1div").show()
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Кръстчета");
-				$("#radio1").attr("categories", "31");
+				$("#radio1div label").text("Висулки");
+				$("#radio1").attr("categories", "7");
 				$("#radio2div").show();
-				$("#radio2div label").text("Богородици");
-				$("#radio2").attr("categories", "32");
+				$("#radio2div label").text("Кръстчета");
+				$("#radio2").attr("categories", "31");
 				$("#radio3div").show();
-				$("#radio3div label").text("Зодии");
-				$("#radio3").attr("categories", "33");
+				$("#radio3div label").text("Богородици");
+				$("#radio3").attr("categories", "32");
 				$("#radio4div").show();
-				$("#radio4div label").text("Букви");
-				$("#radio4").attr("categories", "34");
+				$("#radio4div label").text("Зодии ");
+				$("#radio4").attr("categories", "33");
 				$("#radio5div").show();
-				$("#radio5div label").text("Висулки"); //TODO Use the correct categories
-				$("#radio5").attr("categories", "2");
-				doLeftRightPopup();				
+				$("#radio5div label").text("Букви");
+				$("#radio5").attr("categories", "34");
+				//doLeftRightPopup();				
 				break;
-			case "accessories":
-				this.categories = [30];
+			case "аксесоари":
+				this.categories = [20]; //TODO: Add the category when accessories is available
 				$(".categoryTitle").text("Аксесоари");
 				$("#radio1div").show();				
 				$("#radio1").attr("checked", true);
-				$("#radio1div label").text("Златни аксесоари");
-				$("#radio1").attr("categories", "30");
+				$("#radio1div label").text("Стомана и диаманти");
+				$("#radio1").attr("categories", "20");
 				$("#radio2div").show();
-				$("#radio2div label").text("Златни часовници");
-				$("#radio2").attr("categories", "30");
+				$("#radio2div label").text("Златни аксесоари");
+				$("#radio2").attr("categories", "10");
 				$("#radio3div").show();
-				$("#radio3div label").text("Стомана и диаманти");
+				$("#radio3div label").text("Златни часовници");
 				$("#radio3").attr("categories", "30");
 				break;
-			case "leather_and_silicone":
-				this.categories = [11, 12];
-				$(".categoryTitle").text("Кожа и силикон");				
+			case "кожа_и_силикон":
+				this.categories = [11];
+				$(".categoryTitle").text("Кожа и силикон");	
+				//
+				/*$("#radio1div").show()
+				$("#radio1").attr("checked", true);
+				$("#radio1div label").text("Тест17");
+				$("#radio1").attr("categories", "17");
+				$("#radio2div").show();
+				$("#radio2div label").text("Тест11");
+				$("#radio2").attr("categories", "11");
+				$("#radio3div").show();
+				$("#radio3div label").text("Тест12");
+				$("#radio3").attr("categories", "12");
+				$("#radio4div").show();
+				$("#radio4div label").text("Тест15");
+				$("#radio4").attr("categories", "15");
+				$("#radio5div").show();
+				$("#radio5div label").text("Тест25"); //TODO Use the correct categories
+				$("#radio5").attr("categories", "25");  */
 				break;					
 			default: 
 				this.categories = [2];
-				window.location.replace("gallery.html?category=rings");
+				window.location.replace("gallery.html?category=пръстени");
 		}
 		allPages = Math.ceil(getCount(categories) / 20);
 	}
@@ -214,6 +263,17 @@
 			
 			$("#filter input:radio").bind('click', function(e){
 				categories = $(this).attr("categories").split(',');
+				//TODO Think how to do it for the search service
+				for(i = 0; i < categories.length; i++) {
+					if(categories[i] == 4 || categories[i] == 8 || categories[i] == 28){
+						view = "col-sm-12";
+						$('.navbar-right').css('display', "none");
+					}
+					else {
+						view = "col-sm-3";
+						$('.navbar-right').css('display', "");
+					}
+				}
 				allPages = Math.ceil(getCount(categories) / 20);
 				createPager();
 				updateGallery(1);
@@ -235,8 +295,30 @@
 			
 			$(".searchSection #clearSearch").bind("click", function() {
 				$("#searchBox").val("");
+				loadGallery();
+				createPager();
 				updateGallery(1);
 			});
+			
+			/*var pixelSource = 'http://upload.wikimedia.org/wikipedia/commons/c/ce/Transparent.gif';
+			var useOnAllImages = true;
+			// Preload the pixel
+			var preload = new Image();
+			preload.src = pixelSource;
+			$('img').on('mouseenter touchstart', function(e) {
+				// Only execute if this is not an overlay or skipped
+				var img = $(this);
+				if (img.hasClass('protectionOverlay')) return;
+				if (!useOnAllImages && !img.hasClass('protectMe')) return;
+				// Get the real image's position, add an overlay
+				var pos = img.offset();
+				var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" width="' + img.width() + '" height="' + img.height() + '" />')
+					.css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body')
+					.bind('mouseleave', function() {
+						setTimeout(function(){ overlay.remove(); }, 0, $(this));
+					});
+				if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });
+			}); */
 		});
 		
 		$(window).scroll(function() {
@@ -253,6 +335,29 @@
 				$("#galleryMenu").removeClass("gallery-menu-top");
 			}
 		});
+		
+		/*window.oncontextmenu = function (){
+			//showCustomMenu();
+			return false;     // cancel default menu
+		}*/
+		
+		// Prevent context menu and F12
+		$(document).on("contextmenu",function(e){        
+		   e.preventDefault();
+		});
+		
+		/*$("body").on("contextmenu", "img", function(e) {
+		  return false;
+		});*/
+		
+		$(document).keydown(function(event){
+			if(event.keyCode==123){
+			return false;
+		   }
+		else if(event.ctrlKey && event.shiftKey && event.keyCode==73){        
+			  return false;  //Prevent from ctrl+shift+i
+		   }
+		});
 	});
 	
 	function updateGallery(page) {
@@ -261,6 +366,15 @@
 		var str = "";
 		for(i = 0; i < categories.length; i++) {
 			str += categories[i];
+			//TODO Think how to do it for the search service
+			if(categories[i] == 4 || categories[i] == 8 || categories[i] == 28){
+				view = "col-sm-12";
+				$('.navbar-right').css('display', "none");
+			}
+			else {
+				view = "col-sm-3";
+				$('.navbar-right').css('display', "");
+			}
 			if(i < categories.length - 1) {
 				str += ",";
 			}
@@ -269,8 +383,8 @@
 	}
 	
 	function searchItem0() {
-		var num = $("#searchBox").val();
-		if(num == "") {
+		var num = $("#searchBox").val().trim();
+		if (!parseInt(num)){
 			return;
 		}
 		$(".row").remove();
@@ -312,25 +426,25 @@
 							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
 								style="width: 100%;">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=rings">Пръстени</a></li>
+									href="gallery.html?category=пръстени">Пръстени</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=diamonds">Диаманти</a></li>
+									href="gallery.html?category=диаманти">Диаманти</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=bracelets">Гривни</a></li>
+									href="gallery.html?category=гривни">Гривни</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=wedRings">Халки</a></li>
+									href="gallery.html?category=халки">Халки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=earrings">Обеци</a></li>
+									href="gallery.html?category=обеци">Обеци</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=necklaces">Колиета</a></li>
+									href="gallery.html?category=колиета">Колиета</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=chains">Синджири</a></li>
+									href="gallery.html?category=синджири">Синджири</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=pendants">Висулки</a></li>
+									href="gallery.html?category=висулки">Висулки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=accessories">Аксесоари</a></li>
+									href="gallery.html?category=аксесоари">Аксесоари</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=leather_and_silicone">Кожа и
+									href="gallery.html?category=кожа_и_силикон">Кожа и
 										силикон</a></li>
 							</ul></li>
 						<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
@@ -397,7 +511,10 @@
 			<img id="thirdImg" class="img-responsive thumbnail" src=""/>
 			<img id="fourthImg" class="img-responsive thumbnail" src=""/><hr></hr></div>
 			<div class="description">
-			<span class="" style="font-size: 1.5em;" >Тегло: <span id="weight"></span></span></br><span class="" style="font-size: 1.5em;" >Параметри: <span id="params"></span></span>
+			<span style="font-size: 1.5em;" >Тегло: <span id="weight"></span></span></br>
+			<div style="display: inline-block; font-size: 1.5em; vertical-align: top;">Параметри: </div><div id="params" style="display: inline-block; padding-left: 6px;"></div>
+			</div>
+			<!-- <span class="" style="font-size: 1.5em;" >Параметри: <span id="params"></span></span> -->
 			</div>
 		</div>
 	</div>

@@ -12,8 +12,7 @@
 <link rel="stylesheet" href="css/markazit.css">
 <!--link href='http://fonts.googleapis.com/css?family=Forum&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" href="css/forum.fonts.css">
-
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
 	$(function() {
@@ -28,24 +27,23 @@
 		$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
 		
 		var windowWidth = window.innerWidth;
-		var $bracelets = $("div[title=\"Bracelets\"]");
-		var $diamonds = $("div[title=\"Diamonds\"]");
-		var $w_rings = $("div[title=\"Wedding rings\"]");
-		var $rings = $("div[title=\"Rings\"]");
-		var $earrings = $("div[title=\"Earrings\"]");
-		var $necklaces = $("div[title=\"Necklaces\"]");
-		var $pendants = $("div[title=\"Pendants\"]");
-		var $accessories = $("div[title=\"Accessories\"]");
+		var $bracelets = $("div[title=\"Гривни\"]");
+		var $diamonds = $("div[title=\"Диаманти\"]");
+		var $w_rings = $("div[title=\"Брачни халки\"]");
+		var $rings = $("div[title=\"Пръстени\"]");
+		var $earrings = $("div[title=\"Обеци\"]");
+		var $necklaces = $("div[title=\"Колиета\"]");
+		var $pendants = $("div[title=\"Висулки\"]");
+		var $accessories = $("div[title=\"Аксесоари\"]");
 		
-		//var timesPlayed = 0;
-		
+		//var timesPlayed = 0;		
 		$( document ).ready( function(){
 			document.getElementById("intro").playbackRate = 2.8; // This works only with getElementById and not with jQuery
 			$(".videoContainer").each(function(){
 				$(this).css({
 					'top': '50%', 'margin-top':  -1 * ($(this).height() / 2)+'px',
 					'left': '50%', 'margin-left': -1 * ($(this).width() / 2)+'px'
-					})
+				})
 			});
 		})
 		
@@ -67,9 +65,7 @@
 				$pendants.addClass("l left_img_pendants pendants_bg_pos");
 				$earrings.addClass("r right_img_earrings earrings_bg_pos");
 				$necklaces.addClass("l left_img_necklaces necklaces_bg_pos");
-				$accessories.addClass("r right_img_accessories accessories_bg_pos");
-				
-			}
+				$accessories.addClass("r right_img_accessories accessories_bg_pos");							}
 			else {
 				$bracelets.addClass("left_img_bracelet");
 				$diamonds.addClass("right_img_diamonds");
@@ -78,17 +74,14 @@
 				$pendants.addClass("left_img_pendants");
 				$earrings.addClass("right_img_earrings");
 				$necklaces.addClass("left_img_necklaces");
-				$accessories.addClass("right_img_accessories");
-				
-			}
+				$accessories.addClass("right_img_accessories");							}
 			
 			function close(object){
 				$(object).fadeOut('slow');
 				$(".b-close").fadeOut("slow");
 				$.undim();
 				sessionStorage.setItem("timesPlayed", "1");
-			}
-			
+			}			
 			if(!isMobile.any() && sessionStorage.length == 0){
 				$(".videoContainer").css('opacity', '1');
 				$("#intro").get(0).play();
@@ -109,13 +102,12 @@
 			else {
 				$("video").hide();
 				$(".b-close").hide();
-			}
-		
-		});
+			}						/*window.oncontextmenu = function ()			{				//showCustomMenu();				return false;     // cancel default menu			}*/			/*var pixelSource = 'http://upload.wikimedia.org/wikipedia/commons/c/ce/Transparent.gif';			var useOnAllImages = true;			// Preload the pixel			var preload = new Image();			preload.src = pixelSource;			$('img').on('mouseenter touchstart', function(e) {				// Only execute if this is not an overlay or skipped				var img = $(this);				if (img.hasClass('protectionOverlay')) return;				if (!useOnAllImages && !img.hasClass('protectMe')) return;				// Get the real image's position, add an overlay				var pos = img.offset();				var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" width="' + img.width() + '" height="' + img.height() + '" />')					.css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body')					.bind('mouseleave', function() {						setTimeout(function(){ overlay.remove(); }, 0, $(this));					});				if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });			}); */
+		});
 		$(window).resize(function() {
 			var w = ((window.innerWidth - $("#mainContainer").width()) / 2)-15;
 			$(".background1").css("width", w).show("slide", { direction: "left" }, 1000);
-			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);			
+			$(".background2").css("width", w).show("slide", { direction: "right" }, 1000);
 			var $left = $(".l");
 			var $right = $(".r");
 			windowWidth = window.innerWidth;
@@ -128,7 +120,6 @@
 				$earrings.removeClass("r earrings_bg_pos");
 				$necklaces.removeClass("l necklaces_bg_pos");
 				$accessories.removeClass("r accessories_bg_pos");
-				
 			}
 			else {
 				$bracelets.addClass("l bracelet_bg_pos");
@@ -139,16 +130,13 @@
 				$earrings.addClass("r earrings_bg_pos");
 				$necklaces.addClass("l necklaces_bg_pos");
 				$accessories.addClass("r accessories_bg_pos");
-				
 			}
-		});
-		
+		});		
 		$(".carousel-control").hover(function() {
 			$(this).animate({opacity:0.9}, 200);
 		}, function() {
 			$(this).animate({opacity:0.5}, 200);
-		});
-	
+		});	
 	});
 </script>
 </head>
@@ -163,55 +151,42 @@
 				Your browser does not support the video tag.
 			</video>
 		</div>
-
-		<img class="center-block img-responsive" src="logo_baner.png"
-			id="topImage" />
+		<img class="center-block img-responsive" src="logo_baner.png" id="topImage" />
 		<nav class="navbar navbar-default menu-default" id="menu">
 			<img class="img-responsive" src="logo.png" id="logo" />
-			<div class="container-fluid mobileMenu">
+			<div class="container-fluid mobileMenu">			
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button id="btnCollapse" type="button"
-						class="navbar-toggle collapsed" data-toggle="collapse"
-						data-target="#navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+					<button id="btnCollapse" type="button"	class="navbar-toggle collapsed" data-toggle="collapse"	data-target="#navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
 					</button>
-				</div>
-
+				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-collapse-1">
 					<ul class="nav nav-pills nav-justified">
 						<li class="active"><a href="markazit.html"><h4>Начало</h4></a></li>
-						<li><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><h4>
-									Колекция <span class="glyphicon glyphicon-chevron-down"
-										style="margin-left: 10px; vertical-align: text-bottom;"></span>
-								</h4></a>
-							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
-								style="width: 100%;">
+						<li><a href="#" class="dropdown-toggle"	data-toggle="dropdown">								<h4>Колекция <span class="glyphicon glyphicon-chevron-down" style="margin-left: 10px; vertical-align: text-bottom;"></span></h4>							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="width: 100%;">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=rings">Пръстени</a></li>
+									href="gallery.html?category=пръстени">Пръстени</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=diamonds">Диаманти</a></li>
+									href="gallery.html?category=диаманти">Диаманти</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=bracelets">Гривни</a></li>
+									href="gallery.html?category=гривни">Гривни</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=wedRings">Халки</a></li>
+									href="gallery.html?category=халки">Халки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=earrings">Обеци</a></li>
+									href="gallery.html?category=обеци">Обеци</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=necklaces">Колиета</a></li>
+									href="gallery.html?category=колиета">Колиета</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=chains">Синджири</a></li>
+									href="gallery.html?category=синджири">Синджири</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=pendants">Висулки</a></li>
+									href="gallery.html?category=висулки">Висулки</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=accessories">Аксесоари</a></li>
+									href="gallery.html?category=аксесоари">Аксесоари</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="gallery.html?category=leather_and_silicone">Кожа и
-										силикон</a></li>
+									href="gallery.html?category=кожа_и_силикон">Кожа и силикон</a></li>
 							</ul></li>
 						<li><a href="buying.html"><h4>Изкупуване</h4></a></li>
 						<li><a href="orders.html"><h4>Поръчки</h4></a></li>
@@ -233,85 +208,75 @@
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 				<li data-target="#myCarousel" data-slide-to="3"></li>
-			</ol>
-
+			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<img src="item1.png" alt="Chania" />
-				</div>
-
+				</div>
 				<div class="item">
 					<img src="item2.png" alt="Chania" />
-				</div>
-
+				</div>
 				<div class="item">
 					<img src="item3.png" alt="Flower" />
-				</div>
-
+				</div>
 				<div class="item">
 					<img src="item4.png" alt="Flower" />
 				</div>
-			</div>
-
+			</div>
 			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" role="button"
-				data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#myCarousel" role="button"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</a> <a class="right carousel-control" href="#myCarousel" role="button"	data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
 	</div>
 	<div id="mainContainer" class="container last">
 		<div class="row">
-			<div class="col-sm-6" title="Bracelets" style="">
-				<a href="gallery.html?category=bracelets"><div class="shadowBox">
+			<div class="col-sm-6" title="Гривни" >
+				<a href="gallery.html?category=гривни"><div class="shadowBox">
 						<img class="img-responsive" src="Bracelets/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
-			<div class="col-sm-6" title="Diamonds" style="">
-				<a href="gallery.html?category=diamonds"><div class="shadowBox">
+			<div class="col-sm-6" title="Диаманти" >
+				<a href="gallery.html?category=диаманти"><div class="shadowBox">
 						<img class="img-responsive" src="Diamonds/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6" title="Wedding rings" style="">
-				<a href="gallery.html?category=wedRings"><div class="shadowBox">
+			<div class="col-sm-6" title="Брачни халки" >
+				<a href="gallery.html?category=халки"><div class="shadowBox">
 						<img class="img-responsive" src="wedRings/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
-			<div class="col-sm-6" title="Rings" style="">
-				<a href="gallery.html?category=rings"><div class="shadowBox">
+			<div class="col-sm-6" title="Пръстени" >
+				<a href="gallery.html?category=пръстени"><div class="shadowBox">
 						<img class="img-responsive" src="Rings/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6" title="Pendants" style="">
-				<a href="gallery.html?category=pendants"><div class="shadowBox">
+			<div class="col-sm-6" title="Висулки" >
+				<a href="gallery.html?category=висулки"><div class="shadowBox">
 						<img class="img-responsive" src="Pendants/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
-			<div class="col-sm-6" title="Earrings" style="">
-				<a href="gallery.html?category=earrings"><div class="shadowBox">
+			<div class="col-sm-6" title="Обеци" >
+				<a href="gallery.html?category=обеци"><div class="shadowBox">
 						<img class="img-responsive" src="Earrings/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6" title="Necklaces" style="">
-				<a href="gallery.html?category=necklaces"><div class="shadowBox">
+			<div class="col-sm-6" title="Колиета" >
+				<a href="gallery.html?category=колиета"><div class="shadowBox">
 						<img class="img-responsive" src="Necklaces/OFF.png" />
-					</div></a>
+					</div>				</a>
 			</div>
-			<a href="gallery.html?category=accessories"><div class="col-sm-6" title="Accessories" style="">
-		<div class="shadowBox"><img class="img-responsive" src="Accessories/OFF.png" /></div></a>
-    </div>
+			<div class="col-sm-6" title="Аксесоари" >				<a href="gallery.html?category=аксесоари"><div class="shadowBox">						<img class="img-responsive" src="Accessories/OFF.png" />					</div>				</a>
+			</div>
 		</div>
 	</div>
 	<div id="footerContainer" class="container">
@@ -340,7 +305,7 @@
 				</div>
 			</nav>
 		</footer>
-	</div>
+	</div>
 	<!--div id="myModal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="background-color: black;">
